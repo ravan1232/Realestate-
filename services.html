@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>Our Services | JMJ & JOHNS CONSULTANCY – Real Estate & Property</title>
+  <meta name="description" content="Buy, sell, rent and property consultancy services in Cheemasandra, Bengaluru by JMJ & JOHNS CONSULTANCY. Landmark: Near Govt School, Cheemasandra Main Road, Bengaluru – 560049.">
+  
+  <link rel="icon" type="image/jpeg" href="assets/images/logo.jpg">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <!-- Top Bar -->
+  <div class="topbar">
+    <div class="container">
+      <div class="topbar-info">
+        <span class="topbar-item"><i class="fa-solid fa-location-dot"></i> Landmark: Near Govt School, Cheemasandra Main Road, Bengaluru – 560049</span>
+        <span class="topbar-item"><i class="fa-solid fa-phone"></i> <a href="tel:+919880430160">+91 98804 30160</a></span>
+        <span class="topbar-item"><i class="fa-solid fa-envelope"></i> <a href="mailto:jmjjohnsconsultancy@gmail.com">jmjjohnsconsultancy@gmail.com</a></span>
+      </div>
+      <div class="topbar-actions">
+        <span class="topbar-item"><i class="fa-regular fa-clock"></i> Mon – Sun: 9:00 AM – 8:00 PM</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Main Navbar -->
+  <header class="main-navbar">
+    <div class="container nav-container">
+      <a href="index.html" class="brand-wrapper">
+        <img src="assets/images/logo.jpg" alt="JMJ & JOHNS Logo">
+        <div class="brand-title-wrap">
+          <h1 class="brand-title">JMJ & JOHNS</h1>
+          <span class="brand-subtitle">EX-SERVICEMEN REAL ESTATE CONSULTANCY</span>
+        </div>
+      </a>
+
+      <nav>
+        <ul class="nav-menu" id="navMenu">
+          <li><a href="index.html" class="nav-link">Home</a></li>
+          <li><a href="about.html" class="nav-link">About Us</a></li>
+          <li><a href="services.html" class="nav-link active">Our Services</a></li>
+          <li><a href="properties.html" class="nav-link">Properties</a></li>
+          <li><a href="contact.html" class="nav-link">Contact Us</a></li>
+          <li><a href="admin.html" class="nav-link nav-link-admin admin-login-trigger" id="adminLoginNavBtn"><i class="fa-solid fa-shield-halved"></i> Admin</a></li>
+          <li class="mobile-drawer-footer mobile-only">
+            <a href="contact.html" class="btn-drawer-cta">
+              <span>Get In Touch</span>
+              <i class="fa-solid fa-arrow-right"></i>
+            </a>
+            <div class="drawer-contact-chips">
+              <a href="tel:+919880430160" class="drawer-chip drawer-chip-call">
+                <i class="fa-solid fa-phone"></i> Call Consultant
+              </a>
+              <a href="https://wa.me/919880430160?text=Hello%20JMJ%20%26%20JOHNS,%20I%20am%20interested%20in%20properties%20in%20Bengaluru." target="_blank" rel="noopener" class="drawer-chip drawer-chip-whatsapp">
+                <i class="fa-brands fa-whatsapp"></i> WhatsApp
+              </a>
+            </div>
+            <div class="drawer-meta-info">
+              <i class="fa-solid fa-location-dot"></i> Near Govt School, Cheemasandra Main Road, Bengaluru
+            </div>
+          </li>
+        </ul>
+      </nav>
+
+      <div class="nav-actions">
+        <button class="nav-icon-btn" onclick="openWishlistModal()" title="Saved Properties" aria-label="Favorites">
+          <i class="fa-regular fa-heart"></i>
+          <span class="wishlist-count-badge">0</span>
+        </button>
+        <button class="nav-icon-btn admin-login-trigger desktop-only" title="Admin Portal" aria-label="Admin Portal">
+          <i class="fa-regular fa-user"></i>
+        </button>
+        <a href="contact.html" class="btn-prime-pill desktop-only">
+          <span>Get In Touch</span>
+          <i class="fa-solid fa-arrow-right"></i>
+        </a>
+        <button class="mobile-menu-btn" id="mobileMenuToggle" aria-label="Toggle navigation menu" aria-expanded="false">
+          <i class="fa-solid fa-bars"></i>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- ==========================================================================
+       DISTINCT HEADER 3: SERVICE PILLARS SHOWCASE BANNER (EX-SERVICEMEN)
+       ========================================================================== -->
+  <section class="page-header-services">
+    <div class="dot-matrix dot-top-right"></div>
+    <div class="dot-matrix dot-bottom-left"></div>
+
+    <div class="container">
+      <div class="services-header-content">
+        <div class="badge-pill" style="display:inline-flex; align-items:center; gap:8px; background:rgba(28, 16, 11, 0.08); border:1px solid var(--poster-espresso); padding:6px 14px; border-radius:30px; font-size:0.8rem; font-weight:700; color:var(--poster-espresso); margin-bottom:12px; letter-spacing:0.06em; text-transform:uppercase;">
+          <i class="fa-solid fa-medal text-gold"></i> Led by Retired Military Personnel • Professional Property Advisory
+        </div>
+        <h1 class="font-serif">Key Real Estate Services</h1>
+        <p>
+          Leveraging the core military values of <strong>integrity, discipline, and strategic planning</strong>, we provide a highly transparent and secure alternative in the Bangalore real estate market.
+        </p>
+
+        <div class="services-pills-row" style="margin-top:28px;">
+          <a href="#buying-selling" class="service-nav-chip"><i class="fa-solid fa-house-chimney"></i> Property Buying & Selling</a>
+          <a href="#legal-support" class="service-nav-chip"><i class="fa-solid fa-file-shield"></i> Legal & Documentation</a>
+          <a href="#investment-advisory" class="service-nav-chip"><i class="fa-solid fa-chart-line"></i> Strategic Investment</a>
+          <a href="#property-management" class="service-nav-chip"><i class="fa-solid fa-building-shield"></i> Property Management & NRI</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Services Deep Dive Body -->
+  <main class="services-page-body">
+    <div class="container">
+      
+      <!-- Service 1: Property Buying & Selling -->
+      <div id="buying-selling" style="background:var(--poster-white); border:1px solid var(--poster-sand); border-radius:18px; padding:44px; margin-bottom:40px; box-shadow:var(--shadow-sm);">
+        <div style="display:grid; grid-template-columns:1fr 1fr; gap:40px; align-items:center;">
+          <div>
+            <span style="font-size:0.8rem; font-weight:800; color:var(--poster-espresso); text-transform:uppercase; letter-spacing:0.1em;">Service 01</span>
+            <h2 class="font-serif" style="font-size:2.2rem; margin:6px 0 16px;">Property Buying & Selling</h2>
+            <p style="color:#5D493E; line-height:1.7; margin-bottom:18px;">
+              Comprehensive assistance with <strong>residential plots, luxury apartments, commercial spaces, and agricultural land</strong>. We ensure every transaction is protected with ethical pricing, upfront terms, and zero inflated markups.
+            </p>
+            <ul style="list-style:none; display:flex; flex-direction:column; gap:10px; margin-bottom:24px;">
+              <li style="display:flex; align-items:center; gap:10px; font-weight:600;"><i class="fa-solid fa-circle-check" style="color:var(--poster-green);"></i> Residential Plots: Standard & corner plots (30x40, 30x50, 40x60) in Cheemasandra & East Bengaluru</li>
+              <li style="display:flex; align-items:center; gap:10px; font-weight:600;"><i class="fa-solid fa-circle-check" style="color:var(--poster-green);"></i> High-Rise Apartments & Integrated Townships (Brigade Granada, Sobha, Prestige)</li>
+              <li style="display:flex; align-items:center; gap:10px; font-weight:600;"><i class="fa-solid fa-circle-check" style="color:var(--poster-green);"></i> Commercial spaces, retail shops, and tech park vicinities</li>
+              <li style="display:flex; align-items:center; gap:10px; font-weight:600;"><i class="fa-solid fa-circle-check" style="color:var(--poster-green);"></i> Clear-titled agricultural and farmhouse land options</li>
+            </ul>
+            <a href="contact.html" class="btn btn-primary"><i class="fa-solid fa-compass"></i> Enquire to Buy or Sell</a>
+          </div>
+          <div>
+            <img src="assets/images/residential_plot.jpg" alt="Property Buying & Selling" style="width:100%; height:340px; object-fit:cover; border-radius:14px;">
+          </div>
+        </div>
+      </div>
+
+      <!-- Service 2: Legal & Documentation Support -->
+      <div id="legal-support" style="background:var(--poster-white); border:1px solid var(--poster-sand); border-radius:18px; padding:44px; margin-bottom:40px; box-shadow:var(--shadow-sm);">
+        <div style="display:grid; grid-template-columns:1fr 1fr; gap:40px; align-items:center;">
+          <div>
+            <img src="assets/images/handshake.jpg" alt="Legal & Documentation Support" style="width:100%; height:340px; object-fit:cover; border-radius:14px;">
+          </div>
+          <div>
+            <span style="font-size:0.8rem; font-weight:800; color:var(--poster-espresso); text-transform:uppercase; letter-spacing:0.1em;">Service 02</span>
+            <h2 class="font-serif" style="font-size:2.2rem; margin:6px 0 16px;">Legal & Documentation Support</h2>
+            <p style="color:#5D493E; line-height:1.7; margin-bottom:18px;">
+              Guidance through <strong>sale deeds, registration, RERA compliance, and legal title verification</strong>. Conducted with military-grade due diligence to protect your life savings from title defects and encumbrances.
+            </p>
+            <ul style="list-style:none; display:flex; flex-direction:column; gap:10px; margin-bottom:24px;">
+              <li style="display:flex; align-items:center; gap:10px; font-weight:600;"><i class="fa-solid fa-circle-check" style="color:var(--poster-green);"></i> Rigorous 30-year title flow checks & Encumbrance Certificate (EC) review</li>
+              <li style="display:flex; align-items:center; gap:10px; font-weight:600;"><i class="fa-solid fa-circle-check" style="color:var(--poster-green);"></i> Complete RERA approvals verification & builder track-record assessment</li>
+              <li style="display:flex; align-items:center; gap:10px; font-weight:600;"><i class="fa-solid fa-circle-check" style="color:var(--poster-green);"></i> Khata verification (BBMP A-Khata, Gram Panchayat, e-Khata issuance)</li>
+              <li style="display:flex; align-items:center; gap:10px; font-weight:600;"><i class="fa-solid fa-circle-check" style="color:var(--poster-green);"></i> Sub-Registrar office coordination and seamless sale deed registration</li>
+            </ul>
+            <a href="contact.html" class="btn btn-primary"><i class="fa-solid fa-scale-balanced"></i> Request Document Vetting</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Service 3: Strategic Investment Advisory -->
+      <div id="investment-advisory" style="background:var(--poster-white); border:1px solid var(--poster-sand); border-radius:18px; padding:44px; margin-bottom:40px; box-shadow:var(--shadow-sm);">
+        <div style="display:grid; grid-template-columns:1fr 1fr; gap:40px; align-items:center;">
+          <div>
+            <span style="font-size:0.8rem; font-weight:800; color:var(--poster-espresso); text-transform:uppercase; letter-spacing:0.1em;">Service 03</span>
+            <h2 class="font-serif" style="font-size:2.2rem; margin:6px 0 16px;">Strategic Investment Advisory</h2>
+            <p style="color:#5D493E; line-height:1.7; margin-bottom:18px;">
+              Professional <strong>market analysis and realistic ROI projections</strong> for long-term wealth creation. Led by strategic command planning, we identify emerging micro-markets, metro growth zones, and prime pre-launch opportunities.
+            </p>
+            <ul style="list-style:none; display:flex; flex-direction:column; gap:10px; margin-bottom:24px;">
+              <li style="display:flex; align-items:center; gap:10px; font-weight:600;"><i class="fa-solid fa-circle-check" style="color:var(--poster-green);"></i> Capital appreciation modeling across Bangalore high-growth corridors</li>
+              <li style="display:flex; align-items:center; gap:10px; font-weight:600;"><i class="fa-solid fa-circle-check" style="color:var(--poster-green);"></i> Pre-launch priority allocation (e.g. Brigade Granada, Sobha Neopolis)</li>
+              <li style="display:flex; align-items:center; gap:10px; font-weight:600;"><i class="fa-solid fa-circle-check" style="color:var(--poster-green);"></i> Rental yield calculation for commercial and residential assets</li>
+              <li style="display:flex; align-items:center; gap:10px; font-weight:600;"><i class="fa-solid fa-circle-check" style="color:var(--poster-green);"></i> Portfolio diversification strategies for families and investors</li>
+            </ul>
+            <a href="contact.html" class="btn btn-primary"><i class="fa-solid fa-chart-line"></i> Book Strategic Advisory</a>
+          </div>
+          <div>
+            <img src="assets/images/luxury_apartment.jpg" alt="Strategic Investment Advisory" style="width:100%; height:340px; object-fit:cover; border-radius:14px;">
+          </div>
+        </div>
+      </div>
+
+      <!-- Service 4: Property Management & NRI Care -->
+      <div id="property-management" style="background:var(--poster-white); border:1px solid var(--poster-sand); border-radius:18px; padding:44px; margin-bottom:40px; box-shadow:var(--shadow-sm);">
+        <div style="display:grid; grid-template-columns:1fr 1fr; gap:40px; align-items:center;">
+          <div>
+            <img src="assets/images/commercial_building.jpg" alt="Property Management and NRI Care" style="width:100%; height:340px; object-fit:cover; border-radius:14px;">
+          </div>
+          <div>
+            <span style="font-size:0.8rem; font-weight:800; color:var(--poster-espresso); text-transform:uppercase; letter-spacing:0.1em;">Service 04</span>
+            <h2 class="font-serif" style="font-size:2.2rem; margin:6px 0 16px;">Property Management & NRI Care</h2>
+            <p style="color:#5D493E; line-height:1.7; margin-bottom:18px;">
+              Dedicated <strong>NRI property oversight, rental management, and physical boundary maintenance</strong>. Ensuring your assets in Bengaluru remain securely monitored, protected from encroachments, and yielding reliable passive returns.
+            </p>
+            <ul style="list-style:none; display:flex; flex-direction:column; gap:10px; margin-bottom:24px;">
+              <li style="display:flex; align-items:center; gap:10px; font-weight:600;"><i class="fa-solid fa-circle-check" style="color:var(--poster-green);"></i> Comprehensive NRI property surveillance and regular on-site photo/video inspection reports</li>
+              <li style="display:flex; align-items:center; gap:10px; font-weight:600;"><i class="fa-solid fa-circle-check" style="color:var(--poster-green);"></i> Rigorous tenant background screening, police verification, and lease agreement execution</li>
+              <li style="display:flex; align-items:center; gap:10px; font-weight:600;"><i class="fa-solid fa-circle-check" style="color:var(--poster-green);"></i> Timely rental collection oversight, maintenance coordination, and utility bill tracking</li>
+              <li style="display:flex; align-items:center; gap:10px; font-weight:600;"><i class="fa-solid fa-circle-check" style="color:var(--poster-green);"></i> Plot boundary demarcation, barbed fencing, signboards, and anti-encroachment vigilance</li>
+            </ul>
+            <a href="contact.html" class="btn btn-primary"><i class="fa-solid fa-building-shield"></i> Enquire for Property Management</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- 4 Step Process Strip -->
+      <div style="background:var(--poster-espresso); color:var(--poster-white); border-radius:18px; padding:50px 40px; margin-top:60px;">
+        <div style="text-align:center; max-width:700px; margin:0 auto 40px;">
+          <span style="font-size:0.85rem; font-weight:800; text-transform:uppercase; letter-spacing:0.15em; color:var(--poster-gold-light); display:block; margin-bottom:8px;">Military Precision Workflow</span>
+          <h3 class="font-serif" style="font-size:2.2rem; color:var(--poster-white);">Our 4-Step Disciplined Execution</h3>
+        </div>
+
+        <div style="display:grid; grid-template-columns:repeat(4, 1fr); gap:24px;">
+          <div style="text-align:center;">
+            <div style="width:56px; height:56px; border-radius:50%; background:var(--poster-gold); color:var(--poster-espresso); font-weight:800; font-size:1.4rem; display:flex; align-items:center; justify-content:center; margin:0 auto 16px;">1</div>
+            <h4 style="color:#FFF; font-size:1.1rem; margin-bottom:8px;">Mission Briefing</h4>
+            <p style="color:#DDD2C7; font-size:0.85rem;">Precise analysis of your lifestyle requirements, capital budget & location criteria.</p>
+          </div>
+
+          <div style="text-align:center;">
+            <div style="width:56px; height:56px; border-radius:50%; background:var(--poster-gold); color:var(--poster-espresso); font-weight:800; font-size:1.4rem; display:flex; align-items:center; justify-content:center; margin:0 auto 16px;">2</div>
+            <h4 style="color:#FFF; font-size:1.1rem; margin-bottom:8px;">Tactical Reconnaissance</h4>
+            <p style="color:#DDD2C7; font-size:0.85rem;">Structured, accompanied on-ground inspections of pre-verified properties & master layouts.</p>
+          </div>
+
+          <div style="text-align:center;">
+            <div style="width:56px; height:56px; border-radius:50%; background:var(--poster-gold); color:var(--poster-espresso); font-weight:800; font-size:1.4rem; display:flex; align-items:center; justify-content:center; margin:0 auto 16px;">3</div>
+            <h4 style="color:#FFF; font-size:1.1rem; margin-bottom:8px;">Rigorous Due Diligence</h4>
+            <p style="color:#DDD2C7; font-size:0.85rem;">Exhaustive 30-year title flow checks, RERA approvals, survey bounds & builder auditing.</p>
+          </div>
+
+          <div style="text-align:center;">
+            <div style="width:56px; height:56px; border-radius:50%; background:var(--poster-gold); color:var(--poster-espresso); font-weight:800; font-size:1.4rem; display:flex; align-items:center; justify-content:center; margin:0 auto 16px;">4</div>
+            <h4 style="color:#FFF; font-size:1.1rem; margin-bottom:8px;">Disciplined Handover</h4>
+            <p style="color:#DDD2C7; font-size:0.85rem;">Transparent registry completion, non-ambiguous documentation & key possession transfer.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <!-- Site Footer -->
+  <footer class="site-footer-poster">
+    <div class="container">
+      <div class="footer-grid-4col">
+        <div class="footer-brand-col">
+          <h3 class="font-serif">JMJ & JOHNS</h3>
+          <span class="sub">CONSULTANCY • REAL ESTATE & PROPERTY</span>
+          <p style="font-size:0.9rem; line-height:1.7; margin-bottom:16px;">
+            Your trusted partner for buying, selling, renting, and property consultancy in Cheemasandra, Bengaluru and surrounding areas.
+          </p>
+          <div style="display:flex; gap:10px;">
+            <a href="tel:+919880430160" class="btn btn-outline-white btn-sm"><i class="fa-solid fa-phone"></i></a>
+            <a href="mailto:jmjjohnsconsultancy@gmail.com" class="btn btn-outline-white btn-sm"><i class="fa-solid fa-envelope"></i></a>
+            <a href="https://wa.me/919880430160" target="_blank" class="btn btn-poster-phone btn-sm" style="background:var(--poster-green); color:#FFF;"><i class="fa-brands fa-whatsapp"></i></a>
+          </div>
+        </div>
+
+        <div class="footer-col">
+          <h4>Pages</h4>
+          <ul class="footer-links-list">
+            <li><a href="index.html">Home Page</a></li>
+            <li><a href="about.html">About Us</a></li>
+            <li><a href="services.html">Our Services</a></li>
+            <li><a href="properties.html">Properties Catalog</a></li>
+            <li><a href="contact.html">Contact Us</a></li>
+            <li><a href="admin.html">Admin Portal</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h4>Services</h4>
+          <ul class="footer-links-list">
+            <li><a href="services.html#buy">Buy a Property</a></li>
+            <li><a href="services.html#buy">Residential Plots</a></li>
+            <li><a href="services.html#sell">Sell Your Property</a></li>
+            <li><a href="services.html#rent">Rent a Property</a></li>
+            <li><a href="services.html#consultancy">Property Consultancy</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h4>Office Details</h4>
+          <ul class="footer-contact-details">
+            <li><i class="fa-solid fa-location-dot"></i> Landmark: Near Govt School, Cheemasandra Main Road, Bengaluru – 560049</li>
+            <li><i class="fa-solid fa-phone"></i> <a href="tel:+919880430160" style="color:#FFF;">+91 98804 30160</a></li>
+            <li><i class="fa-solid fa-envelope"></i> <a href="mailto:jmjjohnsconsultancy@gmail.com" style="color:#FFF;">jmjjohnsconsultancy@gmail.com</a></li>
+            <li><i class="fa-solid fa-lock"></i> <a href="admin.html" style="color:var(--poster-gold-light);">Admin Login</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="footer-bottom-bar">
+        <div>&copy; 2026 <strong>JMJ & JOHNS CONSULTANCY</strong>. All rights reserved. Landmark: Near Govt School, Cheemasandra Main Road, Bengaluru 560049.</div>
+        <div>Buy | Sell | Rent | Property Consultancy</div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Floating WhatsApp -->
+  <a href="https://wa.me/919880430160?text=Hello%20JMJ%20%26%20JOHNS%20CONSULTANCY,%20I%20have%20an%20enquiry%20regarding%20property%20in%20Cheemasandra." target="_blank" class="floating-whatsapp-btn" aria-label="Chat on WhatsApp">
+    <i class="fa-brands fa-whatsapp" style="font-size:1.4rem;"></i>
+    <span>Chat with Consultant</span>
+  </a>
+
+  <!-- Wishlist Modal -->
+  <div class="modal-overlay" id="wishlistModal">
+    <div class="modal-card modal-card-md">
+      <div class="modal-header">
+        <div style="display:flex; align-items:center; gap:8px;">
+          <i class="fa-solid fa-heart text-gold" style="font-size:1.2rem;"></i>
+          <h3 class="modal-title">Saved Properties (<span class="wishlist-count-badge">0</span>)</h3>
+        </div>
+        <button class="modal-close" onclick="closeModal(document.getElementById('wishlistModal'))">&times;</button>
+      </div>
+      <div class="modal-body" id="wishlistItemsContainer">
+        <!-- Wishlist items dynamically populated by JS -->
+      </div>
+    </div>
+  </div>
+
+  <!-- Admin Login Modal -->
+  <div class="modal-overlay" id="adminLoginModal">
+    <div class="modal-container">
+      <div class="modal-header">
+        <h3><i class="fa-solid fa-lock text-gold"></i> Admin Authentication</h3>
+        <button class="modal-close-btn"><i class="fa-solid fa-xmark"></i></button>
+      </div>
+      <div class="modal-body" style="text-align:center;">
+        <form id="adminLoginForm">
+          <input type="password" id="adminPasswordInput" placeholder="Enter Admin PIN" style="width:100%; max-width:320px; padding:12px; text-align:center; font-size:1.1rem; border-radius:8px; border:2px solid var(--poster-sand); margin-bottom:14px; outline:none;" required>
+          <div style="font-size:0.8rem; color:#6E5B50; margin-bottom:18px;"><i class="fa-solid fa-lock"></i> Authorized Personnel Access Only</div>
+          <button type="submit" class="btn btn-primary" style="width:100%; max-width:320px;">Unlock Admin</button>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <div class="toast-container" id="toastContainer"></div>
+  <script src="app.js"></script>
+</body>
+</html>

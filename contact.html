@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>Contact Us | JMJ & JOHNS CONSULTANCY – Cheemasandra, Bengaluru</title>
+  <meta name="description" content="Contact JMJ & JOHNS CONSULTANCY. Landmark: Near Govt School, Cheemasandra Main Road, Bengaluru 560049. Call +91 98804 30160 or email jmjjohnsconsultancy@gmail.com for real estate buying, selling and renting.">
+  
+  <link rel="icon" type="image/jpeg" href="assets/images/logo.jpg">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <!-- Top Bar -->
+  <div class="topbar">
+    <div class="container">
+      <div class="topbar-info">
+        <span class="topbar-item"><i class="fa-solid fa-location-dot"></i> Landmark: Near Govt School, Cheemasandra Main Road, Bengaluru – 560049</span>
+        <span class="topbar-item"><i class="fa-solid fa-phone"></i> <a href="tel:+919880430160">+91 98804 30160</a></span>
+        <span class="topbar-item"><i class="fa-solid fa-envelope"></i> <a href="mailto:jmjjohnsconsultancy@gmail.com">jmjjohnsconsultancy@gmail.com</a></span>
+      </div>
+      <div class="topbar-actions">
+        <span class="topbar-item"><i class="fa-regular fa-clock"></i> Mon – Sun: 9:00 AM – 8:00 PM</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Main Navbar -->
+  <header class="main-navbar">
+    <div class="container nav-container">
+      <a href="index.html" class="brand-wrapper">
+        <img src="assets/images/logo.jpg" alt="JMJ & JOHNS Logo">
+        <div class="brand-title-wrap">
+          <h1 class="brand-title">JMJ & JOHNS</h1>
+          <span class="brand-subtitle">EX-SERVICEMEN REAL ESTATE CONSULTANCY</span>
+        </div>
+      </a>
+
+      <nav>
+        <ul class="nav-menu" id="navMenu">
+          <li><a href="index.html" class="nav-link">Home</a></li>
+          <li><a href="about.html" class="nav-link">About Us</a></li>
+          <li><a href="services.html" class="nav-link">Our Services</a></li>
+          <li><a href="properties.html" class="nav-link">Properties</a></li>
+          <li><a href="contact.html" class="nav-link active">Contact Us</a></li>
+          <li><a href="admin.html" class="nav-link nav-link-admin admin-login-trigger" id="adminLoginNavBtn"><i class="fa-solid fa-shield-halved"></i> Admin</a></li>
+          <li class="mobile-drawer-footer mobile-only">
+            <a href="contact.html" class="btn-drawer-cta">
+              <span>Get In Touch</span>
+              <i class="fa-solid fa-arrow-right"></i>
+            </a>
+            <div class="drawer-contact-chips">
+              <a href="tel:+919880430160" class="drawer-chip drawer-chip-call">
+                <i class="fa-solid fa-phone"></i> Call Consultant
+              </a>
+              <a href="https://wa.me/919880430160?text=Hello%20JMJ%20%26%20JOHNS,%20I%20am%20interested%20in%20properties%20in%20Bengaluru." target="_blank" rel="noopener" class="drawer-chip drawer-chip-whatsapp">
+                <i class="fa-brands fa-whatsapp"></i> WhatsApp
+              </a>
+            </div>
+            <div class="drawer-meta-info">
+              <i class="fa-solid fa-location-dot"></i> Near Govt School, Cheemasandra Main Road, Bengaluru
+            </div>
+          </li>
+        </ul>
+      </nav>
+
+      <div class="nav-actions">
+        <button class="nav-icon-btn" onclick="openWishlistModal()" title="Saved Properties" aria-label="Favorites">
+          <i class="fa-regular fa-heart"></i>
+          <span class="wishlist-count-badge">0</span>
+        </button>
+        <button class="nav-icon-btn admin-login-trigger desktop-only" title="Admin Portal" aria-label="Admin Portal">
+          <i class="fa-regular fa-user"></i>
+        </button>
+        <a href="tel:+919880430160" class="btn-prime-pill desktop-only">
+          <i class="fa-solid fa-phone"></i>
+          <span>Call Consultant</span>
+        </a>
+        <button class="mobile-menu-btn" id="mobileMenuToggle" aria-label="Toggle navigation menu" aria-expanded="false">
+          <i class="fa-solid fa-bars"></i>
+        </button>
+      </div>
+    </div>
+  </header>
+
+
+  <!-- ==========================================================================
+       DISTINCT HEADER 5: DIRECT ACCESS & LOCATION BANNER (CONTACT US)
+       ========================================================================== -->
+  <section class="page-header-contact">
+    <div class="dot-matrix dot-top-right"></div>
+    <div class="dot-matrix dot-bottom-left"></div>
+
+    <div class="container">
+      <div class="contact-header-content">
+        <span style="font-size:0.85rem; font-weight:800; text-transform:uppercase; letter-spacing:0.16em; color:var(--poster-espresso); display:block; margin-bottom:8px;">
+          Reach Our Consultancy
+        </span>
+        <h1 class="font-serif">Get in Touch with JMJ & JOHNS</h1>
+        <p>
+          Whether you are searching for your dream home, looking to sell land, or exploring rental spaces in Cheemasandra, our team is ready to assist you.
+        </p>
+
+        <div class="contact-quick-badges">
+          <a href="tel:+919880430160" class="btn-poster-phone" style="background:var(--poster-espresso);">
+            <span class="icon-circle" style="background:var(--poster-green);"><i class="fa-solid fa-phone"></i></span>
+            <span>+91 98804 30160</span>
+          </a>
+          <a href="mailto:jmjjohnsconsultancy@gmail.com" class="btn-poster-email" style="background:var(--poster-espresso);">
+            <span class="icon-circle" style="background:var(--poster-blue);"><i class="fa-solid fa-envelope"></i></span>
+            <span>jmjjohnsconsultancy@gmail.com</span>
+          </a>
+          <a href="tel:+916366416050" class="btn-poster-phone" style="background:var(--poster-espresso); border:1px solid var(--poster-gold);">
+            <span class="icon-circle" style="background:var(--poster-gold); color:var(--poster-espresso);"><i class="fa-solid fa-city"></i></span>
+            <span>Brigade Granada Desk: Vaibhav (6366416050)</span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact & Location Body -->
+  <main class="contact-page-body">
+    <div class="container">
+      <div class="contact-layout-grid">
+        <!-- Contact Information Card -->
+        <div class="contact-card-poster">
+          <div class="dot-matrix-light dot-top-right"></div>
+          <span style="font-size:0.8rem; font-weight:800; text-transform:uppercase; letter-spacing:0.12em; color:var(--poster-gold-light); display:block; margin-bottom:10px;">Official Agency Details</span>
+          <h3 class="font-serif">JMJ & JOHNS CONSULTANCY</h3>
+          <p class="lead">
+            Ex-Servicemen Real Estate Consultancy based in Cheemasandra, Bengaluru. Dedicated to clear communication, verified titles, and dependable guidance.
+          </p>
+
+          <div class="contact-info-list">
+            <div class="contact-row-poster">
+              <div class="contact-icon-poster"><i class="fa-solid fa-location-dot"></i></div>
+              <div class="contact-row-text">
+                <h5>Office Location & Landmark</h5>
+                <p><strong>Landmark:</strong> Near Government School<br><strong>Road:</strong> Cheemasandra Main Road<br>Bengaluru, Karnataka – 560049</p>
+              </div>
+            </div>
+
+            <div class="contact-row-poster">
+              <div class="contact-icon-poster"><i class="fa-solid fa-phone"></i></div>
+              <div class="contact-row-text">
+                <h5>Direct Call & WhatsApp</h5>
+                <p><a href="tel:+919880430160">+91 98804 30160</a></p>
+              </div>
+            </div>
+
+            <!-- Dedicated Brigade Granada Lead -->
+            <div class="contact-row-poster" style="background:rgba(212, 168, 83, 0.15); padding:14px; border-radius:10px; border-left:4px solid var(--poster-gold);">
+              <div class="contact-icon-poster" style="background:var(--poster-gold); color:var(--poster-espresso);"><i class="fa-solid fa-city"></i></div>
+              <div class="contact-row-text">
+                <h5 style="color:var(--poster-gold-light);">Brigade Granada (Pre-Launch & EOI Desk)</h5>
+                <p style="color:#FFF;"><strong>Vaibhav:</strong> <a href="tel:+916366416050" style="color:var(--poster-gold-light); font-weight:700;">+91 63664 16050</a><br>For Floor Plans, Pricing, Site Visits & Priority EOI Cheques</p>
+              </div>
+            </div>
+
+            <div class="contact-row-poster">
+              <div class="contact-icon-poster"><i class="fa-solid fa-envelope"></i></div>
+              <div class="contact-row-text">
+                <h5>Official Email</h5>
+                <p><a href="mailto:jmjjohnsconsultancy@gmail.com">jmjjohnsconsultancy@gmail.com</a></p>
+              </div>
+            </div>
+
+            <div class="contact-row-poster">
+              <div class="contact-icon-poster"><i class="fa-regular fa-clock"></i></div>
+              <div class="contact-row-text">
+                <h5>Consultation Timings</h5>
+                <p>Monday to Sunday: 9:00 AM – 8:00 PM</p>
+              </div>
+            </div>
+          </div>
+
+          <div style="display:flex; gap:12px; flex-wrap:wrap;">
+            <a href="tel:+919880430160" class="btn btn-gold">
+              <i class="fa-solid fa-phone"></i> Call Now
+            </a>
+            <a href="https://wa.me/919880430160?text=Hello%20JMJ%20%26%20JOHNS%20CONSULTANCY,%20I%20would%20like%20to%20discuss%20a%20property%20requirement%20in%20Cheemasandra." target="_blank" class="btn btn-outline-white">
+              <i class="fa-brands fa-whatsapp"></i> Chat on WhatsApp
+            </a>
+          </div>
+        </div>
+
+        <!-- Interactive Enquiry Form -->
+        <div class="form-box-poster">
+          <h3>Send Us Your Property Enquiry</h3>
+          <p>Tell us whether you want to buy, sell, or rent a property. We will get in touch with you promptly.</p>
+
+          <form id="propertyEnquiryForm">
+            <div class="form-2col-grid">
+              <div class="form-group-poster">
+                <label for="contactName">Full Name *</label>
+                <input type="text" id="contactName" placeholder="e.g. Ramesh Kumar" required>
+              </div>
+
+              <div class="form-group-poster">
+                <label for="contactPhone">Phone Number *</label>
+                <input type="tel" id="contactPhone" placeholder="+91 98804 XXXXX" required>
+              </div>
+
+              <div class="form-group-poster">
+                <label for="contactEmail">Email Address</label>
+                <input type="email" id="contactEmail" placeholder="yourname@gmail.com">
+              </div>
+
+              <div class="form-group-poster">
+                <label for="contactService">Looking To *</label>
+                <select id="contactService">
+                  <option value="Buy a Property">Buy a Property</option>
+                  <option value="Buy a Residential Plot">Buy a Residential Plot / Site</option>
+                  <option value="Sell My Property">Sell My Property</option>
+                  <option value="Rent a Home / Commercial">Rent a Property</option>
+                  <option value="Property Consultancy">Property Consultancy</option>
+                </select>
+              </div>
+
+              <div class="form-group-poster full">
+                <label for="contactBudget">Budget Range / Preferences</label>
+                <input type="text" id="contactBudget" placeholder="e.g. ₹45 Lakhs - ₹60 Lakhs, 30x40 site">
+              </div>
+
+              <div class="form-group-poster full">
+                <label for="contactMessage">Specific Requirements</label>
+                <textarea id="contactMessage" rows="4" placeholder="Describe the property details or site visit requirements..."></textarea>
+              </div>
+            </div>
+
+            <div style="display:flex; gap:14px; flex-wrap:wrap;">
+              <button type="button" id="sendWhatsappBtn" class="btn btn-poster-phone" style="flex:1; background:var(--poster-green); color:#FFF;">
+                <i class="fa-brands fa-whatsapp"></i> Send via WhatsApp
+              </button>
+              <button type="button" id="sendEmailBtn" class="btn btn-primary" style="flex:1;">
+                <i class="fa-solid fa-paper-plane"></i> Send via Email
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+
+      <!-- Google Map for Cheemasandra, Bangalore 560049 -->
+      <div class="map-poster-box">
+        <div class="map-poster-header">
+          <h4><i class="fa-solid fa-map-location-dot"></i> Landmark & Road: Near Govt School, Cheemasandra Main Road, Bengaluru – 560049</h4>
+          <span style="font-size:0.85rem; color:#6E5B50;">Landmark: Near Government School • PIN: 560049</span>
+          <a href="https://maps.google.com/?q=Near+Government+School,Cheemasandra+Main+Road,Bengaluru,Karnataka,560049" target="_blank" class="btn btn-outline-dark btn-sm">
+            <i class="fa-solid fa-arrow-up-right-from-square"></i> Open in Google Maps
+          </a>
+        </div>
+        <div class="map-iframe-holder">
+          <iframe 
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d15547.45283733077!2d77.7289569769531!3d13.044321300000002!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bae052825bbd9b1%3A0x6b28fa95d6ff7bb6!2sCheemasandra%2C%20Bengaluru%2C%20Karnataka%20560049!5e0!3m2!1sen!2sin!4v1715000000000!5m2!1sen!2sin" 
+            title="JMJ & JOHNS CONSULTANCY Location Map - Cheemasandra Main Road Bengaluru 560049" 
+            loading="lazy" 
+            allowfullscreen="" 
+            referrerpolicy="no-referrer-when-downgrade">
+          </iframe>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <!-- Site Footer -->
+  <footer class="site-footer-poster">
+    <div class="container">
+      <div class="footer-grid-4col">
+        <div class="footer-brand-col">
+          <h3 class="font-serif">JMJ & JOHNS</h3>
+          <span class="sub">CONSULTANCY • REAL ESTATE & PROPERTY</span>
+          <p style="font-size:0.9rem; line-height:1.7; margin-bottom:16px;">
+            Your trusted partner for buying, selling, renting, and property consultancy in Cheemasandra, Bengaluru and surrounding areas.
+          </p>
+          <div style="display:flex; gap:10px;">
+            <a href="tel:+919880430160" class="btn btn-outline-white btn-sm"><i class="fa-solid fa-phone"></i></a>
+            <a href="mailto:jmjjohnsconsultancy@gmail.com" class="btn btn-outline-white btn-sm"><i class="fa-solid fa-envelope"></i></a>
+            <a href="https://wa.me/919880430160" target="_blank" class="btn btn-poster-phone btn-sm" style="background:var(--poster-green); color:#FFF;"><i class="fa-brands fa-whatsapp"></i></a>
+          </div>
+        </div>
+
+        <div class="footer-col">
+          <h4>Pages</h4>
+          <ul class="footer-links-list">
+            <li><a href="index.html">Home Page</a></li>
+            <li><a href="about.html">About Us</a></li>
+            <li><a href="services.html">Our Services</a></li>
+            <li><a href="properties.html">Properties Catalog</a></li>
+            <li><a href="contact.html">Contact Us</a></li>
+            <li><a href="admin.html">Admin Portal</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h4>Services</h4>
+          <ul class="footer-links-list">
+            <li><a href="services.html">Buy a Property</a></li>
+            <li><a href="services.html">Residential Plots</a></li>
+            <li><a href="services.html">Sell Your Property</a></li>
+            <li><a href="services.html">Rent a Property</a></li>
+            <li><a href="services.html">Property Consultancy</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h4>Office Details</h4>
+          <ul class="footer-contact-details">
+            <li><i class="fa-solid fa-location-dot"></i> Landmark: Near Govt School, Cheemasandra Main Road, Bengaluru – 560049</li>
+            <li><i class="fa-solid fa-phone"></i> <a href="tel:+919880430160" style="color:#FFF;">+91 98804 30160</a></li>
+            <li><i class="fa-solid fa-envelope"></i> <a href="mailto:jmjjohnsconsultancy@gmail.com" style="color:#FFF;">jmjjohnsconsultancy@gmail.com</a></li>
+            <li><i class="fa-solid fa-lock"></i> <a href="admin.html" style="color:var(--poster-gold-light);">Admin Login</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="footer-bottom-bar">
+        <div>&copy; 2026 <strong>JMJ & JOHNS CONSULTANCY</strong>. All rights reserved. Landmark: Near Govt School, Cheemasandra Main Road, Bengaluru 560049.</div>
+        <div>Buy | Sell | Rent | Property Consultancy</div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Floating WhatsApp -->
+  <a href="https://wa.me/919880430160?text=Hello%20JMJ%20%26%20JOHNS%20CONSULTANCY,%20I%20have%20an%20enquiry%20regarding%20property%20in%20Cheemasandra." target="_blank" class="floating-whatsapp-btn" aria-label="Chat on WhatsApp">
+    <i class="fa-brands fa-whatsapp" style="font-size:1.4rem;"></i>
+    <span>Chat with Consultant</span>
+  </a>
+
+  <!-- Wishlist Modal -->
+  <div class="modal-overlay" id="wishlistModal">
+    <div class="modal-card modal-card-md">
+      <div class="modal-header">
+        <div style="display:flex; align-items:center; gap:8px;">
+          <i class="fa-solid fa-heart text-gold" style="font-size:1.2rem;"></i>
+          <h3 class="modal-title">Saved Properties (<span class="wishlist-count-badge">0</span>)</h3>
+        </div>
+        <button class="modal-close" onclick="closeModal(document.getElementById('wishlistModal'))">&times;</button>
+      </div>
+      <div class="modal-body" id="wishlistItemsContainer">
+        <!-- Wishlist items dynamically populated by JS -->
+      </div>
+    </div>
+  </div>
+
+  <!-- Admin Login Modal -->
+  <div class="modal-overlay" id="adminLoginModal">
+    <div class="modal-container">
+      <div class="modal-header">
+        <h3><i class="fa-solid fa-lock text-gold"></i> Admin Authentication</h3>
+        <button class="modal-close-btn"><i class="fa-solid fa-xmark"></i></button>
+      </div>
+      <div class="modal-body" style="text-align:center;">
+        <form id="adminLoginForm">
+          <input type="password" id="adminPasswordInput" placeholder="Enter Admin PIN" style="width:100%; max-width:320px; padding:12px; text-align:center; font-size:1.1rem; border-radius:8px; border:2px solid var(--poster-sand); margin-bottom:14px; outline:none;" required>
+          <div style="font-size:0.8rem; color:#6E5B50; margin-bottom:18px;"><i class="fa-solid fa-lock"></i> Authorized Personnel Access Only</div>
+          <button type="submit" class="btn btn-primary" style="width:100%; max-width:320px;">Unlock Admin</button>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <div class="toast-container" id="toastContainer"></div>
+  <script src="app.js"></script>
+</body>
+</html>

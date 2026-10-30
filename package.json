@@ -1,0 +1,19 @@
+{
+  "name": "jmj-johns-consultancy-realestate",
+  "version": "1.0.0",
+  "description": "Premium real estate and property consultancy website for JMJ & JOHNS CONSULTANCY in Cheemasandra Main Road, Bengaluru 560049.",
+  "scripts": {
+    "start": "npx -y serve . -l 3000",
+    "dev": "npx -y serve . -l 3000"
+  },
+  "keywords": [
+    "real-estate",
+    "bengaluru",
+    "cheemasandra",
+    "consultancy",
+    "plots",
+    "villas"
+  ],
+  "author": "JMJ & JOHNS CONSULTANCY",
+  "license": "ISC"
+}

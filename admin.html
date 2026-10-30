@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>Admin Portal | JMJ & JOHNS CONSULTANCY</title>
+  
+  <link rel="icon" type="image/jpeg" href="assets/images/logo.jpg">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body style="background:var(--poster-cream);">
+
+  <!-- Top Bar -->
+  <div class="topbar">
+    <div class="container">
+      <div class="topbar-info">
+        <span class="topbar-item"><i class="fa-solid fa-shield-halved text-gold"></i> Authorized Admin Access • Protected Portal</span>
+      </div>
+      <div class="topbar-actions">
+        <a href="index.html" style="color:var(--poster-white);"><i class="fa-solid fa-globe"></i> Back to Main Website</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Navbar -->
+  <header class="main-navbar">
+    <div class="container nav-container">
+      <a href="index.html" class="brand-wrapper">
+        <img src="assets/images/logo.jpg" alt="JMJ & JOHNS Logo">
+        <div class="brand-title-wrap">
+          <h1 class="brand-title">JMJ & JOHNS</h1>
+          <span class="brand-subtitle">ADMINISTRATOR PORTAL</span>
+        </div>
+      </a>
+
+      <nav>
+        <ul class="nav-menu" id="navMenu">
+          <li><a href="index.html" class="nav-link">Home</a></li>
+          <li><a href="about.html" class="nav-link">About Us</a></li>
+          <li><a href="services.html" class="nav-link">Our Services</a></li>
+          <li><a href="properties.html" class="nav-link">Properties</a></li>
+          <li><a href="contact.html" class="nav-link">Contact Us</a></li>
+          <li><a href="admin.html" class="nav-link nav-link-admin active"><i class="fa-solid fa-shield-halved"></i> Admin</a></li>
+          <li class="mobile-drawer-footer mobile-only">
+            <a href="properties.html" class="btn-drawer-cta">
+              <i class="fa-solid fa-eye"></i>
+              <span>View Property Catalog</span>
+            </a>
+            <div class="drawer-contact-chips">
+              <a href="tel:+919880430160" class="drawer-chip drawer-chip-call">
+                <i class="fa-solid fa-phone"></i> Call Consultant
+              </a>
+              <a href="https://wa.me/919880430160?text=Hello%20JMJ%20%26%20JOHNS,%20I%20am%20interested%20in%20properties%20in%20Bengaluru." target="_blank" rel="noopener" class="drawer-chip drawer-chip-whatsapp">
+                <i class="fa-brands fa-whatsapp"></i> WhatsApp
+              </a>
+            </div>
+            <div class="drawer-meta-info">
+              <i class="fa-solid fa-location-dot"></i> Near Govt School, Cheemasandra Main Road, Bengaluru
+            </div>
+          </li>
+        </ul>
+      </nav>
+
+      <div class="nav-actions">
+        <a href="properties.html" class="btn-prime-pill desktop-only">
+          <i class="fa-solid fa-eye"></i>
+          <span>View Catalog</span>
+        </a>
+        <button class="mobile-menu-btn" id="mobileMenuToggle" aria-label="Toggle navigation menu" aria-expanded="false">
+          <i class="fa-solid fa-bars"></i>
+        </button>
+      </div>
+    </div>
+  </header>
+
+
+  <!-- ==========================================================================
+       DISTINCT HEADER 6: ADMIN SECURITY DASHBOARD BANNER
+       ========================================================================== -->
+  <section class="page-header-admin">
+    <div class="container">
+      <div class="admin-header-flex">
+        <div>
+          <span style="font-size:0.8rem; font-weight:800; text-transform:uppercase; letter-spacing:0.14em; color:var(--poster-gold-light); display:inline-block; margin-bottom:6px;">
+            <i class="fa-solid fa-lock"></i> Secured Property Management
+          </span>
+          <h1 class="font-serif" style="color:#FFF; font-size:2.4rem;">JMJ & JOHNS Admin Portal</h1>
+          <p style="color:#DDD2C7; font-size:0.95rem;">
+            Add new verified listings, update pricing, and manage properties in Cheemasandra, Bengaluru.
+          </p>
+        </div>
+
+        <div style="display:flex; gap:12px;">
+          <button class="btn btn-gold btn-sm restore-defaults-btn"><i class="fa-solid fa-rotate-left"></i> Restore Defaults</button>
+          <button class="btn btn-outline-white btn-sm admin-logout-trigger"><i class="fa-solid fa-right-from-bracket"></i> Lock / Logout</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Main Body -->
+  <main style="padding:60px 0 90px;">
+    <div class="container">
+      
+      <!-- Locked Screen -->
+      <div id="adminLockedView" style="max-width:500px; margin:40px auto; background:var(--poster-white); border:1px solid var(--poster-sand); border-radius:18px; padding:44px 36px; text-align:center; box-shadow:var(--shadow-md);">
+        <div style="width:72px; height:72px; border-radius:50%; background:var(--poster-cream); border:1px solid var(--poster-sand); display:flex; align-items:center; justify-content:center; margin:0 auto 20px; font-size:2rem; color:var(--poster-espresso);">
+          <i class="fa-solid fa-lock"></i>
+        </div>
+        <h2 class="font-serif" style="font-size:1.8rem; margin-bottom:8px;">Admin Authentication</h2>
+        <p style="color:#6E5B50; font-size:0.92rem; margin-bottom:24px;">
+          Please enter the administrator password to access property management controls.
+        </p>
+
+        <form id="adminPageUnlockForm">
+          <input type="password" id="adminPagePassInput" placeholder="Enter Security Password" style="width:100%; padding:14px; text-align:center; font-size:1.2rem; letter-spacing:0.2em; border-radius:8px; border:2px solid var(--poster-sand); margin-bottom:12px; outline:none;" required>
+          <div style="font-size:0.82rem; color:#6E5B50; margin-bottom:20px;">
+            <i class="fa-solid fa-lock"></i> Authorized Administrator Access Only
+          </div>
+          <button type="submit" class="btn btn-primary" style="width:100%;">
+            <i class="fa-solid fa-unlock"></i> Unlock Admin Controls
+          </button>
+        </form>
+      </div>
+
+      <!-- Unlocked Dashboard View -->
+      <div id="adminUnlockedView" style="display:none;">
+        
+        <!-- Add New Property Box -->
+        <div style="background:var(--poster-white); border:1px solid var(--poster-sand); border-radius:18px; padding:36px; margin-bottom:50px; box-shadow:var(--shadow-sm);">
+          <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:24px; border-bottom:1px solid var(--poster-sand); padding-bottom:16px;">
+            <div>
+              <h3 class="font-serif" style="font-size:1.6rem; margin-bottom:4px;"><i class="fa-solid fa-circle-plus" style="color:var(--poster-espresso);"></i> Add New Property Listing</h3>
+              <p style="color:#6E5B50; font-size:0.88rem;">Publish a new property to the website catalog with photos, price & location.</p>
+            </div>
+            <span class="badge-tag-sale" style="background:var(--poster-green); color:#FFF; padding:6px 14px; border-radius:999px; font-weight:700; font-size:0.8rem;">
+              Admin Mode Active
+            </span>
+          </div>
+
+          <form id="addPropertyForm">
+            <input type="hidden" id="propertyEditId" value="">
+
+            <div class="form-2col-grid">
+              <div class="form-group-poster full">
+                <label for="propTitle">Property Listing Title *</label>
+                <input type="text" id="propTitle" placeholder="e.g. 30x40 Gated Layout Corner Plot near Govt School" required>
+              </div>
+
+              <div class="form-group-poster">
+                <label for="propCategory">Property Category *</label>
+                <select id="propCategory" required>
+                  <option value="plot">Residential Plot / Site</option>
+                  <option value="villa">Independent House / Villa</option>
+                  <option value="apartment">Apartment</option>
+                  <option value="commercial">Commercial Space / Shop</option>
+                </select>
+              </div>
+
+              <div class="form-group-poster">
+                <label for="propListingType">Listing Type *</label>
+                <select id="propListingType" required>
+                  <option value="sale">For Sale (Buy)</option>
+                  <option value="rent">For Rent / Lease</option>
+                </select>
+              </div>
+
+              <div class="form-group-poster">
+                <label for="propPrice">Price in INR (Numeric) *</label>
+                <input type="number" id="propPrice" placeholder="e.g. 4500000 or 25000" required>
+              </div>
+
+              <div class="form-group-poster">
+                <label for="propArea">Area / Dimensions *</label>
+                <input type="text" id="propArea" placeholder="e.g. 1200 sq.ft (30x40)" required>
+              </div>
+
+              <div class="form-group-poster">
+                <label for="propBeds">Bedrooms (BHK)</label>
+                <input type="number" id="propBeds" value="0" min="0">
+              </div>
+
+              <div class="form-group-poster">
+                <label for="propBaths">Bathrooms</label>
+                <input type="number" id="propBaths" value="0" min="0">
+              </div>
+
+              <div class="form-group-poster full">
+                <label for="propLocation">Location / Address *</label>
+                <input type="text" id="propLocation" value="Near Govt School, Cheemasandra Main Road, Bengaluru 560049" required>
+              </div>
+
+              <!-- Preset Photo Picker -->
+              <div class="form-group-poster full">
+                <label>Select High-Resolution Photo</label>
+                <div style="display:grid; grid-template-columns:repeat(5, 1fr); gap:10px; margin-top:8px;">
+                  <div class="preset-img-option selected" data-img="assets/images/residential_plot.jpg" style="height:70px; border-radius:8px; overflow:hidden; cursor:pointer; border:2px solid var(--poster-espresso);" title="Residential Plot">
+                    <img src="assets/images/residential_plot.jpg" alt="Plot" style="width:100%; height:100%; object-fit:cover;">
+                  </div>
+                  <div class="preset-img-option" data-img="assets/images/hero_villa.jpg" style="height:70px; border-radius:8px; overflow:hidden; cursor:pointer; border:2px solid transparent;" title="Luxury Villa">
+                    <img src="assets/images/hero_villa.jpg" alt="Villa" style="width:100%; height:100%; object-fit:cover;">
+                  </div>
+                  <div class="preset-img-option" data-img="assets/images/luxury_apartment.jpg" style="height:70px; border-radius:8px; overflow:hidden; cursor:pointer; border:2px solid transparent;" title="Luxury Apartment">
+                    <img src="assets/images/luxury_apartment.jpg" alt="Apartment" style="width:100%; height:100%; object-fit:cover;">
+                  </div>
+                  <div class="preset-img-option" data-img="assets/images/venus/sobha_neopolis.webp" style="height:70px; border-radius:8px; overflow:hidden; cursor:pointer; border:2px solid transparent;" title="Sobha Neopolis">
+                    <img src="assets/images/venus/sobha_neopolis.webp" alt="Sobha" style="width:100%; height:100%; object-fit:cover;">
+                  </div>
+                  <div class="preset-img-option" data-img="assets/images/venus/prestige_camden_gardens.webp" style="height:70px; border-radius:8px; overflow:hidden; cursor:pointer; border:2px solid transparent;" title="Prestige Camden Gardens">
+                    <img src="assets/images/venus/prestige_camden_gardens.webp" alt="Prestige" style="width:100%; height:100%; object-fit:cover;">
+                  </div>
+                  <div class="preset-img-option" data-img="assets/images/venus/brigade_insignia.webp" style="height:70px; border-radius:8px; overflow:hidden; cursor:pointer; border:2px solid transparent;" title="Brigade Insignia">
+                    <img src="assets/images/venus/brigade_insignia.webp" alt="Brigade" style="width:100%; height:100%; object-fit:cover;">
+                  </div>
+                  <div class="preset-img-option" data-img="assets/images/venus/godrej_woodscapes.webp" style="height:70px; border-radius:8px; overflow:hidden; cursor:pointer; border:2px solid transparent;" title="Godrej Woodscapes">
+                    <img src="assets/images/venus/godrej_woodscapes.webp" alt="Godrej" style="width:100%; height:100%; object-fit:cover;">
+                  </div>
+                  <div class="preset-img-option" data-img="assets/images/venus/phoenix_kessaku.webp" style="height:70px; border-radius:8px; overflow:hidden; cursor:pointer; border:2px solid transparent;" title="Phoenix Kessaku">
+                    <img src="assets/images/venus/phoenix_kessaku.webp" alt="Phoenix" style="width:100%; height:100%; object-fit:cover;">
+                  </div>
+                  <div class="preset-img-option" data-img="assets/images/commercial_building.jpg" style="height:70px; border-radius:8px; overflow:hidden; cursor:pointer; border:2px solid transparent;" title="Commercial">
+                    <img src="assets/images/commercial_building.jpg" alt="Commercial" style="width:100%; height:100%; object-fit:cover;">
+                  </div>
+                  <div class="preset-img-option" data-img="assets/images/independent_house.jpg" style="height:70px; border-radius:8px; overflow:hidden; cursor:pointer; border:2px solid transparent;" title="Independent House">
+                    <img src="assets/images/independent_house.jpg" alt="House" style="width:100%; height:100%; object-fit:cover;">
+                  </div>
+                </div>
+
+                <div style="display:flex; gap:10px; margin-top:10px;">
+                  <input type="text" id="propImageUrl" value="assets/images/residential_plot.jpg" style="flex:1;" placeholder="Or image URL">
+                  <label class="btn btn-outline-dark btn-sm" style="margin:0; cursor:pointer; white-space:nowrap;">
+                    <i class="fa-solid fa-upload"></i> Upload Photo <input type="file" id="propImageFile" accept="image/*" style="display:none;">
+                  </label>
+                </div>
+              </div>
+
+              <!-- Special Badges -->
+              <div class="form-group-poster full">
+                <label>Badges</label>
+                <div style="display:flex; gap:24px; margin-top:4px;">
+                  <label style="display:flex; align-items:center; gap:8px; cursor:pointer;"><input type="checkbox" id="propBadgeHot"> 🔥 Hot Deal</label>
+                  <label style="display:flex; align-items:center; gap:8px; cursor:pointer;"><input type="checkbox" id="propBadgeVerified" checked> ✓ Verified Title</label>
+                </div>
+              </div>
+
+              <!-- Amenities -->
+              <div class="form-group-poster full">
+                <label>Key Features & Amenities</label>
+                <div style="display:grid; grid-template-columns:repeat(3, 1fr); gap:10px; font-size:0.86rem; margin-top:6px;">
+                  <label><input type="checkbox" name="propAmenities" value="Khata A" checked> Khata A</label>
+                  <label><input type="checkbox" name="propAmenities" value="DC Converted" checked> DC Converted</label>
+                  <label><input type="checkbox" name="propAmenities" value="Borewell Water" checked> Borewell Water</label>
+                  <label><input type="checkbox" name="propAmenities" value="30ft Wide Road" checked> 30ft Wide Road</label>
+                  <label><input type="checkbox" name="propAmenities" value="Gated Layout"> Gated Layout</label>
+                  <label><input type="checkbox" name="propAmenities" value="Near Govt School" checked> Near Govt School</label>
+                </div>
+              </div>
+
+              <div class="form-group-poster full">
+                <label for="propDescription">Description *</label>
+                <textarea id="propDescription" rows="3" placeholder="Accurate description..." required></textarea>
+              </div>
+            </div>
+
+            <div style="display:flex; justify-content:flex-end; gap:14px; margin-top:20px;">
+              <button type="submit" class="btn btn-primary"><i class="fa-solid fa-cloud-arrow-up"></i> Publish Listing to Website</button>
+            </div>
+          </form>
+        </div>
+
+        <!-- Manage Existing Properties Inventory Table -->
+        <div style="background:var(--poster-white); border:1px solid var(--poster-sand); border-radius:18px; padding:36px; box-shadow:var(--shadow-sm);">
+          <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:20px;">
+            <h3 class="font-serif" style="font-size:1.6rem;"><i class="fa-solid fa-list-check"></i> Current Properties Inventory</h3>
+            <span style="font-size:0.9rem; font-weight:700; color:#6E5B50;">Total: <strong class="admin-prop-count">28</strong> Listings</span>
+          </div>
+
+          <div style="overflow-x:auto;">
+            <table style="width:100%; border-collapse:collapse; text-align:left;">
+              <thead>
+                <tr style="background:var(--poster-cream); border-bottom:2px solid var(--poster-sand); font-size:0.82rem; text-transform:uppercase; letter-spacing:0.06em; color:var(--poster-espresso);">
+                  <th style="padding:14px 16px;">ID</th>
+                  <th style="padding:14px 16px;">Property & Location</th>
+                  <th style="padding:14px 16px;">Category</th>
+                  <th style="padding:14px 16px;">Price</th>
+                  <th style="padding:14px 16px;">Type</th>
+                  <th style="padding:14px 16px;">Actions</th>
+                </tr>
+              </thead>
+              <tbody id="adminPropertiesTableBody">
+                <!-- Rendered dynamically via app.js -->
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <!-- Site Footer -->
+  <footer class="site-footer-poster">
+    <div class="container">
+      <div class="footer-bottom-bar" style="border-top:none; padding-top:0;">
+        <div>&copy; 2026 <strong>JMJ & JOHNS CONSULTANCY</strong>. Admin Access Portal. Landmark: Near Govt School, Cheemasandra Main Road, Bengaluru 560049.</div>
+        <div>Protected Administrator Portal</div>
+      </div>
+    </div>
+  </footer>
+
+  <div class="toast-container" id="toastContainer"></div>
+  <script src="app.js"></script>
+</body>
+</html>

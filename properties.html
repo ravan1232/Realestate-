@@ -1,0 +1,417 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>Properties | JMJ & JOHNS CONSULTANCY – Cheemasandra, Bengaluru</title>
+  <meta name="description" content="Explore verified properties in Cheemasandra, Bengaluru. Landmark: Near Govt School, Cheemasandra Main Road – 560049. Residential plots, villas, apartments, and rentals with JMJ & JOHNS CONSULTANCY.">
+  
+  <link rel="icon" type="image/jpeg" href="assets/images/logo.jpg">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <!-- Top Bar -->
+  <div class="topbar">
+    <div class="container">
+      <div class="topbar-info">
+        <span class="topbar-item"><i class="fa-solid fa-location-dot"></i> Landmark: Near Govt School, Cheemasandra Main Road, Bengaluru – 560049</span>
+        <span class="topbar-item"><i class="fa-solid fa-phone"></i> <a href="tel:+919880430160">+91 98804 30160</a></span>
+        <span class="topbar-item"><i class="fa-solid fa-envelope"></i> <a href="mailto:jmjjohnsconsultancy@gmail.com">jmjjohnsconsultancy@gmail.com</a></span>
+      </div>
+      <div class="topbar-actions">
+        <span class="topbar-item"><i class="fa-regular fa-clock"></i> Mon – Sun: 9:00 AM – 8:00 PM</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Main Navbar -->
+  <header class="main-navbar">
+    <div class="container nav-container">
+      <a href="index.html" class="brand-wrapper">
+        <img src="assets/images/logo.jpg" alt="JMJ & JOHNS Logo">
+        <div class="brand-title-wrap">
+          <h1 class="brand-title">JMJ & JOHNS</h1>
+          <span class="brand-subtitle">EX-SERVICEMEN REAL ESTATE CONSULTANCY</span>
+        </div>
+      </a>
+
+      <nav>
+        <ul class="nav-menu" id="navMenu">
+          <li><a href="index.html" class="nav-link">Home</a></li>
+          <li><a href="about.html" class="nav-link">About Us</a></li>
+          <li><a href="services.html" class="nav-link">Our Services</a></li>
+          <li><a href="properties.html" class="nav-link active">Properties</a></li>
+          <li><a href="contact.html" class="nav-link">Contact Us</a></li>
+          <li><a href="admin.html" class="nav-link nav-link-admin admin-login-trigger" id="adminLoginNavBtn"><i class="fa-solid fa-shield-halved"></i> Admin</a></li>
+          <li class="mobile-drawer-footer mobile-only">
+            <a href="contact.html" class="btn-drawer-cta">
+              <span>Get In Touch</span>
+              <i class="fa-solid fa-arrow-right"></i>
+            </a>
+            <div class="drawer-contact-chips">
+              <a href="tel:+919880430160" class="drawer-chip drawer-chip-call">
+                <i class="fa-solid fa-phone"></i> Call Consultant
+              </a>
+              <a href="https://wa.me/919880430160?text=Hello%20JMJ%20%26%20JOHNS,%20I%20am%20interested%20in%20properties%20in%20Bengaluru." target="_blank" rel="noopener" class="drawer-chip drawer-chip-whatsapp">
+                <i class="fa-brands fa-whatsapp"></i> WhatsApp
+              </a>
+            </div>
+            <div class="drawer-meta-info">
+              <i class="fa-solid fa-location-dot"></i> Near Govt School, Cheemasandra Main Road, Bengaluru
+            </div>
+          </li>
+        </ul>
+      </nav>
+
+      <div class="nav-actions">
+        <button class="nav-icon-btn" onclick="openWishlistModal()" title="Saved Properties" aria-label="Favorites">
+          <i class="fa-regular fa-heart"></i>
+          <span class="wishlist-count-badge">0</span>
+        </button>
+        <button class="nav-icon-btn admin-login-trigger desktop-only" title="Admin Portal" aria-label="Admin Portal">
+          <i class="fa-regular fa-user"></i>
+        </button>
+        <a href="contact.html" class="btn-prime-pill desktop-only">
+          <span>Get In Touch</span>
+          <i class="fa-solid fa-arrow-right"></i>
+        </a>
+        <button class="mobile-menu-btn" id="mobileMenuToggle" aria-label="Toggle navigation menu" aria-expanded="false">
+          <i class="fa-solid fa-bars"></i>
+        </button>
+      </div>
+    </div>
+  </header>
+
+
+  <!-- Sticky Admin Banner (Shown when authenticated) -->
+  <div class="admin-banner" id="adminBanner" style="display:none; background:#1C100B; color:#FFF; padding:10px 0; border-bottom:2px solid var(--poster-gold);">
+    <div class="container" style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:12px;">
+      <div>
+        <i class="fa-solid fa-shield-halved text-gold"></i>
+        <span>Admin Mode Active • Managing <strong class="admin-prop-count">29</strong> Properties</span>
+      </div>
+      <div style="display:flex; gap:10px;">
+        <button class="btn btn-primary btn-sm" id="openAddPropertyBtn"><i class="fa-solid fa-plus"></i> Add New Property</button>
+        <button class="btn btn-gold btn-sm restore-defaults-btn"><i class="fa-solid fa-rotate-left"></i> Restore Defaults</button>
+        <button class="btn btn-outline-white btn-sm admin-logout-trigger"><i class="fa-solid fa-right-from-bracket"></i> Logout</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ==========================================================================
+       DISTINCT HEADER 4: REAL ESTATE CATALOG PORTAL BANNER
+       ========================================================================== -->
+  <section class="page-header-properties">
+    <div class="dot-matrix-light dot-top-right"></div>
+    <div class="dot-matrix-light dot-bottom-left"></div>
+
+    <div class="container">
+      <div class="properties-header-inner">
+        <div>
+          <div style="display:flex; gap:10px; flex-wrap:wrap; align-items:center; margin-bottom:8px;">
+            <span style="font-size:0.82rem; font-weight:800; text-transform:uppercase; letter-spacing:0.12em; color:var(--poster-gold-light); display:inline-block;">
+              <i class="fa-solid fa-medal"></i> Ex-Servicemen Verified Listings
+            </span>
+            <span class="badge-pill" style="background:var(--poster-gold); color:#1C100B; font-weight:800; font-size:0.75rem; padding:3px 10px;">
+              <i class="fa-solid fa-fire"></i> Pre-Launch: Brigade Granada Whitefield Added
+            </span>
+          </div>
+          <h1 class="font-serif">Properties For Sale & Rent</h1>
+          <p>
+            Browse verified residential plots, independent villas, and premier builder townships by Brigade, Sobha, Prestige, TATA, Godrej, Lodha, Birla, Phoenix, and more across Bengaluru.
+          </p>
+        </div>
+
+        <div style="display:flex; gap:12px; align-items:center; flex-wrap:wrap;">
+          <a href="index.html#brigade-granada" class="btn btn-gold">
+            <i class="fa-solid fa-city"></i> Brigade Granada Pre-Launch
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Properties Main Catalog Body -->
+  <main class="properties-section-body">
+    <div class="container">
+      
+      <!-- Quick Search Bar -->
+      <div style="background:var(--poster-white); border:1px solid var(--poster-sand); border-radius:var(--radius-lg); padding:14px 20px; margin-bottom:20px; box-shadow:var(--shadow-sm); display:flex; align-items:center; gap:14px;">
+        <i class="fa-solid fa-magnifying-glass" style="color:var(--poster-espresso); font-size:1.15rem;"></i>
+        <input type="text" id="catalogSearchInput" placeholder="Quick search by project (e.g. Sobha Neopolis, Prestige Somerville), builder (Godrej, Brigade, Lodha), or location (Whitefield, Hebbal, Cheemasandra)..." style="width:100%; border:none; outline:none; font-size:0.95rem; background:transparent; color:var(--poster-espresso); font-weight:500;">
+        <button id="clearCatalogSearchBtn" style="display:none; background:none; border:none; color:#887366; cursor:pointer; font-size:1rem; padding:4px 8px;" title="Clear search"><i class="fa-solid fa-xmark"></i></button>
+      </div>
+
+      <!-- Filter Toolbar -->
+      <div class="properties-filter-bar">
+        <div class="filter-pills-group">
+          <button class="filter-btn active" data-filter="all">All Listings (28)</button>
+          <button class="filter-btn" data-filter="builder"><i class="fa-solid fa-building"></i> Top Builders</button>
+          <button class="filter-btn" data-filter="sale">For Sale (Buy)</button>
+          <button class="filter-btn" data-filter="rent">For Rent (Lease)</button>
+          <button class="filter-btn" data-filter="apartment">Apartments</button>
+          <button class="filter-btn" data-filter="villa">Houses & Villas</button>
+          <button class="filter-btn" data-filter="plot">Plots / Sites</button>
+          <button class="filter-btn" data-filter="commercial">Commercial</button>
+        </div>
+
+        <div style="display:flex; align-items:center; gap:10px;">
+          <label for="propertySortSelect" style="font-size:0.85rem; font-weight:700;"><i class="fa-solid fa-arrow-down-short-wide"></i> Sort By:</label>
+          <select id="propertySortSelect" style="padding:9px 14px; border-radius:8px; border:1px solid var(--poster-sand); font-size:0.86rem; outline:none;">
+            <option value="featured">Featured First</option>
+            <option value="price-low">Price: Low to High</option>
+            <option value="price-high">Price: High to Low</option>
+            <option value="newest">Recently Added</option>
+          </select>
+        </div>
+      </div>
+
+      <!-- Dynamic Properties Grid -->
+      <div class="properties-grid-3col" id="propertiesGrid">
+        <!-- Injected dynamically via app.js -->
+      </div>
+    </div>
+  </main>
+
+  <!-- Site Footer -->
+  <footer class="site-footer-poster">
+    <div class="container">
+      <div class="footer-grid-4col">
+        <div class="footer-brand-col">
+          <h3 class="font-serif">JMJ & JOHNS</h3>
+          <span class="sub">CONSULTANCY • REAL ESTATE & PROPERTY</span>
+          <p style="font-size:0.9rem; line-height:1.7; margin-bottom:16px;">
+            Your trusted partner for buying, selling, renting, and property consultancy in Cheemasandra, Bengaluru and surrounding areas.
+          </p>
+          <div style="display:flex; gap:10px;">
+            <a href="tel:+919880430160" class="btn btn-outline-white btn-sm"><i class="fa-solid fa-phone"></i></a>
+            <a href="mailto:jmjjohnsconsultancy@gmail.com" class="btn btn-outline-white btn-sm"><i class="fa-solid fa-envelope"></i></a>
+            <a href="https://wa.me/919880430160" target="_blank" class="btn btn-poster-phone btn-sm" style="background:var(--poster-green); color:#FFF;"><i class="fa-brands fa-whatsapp"></i></a>
+          </div>
+        </div>
+
+        <div class="footer-col">
+          <h4>Pages</h4>
+          <ul class="footer-links-list">
+            <li><a href="index.html">Home Page</a></li>
+            <li><a href="about.html">About Us</a></li>
+            <li><a href="services.html">Our Services</a></li>
+            <li><a href="properties.html">Properties Catalog</a></li>
+            <li><a href="contact.html">Contact Us</a></li>
+            <li><a href="admin.html">Admin Portal</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h4>Services</h4>
+          <ul class="footer-links-list">
+            <li><a href="services.html">Buy a Property</a></li>
+            <li><a href="services.html">Residential Plots</a></li>
+            <li><a href="services.html">Sell Your Property</a></li>
+            <li><a href="services.html">Rent a Property</a></li>
+            <li><a href="services.html">Property Consultancy</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h4>Office Details</h4>
+          <ul class="footer-contact-details">
+            <li><i class="fa-solid fa-location-dot"></i> Landmark: Near Govt School, Cheemasandra Main Road, Bengaluru – 560049</li>
+            <li><i class="fa-solid fa-phone"></i> <a href="tel:+919880430160" style="color:#FFF;">+91 98804 30160</a></li>
+            <li><i class="fa-solid fa-envelope"></i> <a href="mailto:jmjjohnsconsultancy@gmail.com" style="color:#FFF;">jmjjohnsconsultancy@gmail.com</a></li>
+            <li><i class="fa-solid fa-lock"></i> <a href="admin.html" style="color:var(--poster-gold-light);">Admin Login</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="footer-bottom-bar">
+        <div>&copy; 2026 <strong>JMJ & JOHNS CONSULTANCY</strong>. All rights reserved. Landmark: Near Govt School, Cheemasandra Main Road, Bengaluru 560049.</div>
+        <div>Buy | Sell | Rent | Property Consultancy</div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Floating WhatsApp -->
+  <a href="https://wa.me/919880430160?text=Hello%20JMJ%20%26%20JOHNS%20CONSULTANCY,%20I%20have%20an%20enquiry%20regarding%20property%20in%20Cheemasandra." target="_blank" class="floating-whatsapp-btn" aria-label="Chat on WhatsApp">
+    <i class="fa-brands fa-whatsapp" style="font-size:1.4rem;"></i>
+    <span>Chat with Consultant</span>
+  </a>
+
+  <!-- Admin Login Modal -->
+  <div class="modal-overlay" id="adminLoginModal">
+    <div class="modal-container">
+      <div class="modal-header">
+        <h3><i class="fa-solid fa-lock text-gold"></i> Admin Authentication</h3>
+        <button class="modal-close-btn"><i class="fa-solid fa-xmark"></i></button>
+      </div>
+      <div class="modal-body" style="text-align:center;">
+        <form id="adminLoginForm">
+          <input type="password" id="adminPasswordInput" placeholder="Enter Admin PIN" style="width:100%; max-width:320px; padding:12px; text-align:center; font-size:1.1rem; border-radius:8px; border:2px solid var(--poster-sand); margin-bottom:14px; outline:none;" required>
+          <div style="font-size:0.8rem; color:#6E5B50; margin-bottom:18px;"><i class="fa-solid fa-lock"></i> Authorized Personnel Access Only</div>
+          <button type="submit" class="btn btn-primary" style="width:100%; max-width:320px;">Unlock Admin</button>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <!-- Add Property Modal (Admin Only) -->
+  <div class="modal-overlay" id="addPropertyModal">
+    <div class="modal-container modal-lg">
+      <div class="modal-header">
+        <h3 id="addPropertyModalTitle"><i class="fa-solid fa-circle-plus"></i> Add New Property (Admin)</h3>
+        <button class="modal-close-btn"><i class="fa-solid fa-xmark"></i></button>
+      </div>
+      <div class="modal-body">
+        <form id="addPropertyForm">
+          <input type="hidden" id="propertyEditId" value="">
+
+          <div class="form-2col-grid">
+            <div class="form-group-poster full">
+              <label for="propTitle">Property Listing Title *</label>
+              <input type="text" id="propTitle" placeholder="e.g. 30x40 Gated Layout Corner Plot near Govt School" required>
+            </div>
+
+            <div class="form-group-poster">
+              <label for="propCategory">Property Category *</label>
+              <select id="propCategory" required>
+                <option value="plot">Residential Plot / Site</option>
+                <option value="villa">Independent House / Villa</option>
+                <option value="apartment">Apartment</option>
+                <option value="commercial">Commercial Property</option>
+              </select>
+            </div>
+
+            <div class="form-group-poster">
+              <label for="propListingType">Listing Type *</label>
+              <select id="propListingType" required>
+                <option value="sale">For Sale (Buy)</option>
+                <option value="rent">For Rent / Lease</option>
+              </select>
+            </div>
+
+            <div class="form-group-poster">
+              <label for="propPrice">Price in INR (Numeric) *</label>
+              <input type="number" id="propPrice" placeholder="e.g. 4500000 or 25000 for rent" required>
+            </div>
+
+            <div class="form-group-poster">
+              <label for="propArea">Area / Dimensions *</label>
+              <input type="text" id="propArea" placeholder="e.g. 1200 sq.ft (30x40)" required>
+            </div>
+
+            <div class="form-group-poster">
+              <label for="propBeds">Bedrooms (BHK)</label>
+              <input type="number" id="propBeds" value="0" min="0">
+            </div>
+
+            <div class="form-group-poster">
+              <label for="propBaths">Bathrooms</label>
+              <input type="number" id="propBaths" value="0" min="0">
+            </div>
+
+            <div class="form-group-poster full">
+              <label for="propLocation">Location / Address *</label>
+              <input type="text" id="propLocation" value="Near Govt School, Cheemasandra Main Road, Bengaluru 560049" required>
+            </div>
+
+            <!-- Image Selection -->
+            <div class="form-group-poster full">
+              <label>Property Photo (Choose Preset, URL or Upload)</label>
+              <div style="display:grid; grid-template-columns:repeat(5, 1fr); gap:10px; margin-top:6px;">
+                <div class="preset-img-option selected" data-img="assets/images/residential_plot.jpg" style="height:60px; border-radius:6px; overflow:hidden; cursor:pointer; border:2px solid var(--poster-espresso);">
+                  <img src="assets/images/residential_plot.jpg" alt="Plot" style="width:100%; height:100%; object-fit:cover;">
+                </div>
+                <div class="preset-img-option" data-img="assets/images/hero_villa.jpg" style="height:60px; border-radius:6px; overflow:hidden; cursor:pointer; border:2px solid transparent;">
+                  <img src="assets/images/hero_villa.jpg" alt="Villa" style="width:100%; height:100%; object-fit:cover;">
+                </div>
+                <div class="preset-img-option" data-img="assets/images/luxury_apartment.jpg" style="height:60px; border-radius:6px; overflow:hidden; cursor:pointer; border:2px solid transparent;">
+                  <img src="assets/images/luxury_apartment.jpg" alt="Apartment" style="width:100%; height:100%; object-fit:cover;">
+                </div>
+                <div class="preset-img-option" data-img="assets/images/commercial_building.jpg" style="height:60px; border-radius:6px; overflow:hidden; cursor:pointer; border:2px solid transparent;">
+                  <img src="assets/images/commercial_building.jpg" alt="Commercial" style="width:100%; height:100%; object-fit:cover;">
+                </div>
+                <div class="preset-img-option" data-img="assets/images/independent_house.jpg" style="height:60px; border-radius:6px; overflow:hidden; cursor:pointer; border:2px solid transparent;">
+                  <img src="assets/images/independent_house.jpg" alt="House" style="width:100%; height:100%; object-fit:cover;">
+                </div>
+              </div>
+
+              <div style="display:flex; gap:10px; margin-top:10px;">
+                <input type="text" id="propImageUrl" value="assets/images/residential_plot.jpg" style="flex:1;" placeholder="Image URL">
+                <label class="btn btn-outline-dark btn-sm" style="margin:0; cursor:pointer; white-space:nowrap;">
+                  <i class="fa-solid fa-upload"></i> Upload <input type="file" id="propImageFile" accept="image/*" style="display:none;">
+                </label>
+              </div>
+            </div>
+
+            <!-- Badges -->
+            <div class="form-group-poster full">
+              <label>Special Badges</label>
+              <div style="display:flex; gap:20px;">
+                <label style="display:flex; align-items:center; gap:8px; cursor:pointer;"><input type="checkbox" id="propBadgeHot"> 🔥 Hot Deal</label>
+                <label style="display:flex; align-items:center; gap:8px; cursor:pointer;"><input type="checkbox" id="propBadgeVerified" checked> ✓ Verified Title</label>
+              </div>
+            </div>
+
+            <!-- Amenities -->
+            <div class="form-group-poster full">
+              <label>Amenities</label>
+              <div style="display:grid; grid-template-columns:repeat(3, 1fr); gap:10px; font-size:0.85rem;">
+                <label><input type="checkbox" name="propAmenities" value="Khata A" checked> Khata A</label>
+                <label><input type="checkbox" name="propAmenities" value="DC Converted" checked> DC Converted</label>
+                <label><input type="checkbox" name="propAmenities" value="Borewell Water" checked> Borewell Water</label>
+                <label><input type="checkbox" name="propAmenities" value="30ft Wide Road" checked> 30ft Wide Road</label>
+                <label><input type="checkbox" name="propAmenities" value="Gated Layout"> Gated Layout</label>
+                <label><input type="checkbox" name="propAmenities" value="Near Govt School" checked> Near Govt School</label>
+              </div>
+            </div>
+
+            <div class="form-group-poster full">
+              <label for="propDescription">Description *</label>
+              <textarea id="propDescription" rows="3" placeholder="Accurate description..." required></textarea>
+            </div>
+          </div>
+
+          <div style="display:flex; justify-content:flex-end; gap:12px; margin-top:16px;">
+            <button type="button" class="btn btn-outline-dark modal-close-btn">Cancel</button>
+            <button type="submit" class="btn btn-primary"><i class="fa-solid fa-cloud-arrow-up"></i> Publish Property</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <!-- Wishlist Modal -->
+  <div class="modal-overlay" id="wishlistModal">
+    <div class="modal-card modal-card-md">
+      <div class="modal-header">
+        <div style="display:flex; align-items:center; gap:8px;">
+          <i class="fa-solid fa-heart text-gold" style="font-size:1.2rem;"></i>
+          <h3 class="modal-title">Saved Properties (<span class="wishlist-count-badge">0</span>)</h3>
+        </div>
+        <button class="modal-close" onclick="closeModal(document.getElementById('wishlistModal'))">&times;</button>
+      </div>
+      <div class="modal-body" id="wishlistItemsContainer">
+        <!-- Wishlist items dynamically populated by JS -->
+      </div>
+    </div>
+  </div>
+
+  <!-- Property Details Modal -->
+  <div class="modal-overlay" id="propertyDetailsModal">
+    <div class="modal-container modal-lg">
+      <div class="modal-header">
+        <h3><i class="fa-solid fa-house"></i> Property Specifications</h3>
+        <button class="modal-close-btn"><i class="fa-solid fa-xmark"></i></button>
+      </div>
+      <div class="modal-body" id="propertyDetailsContent">
+        <!-- Rendered dynamically -->
+      </div>
+    </div>
+  </div>
+
+  <div class="toast-container" id="toastContainer"></div>
+  <script src="app.js"></script>
+</body>
+</html>

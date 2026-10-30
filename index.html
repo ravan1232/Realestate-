@@ -1,0 +1,1185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>JMJ & JOHNS CONSULTANCY | Real Estate in Cheemasandra, Bengaluru</title>
+  <meta name="description" content="Buy, sell and rent properties in Cheemasandra, Bengaluru. Contact JMJ & JOHNS CONSULTANCY for personalized real estate and property consultancy services. Landmark: Near Govt School, Cheemasandra Main Road, Bengaluru – 560049.">
+  <meta name="keywords" content="Real estate in Cheemasandra, properties for sale in Cheemasandra, property consultants in Bengaluru, houses for rent in Bengaluru, residential plots in Bengaluru, JMJ & JOHNS CONSULTANCY">
+
+  <!-- Favicon & Icons -->
+  <link rel="icon" type="image/jpeg" href="assets/images/logo.jpg">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <!-- Top Contact Notification Bar -->
+  <div class="topbar">
+    <div class="container">
+      <div class="topbar-info">
+        <span class="topbar-item">
+          <i class="fa-solid fa-location-dot"></i> Landmark: Near Govt School, Cheemasandra Main Road, Bengaluru – 560049
+        </span>
+        <span class="topbar-item">
+          <i class="fa-solid fa-phone"></i> <a href="tel:+919880430160">+91 98804 30160</a>
+        </span>
+        <span class="topbar-item">
+          <i class="fa-solid fa-envelope"></i> <a href="mailto:jmjjohnsconsultancy@gmail.com">jmjjohnsconsultancy@gmail.com</a>
+        </span>
+      </div>
+      <div class="topbar-actions">
+        <span class="topbar-item">
+          <i class="fa-regular fa-clock"></i> Mon – Sun: 9:00 AM – 8:00 PM
+        </span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Main Navigation Header -->
+  <header class="main-navbar">
+    <div class="container nav-container">
+      <a href="index.html" class="brand-wrapper">
+        <img src="assets/images/logo.jpg" alt="JMJ & JOHNS Logo">
+        <div class="brand-title-wrap">
+          <h1 class="brand-title">JMJ & JOHNS</h1>
+          <span class="brand-subtitle">EX-SERVICEMEN REAL ESTATE CONSULTANCY</span>
+        </div>
+      </a>
+
+      <nav>
+        <ul class="nav-menu" id="navMenu">
+          <li><a href="index.html" class="nav-link active">Home</a></li>
+          <li><a href="about.html" class="nav-link">About Us</a></li>
+          <li><a href="services.html" class="nav-link">Our Services</a></li>
+          <li><a href="properties.html" class="nav-link">Properties</a></li>
+          <li><a href="contact.html" class="nav-link">Contact Us</a></li>
+          <li><a href="admin.html" class="nav-link nav-link-admin admin-login-trigger" id="adminLoginNavBtn"><i class="fa-solid fa-shield-halved"></i> Admin</a></li>
+          <li class="mobile-drawer-footer mobile-only">
+            <a href="contact.html" class="btn-drawer-cta">
+              <span>Get In Touch</span>
+              <i class="fa-solid fa-arrow-right"></i>
+            </a>
+            <div class="drawer-contact-chips">
+              <a href="tel:+919880430160" class="drawer-chip drawer-chip-call">
+                <i class="fa-solid fa-phone"></i> Call Consultant
+              </a>
+              <a href="https://wa.me/919880430160?text=Hello%20JMJ%20%26%20JOHNS,%20I%20am%20interested%20in%20properties%20in%20Bengaluru." target="_blank" rel="noopener" class="drawer-chip drawer-chip-whatsapp">
+                <i class="fa-brands fa-whatsapp"></i> WhatsApp
+              </a>
+            </div>
+            <div class="drawer-meta-info">
+              <i class="fa-solid fa-location-dot"></i> Near Govt School, Cheemasandra Main Road, Bengaluru
+            </div>
+          </li>
+        </ul>
+      </nav>
+
+      <div class="nav-actions">
+        <button class="nav-icon-btn" onclick="openWishlistModal()" title="Saved Properties" aria-label="Favorites">
+          <i class="fa-regular fa-heart"></i>
+          <span class="wishlist-count-badge">0</span>
+        </button>
+        <button class="nav-icon-btn admin-login-trigger desktop-only" title="Admin Portal" aria-label="Admin Portal">
+          <i class="fa-regular fa-user"></i>
+        </button>
+        <a href="contact.html" class="btn-prime-pill desktop-only">
+          <span>Get In Touch</span>
+          <i class="fa-solid fa-arrow-right"></i>
+        </a>
+        <button class="mobile-menu-btn" id="mobileMenuToggle" aria-label="Toggle navigation menu" aria-expanded="false">
+          <i class="fa-solid fa-bars"></i>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Admin Active Banner (Visible when logged in) -->
+  <div class="admin-banner" id="adminBanner" style="display:none; background:#1C100B; color:#FFF; padding:10px 0; border-bottom:2px solid var(--poster-gold);">
+    <div class="container" style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:12px;">
+      <div>
+        <i class="fa-solid fa-shield-halved text-gold"></i>
+        <span>Admin Mode Active (JMJ & JOHNS) • Properties: <strong class="admin-prop-count">29</strong></span>
+      </div>
+      <div style="display:flex; gap:10px;">
+        <button class="btn btn-primary btn-sm" id="openAddPropertyBtn"><i class="fa-solid fa-plus"></i> Add Property</button>
+        <a href="admin.html" class="btn btn-gold btn-sm"><i class="fa-solid fa-gear"></i> Manage Dashboard</a>
+        <button class="btn btn-outline-white btn-sm admin-logout-trigger"><i class="fa-solid fa-right-from-bracket"></i> Logout</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ==========================================================================
+       HERO SECTION (MATCHING PRIMENEST UI/UX WITH HANDSHAKE PHOTOGRAPHY)
+       ========================================================================== -->
+  <section class="hero-primeluxe-section" id="home">
+    <div class="container">
+      <div class="hero-grid-2col">
+        <!-- Left Column: Copy & CTAs -->
+        <div class="hero-content-left">
+          <span class="hero-eyebrow-pill">YOUR DREAM HOME AWAITS</span>
+          <h1 class="hero-title-primeluxe">
+            Find the Perfect <br>
+            Property for a Better <br>
+            Tomorrow
+          </h1>
+          <p class="hero-desc-primeluxe">
+            Discover premium homes, modern apartments and prime investment opportunities — all in one place. Led by retired military personnel offering verified clear-title properties in Bengaluru.
+          </p>
+
+          <div class="hero-buttons-row">
+            <a href="#properties" class="btn-explore-prime">
+              <span>Explore Properties</span>
+              <i class="fa-solid fa-arrow-right"></i>
+            </a>
+            <button type="button" class="btn-watch-video" onclick="openVideoModal()">
+              <span class="play-icon-bubble"><i class="fa-solid fa-play"></i></span>
+              <span>Watch Video</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- Right Column: Handshake Visual (Replaces villa photo as requested) -->
+        <div class="hero-media-right">
+          <div class="hero-photo-frame">
+            <img src="assets/images/hero_handshake.jpg" alt="Real Estate Partnership & Trust Handshake - JMJ & JOHNS" class="hero-handshake-photo">
+            
+            <!-- Floating Trust Badge (Matching Image 1) -->
+            <div class="hero-floating-trust-badge">
+              <div class="badge-icon-box">
+                <i class="fa-solid fa-house-chimney"></i>
+              </div>
+              <div>
+                <span style="font-size:0.72rem; color:#DDD2C7; display:block; text-transform:uppercase; letter-spacing:0.06em; font-weight:700;">Trusted by</span>
+                <strong style="font-size:0.95rem; color:#FFF; font-weight:700;">10,000+ Happy Families</strong>
+              </div>
+            </div>
+          </div>
+
+          <!-- Script Handwriting Accent (Matching Image 1) -->
+          <div class="hero-script-phrase">
+            <span>More Than Just A House...</span>
+            <svg class="script-swoosh" viewBox="0 0 140 10" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M2 7C40 2 100 2 138 6" stroke="#7A6254" stroke-width="2.5" stroke-linecap="round"/>
+            </svg>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==========================================================================
+       FLOATING SEARCH CAPSULE & 4 VALUE PILLARS (MATCHING PRIMENEST DESIGN)
+       ========================================================================== -->
+  <section class="container" style="position:relative;">
+    <!-- Floating Capsule Search Bar -->
+    <div class="search-card-float">
+      <!-- Field 1: Location -->
+      <div class="search-field-segment">
+        <div class="search-field-icon"><i class="fa-solid fa-location-dot"></i></div>
+        <div class="search-field-info">
+          <label class="search-field-label" for="homeSearchLocationInput">Location</label>
+          <input type="text" id="homeSearchLocationInput" class="search-field-input" placeholder="Enter city, area or project" value="Bangalore">
+        </div>
+      </div>
+
+      <div class="search-divider-v"></div>
+
+      <!-- Field 2: Property Type -->
+      <div class="search-field-segment">
+        <div class="search-field-icon"><i class="fa-solid fa-house"></i></div>
+        <div class="search-field-info">
+          <label class="search-field-label" for="homeSearchType">Property Type</label>
+          <select id="homeSearchType" class="search-field-select">
+            <option value="all">Any</option>
+            <option value="apartment">Apartment</option>
+            <option value="villa">Luxury Villa</option>
+            <option value="plot">Residential Plot</option>
+            <option value="commercial">Commercial Space</option>
+            <option value="builder">Top Builder Projects</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="search-divider-v"></div>
+
+      <!-- Field 3: Budget -->
+      <div class="search-field-segment">
+        <div class="search-field-icon"><i class="fa-solid fa-wallet"></i></div>
+        <div class="search-field-info">
+          <label class="search-field-label" for="homeSearchBudget">Budget</label>
+          <select id="homeSearchBudget" class="search-field-select">
+            <option value="all">Any</option>
+            <option value="under-50l">Under ₹50 Lakhs</option>
+            <option value="50l-1cr">₹50L - ₹1 Crore</option>
+            <option value="1cr-2.5cr">₹1Cr - ₹2.5 Crore</option>
+            <option value="above-2.5cr">Above ₹2.5 Crore</option>
+          </select>
+        </div>
+      </div>
+
+      <!-- Search Trigger Button -->
+      <button class="btn-search-trigger" id="homeSearchBtn">
+        <i class="fa-solid fa-magnifying-glass"></i> Search
+      </button>
+    </div>
+
+    <!-- 4 Minimalist Value Pillars (Matching Image 1) -->
+    <div class="value-pillars-strip">
+      <div class="value-pillar-box">
+        <div class="pillar-icon-wrap"><i class="fa-solid fa-house-circle-check"></i></div>
+        <div class="pillar-title">Verified Properties</div>
+        <div class="pillar-subtitle">100% genuine listings</div>
+      </div>
+      <div class="value-pillar-box">
+        <div class="pillar-icon-wrap"><i class="fa-solid fa-shield-halved"></i></div>
+        <div class="pillar-title">Secure Transactions</div>
+        <div class="pillar-subtitle">Safe & transparent process</div>
+      </div>
+      <div class="value-pillar-box">
+        <div class="pillar-icon-wrap"><i class="fa-solid fa-headset"></i></div>
+        <div class="pillar-title">Expert Support</div>
+        <div class="pillar-subtitle">Guidance at every step</div>
+      </div>
+      <div class="value-pillar-box">
+        <div class="pillar-icon-wrap"><i class="fa-regular fa-star"></i></div>
+        <div class="pillar-title">Best Deals</div>
+        <div class="pillar-subtitle">Value for your money</div>
+      </div>
+    </div>
+  </section>
+
+
+
+  <!-- ==========================================================================
+       FEATURED PROPERTIES SECTION (MATCHING PRIMENEST DESIGN WITH 4 CARDS)
+       ========================================================================== -->
+  <section class="featured-prime-section" id="properties">
+    <div class="container">
+      <!-- Section Header (Matching Image 1) -->
+      <div class="featured-header-flex">
+        <div>
+          <span class="section-tag-eyebrow">FEATURED PROPERTIES</span>
+          <h2 class="section-title-serif">Explore Our Latest Listings</h2>
+        </div>
+        <a href="properties.html" class="link-view-all">
+          <span>View All Properties</span>
+          <i class="fa-solid fa-arrow-right"></i>
+        </a>
+      </div>
+
+      <!-- 4 Showcase Property Cards (Matching Image 1) -->
+      <div class="prime-cards-grid">
+        <!-- Card 1: Luxury Villa -->
+        <div class="prime-card" onclick="openPropertyDetailsModal('PROP-001')">
+          <div class="prime-card-media">
+            <span class="prime-card-badge">For Sale</span>
+            <button class="prime-card-heart" data-id="PROP-001" onclick="toggleWishlist('PROP-001', event)" title="Save Property" aria-label="Save Property">
+              <i class="fa-regular fa-heart"></i>
+            </button>
+            <img src="assets/images/hero_villa.jpg" alt="Luxury Villa Whitefield Bangalore" loading="lazy">
+          </div>
+          <div class="prime-card-body">
+            <h3 class="prime-card-title">Luxury Villa</h3>
+            <div class="prime-card-location">
+              <i class="fa-solid fa-location-dot"></i>
+              <span>Whitefield, Bangalore</span>
+            </div>
+            <div class="prime-card-price">₹ 2.80 Cr</div>
+            <div class="prime-card-specs">
+              <div class="spec-item"><i class="fa-solid fa-bed"></i> 4 Beds</div>
+              <div class="spec-item"><i class="fa-solid fa-bath"></i> 4 Baths</div>
+              <div class="spec-item"><i class="fa-solid fa-vector-square"></i> 3,500 Sq Ft</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Card 2: Modern Apartment -->
+        <div class="prime-card" onclick="openPropertyDetailsModal('PROP-002')">
+          <div class="prime-card-media">
+            <span class="prime-card-badge">For Sale</span>
+            <button class="prime-card-heart" data-id="PROP-002" onclick="toggleWishlist('PROP-002', event)" title="Save Property" aria-label="Save Property">
+              <i class="fa-regular fa-heart"></i>
+            </button>
+            <img src="assets/images/luxury_apartment.jpg" alt="Modern Apartment HSR Layout Bangalore" loading="lazy">
+          </div>
+          <div class="prime-card-body">
+            <h3 class="prime-card-title">Modern Apartment</h3>
+            <div class="prime-card-location">
+              <i class="fa-solid fa-location-dot"></i>
+              <span>HSR Layout, Bangalore</span>
+            </div>
+            <div class="prime-card-price">₹ 1.25 Cr</div>
+            <div class="prime-card-specs">
+              <div class="spec-item"><i class="fa-solid fa-bed"></i> 3 Beds</div>
+              <div class="spec-item"><i class="fa-solid fa-bath"></i> 3 Baths</div>
+              <div class="spec-item"><i class="fa-solid fa-vector-square"></i> 1,800 Sq Ft</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Card 3: Premium 3BHK Flat -->
+        <div class="prime-card" onclick="openPropertyDetailsModal('PROP-003')">
+          <div class="prime-card-media">
+            <span class="prime-card-badge rent">For Rent</span>
+            <button class="prime-card-heart" data-id="PROP-003" onclick="toggleWishlist('PROP-003', event)" title="Save Property" aria-label="Save Property">
+              <i class="fa-regular fa-heart"></i>
+            </button>
+            <img src="assets/images/independent_house.jpg" alt="Premium 3BHK Flat Koramangala Bangalore" loading="lazy">
+          </div>
+          <div class="prime-card-body">
+            <h3 class="prime-card-title">Premium 3BHK Flat</h3>
+            <div class="prime-card-location">
+              <i class="fa-solid fa-location-dot"></i>
+              <span>Koramangala, Bangalore</span>
+            </div>
+            <div class="prime-card-price">₹ 75,000 <span>/mo</span></div>
+            <div class="prime-card-specs">
+              <div class="spec-item"><i class="fa-solid fa-bed"></i> 3 Beds</div>
+              <div class="spec-item"><i class="fa-solid fa-bath"></i> 3 Baths</div>
+              <div class="spec-item"><i class="fa-solid fa-vector-square"></i> 1,600 Sq Ft</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Card 4: Residential Plot -->
+        <div class="prime-card" onclick="openPropertyDetailsModal('PROP-004')">
+          <div class="prime-card-media">
+            <span class="prime-card-badge">For Sale</span>
+            <button class="prime-card-heart" data-id="PROP-004" onclick="toggleWishlist('PROP-004', event)" title="Save Property" aria-label="Save Property">
+              <i class="fa-regular fa-heart"></i>
+            </button>
+            <img src="assets/images/residential_plot.jpg" alt="Residential Plot Sarjapur Road Bangalore" loading="lazy">
+          </div>
+          <div class="prime-card-body">
+            <h3 class="prime-card-title">Residential Plot</h3>
+            <div class="prime-card-location">
+              <i class="fa-solid fa-location-dot"></i>
+              <span>Sarjapur Road, Bangalore</span>
+            </div>
+            <div class="prime-card-price">₹ 95 Lakhs</div>
+            <div class="prime-card-specs">
+              <div class="spec-item"><i class="fa-solid fa-vector-square"></i> 1,200 Sq Ft</div>
+              <div class="spec-item"><i class="fa-solid fa-shield-halved"></i> Clear Title</div>
+              <div class="spec-item"><i class="fa-solid fa-road"></i> 40ft Road</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Live Interactive Catalog Filter & Dynamic Grid -->
+      <div style="margin-top:50px; background:#FFF; border-radius:20px; border:1px solid var(--poster-sand); padding:28px 24px; box-shadow:0 8px 30px rgba(36,23,18,0.04);">
+        <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:14px; margin-bottom:20px;">
+          <div>
+            <span style="font-size:0.78rem; font-weight:800; text-transform:uppercase; letter-spacing:0.12em; color:#8A7264;">Live Inventory</span>
+            <h3 style="margin:2px 0 0; font-size:1.45rem; color:var(--poster-espresso); font-family:var(--font-serif);">All Verified Properties in Bengaluru</h3>
+          </div>
+          <div style="display:flex; align-items:center; gap:10px;">
+            <label for="propertySortSelect" style="font-size:0.84rem; font-weight:600;"><i class="fa-solid fa-arrow-down-short-wide"></i> Sort:</label>
+            <select id="propertySortSelect" style="padding:8px 14px; border-radius:6px; border:1px solid var(--poster-sand); font-size:0.85rem;">
+              <option value="featured">Featured First</option>
+              <option value="price-low">Price: Low to High</option>
+              <option value="price-high">Price: High to Low</option>
+              <option value="newest">Recently Added</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="properties-filter-bar" style="margin-bottom:24px;">
+          <div class="filter-pills-group">
+            <button class="filter-btn active" data-filter="all">All Properties (28)</button>
+            <button class="filter-btn" data-filter="builder"><i class="fa-solid fa-building"></i> Top Builders</button>
+            <button class="filter-btn" data-filter="sale">For Sale</button>
+            <button class="filter-btn" data-filter="rent">For Rent</button>
+            <button class="filter-btn" data-filter="apartment">Apartments</button>
+            <button class="filter-btn" data-filter="villa">Houses & Villas</button>
+            <button class="filter-btn" data-filter="plot">Plots / Sites</button>
+            <button class="filter-btn" data-filter="commercial">Commercial</button>
+          </div>
+        </div>
+
+        <div class="properties-grid-3col" id="propertiesGrid">
+          <!-- Rendered dynamically via app.js -->
+        </div>
+
+        <div style="text-align:center; margin-top:34px;">
+          <a href="properties.html" class="btn btn-primary">
+            <i class="fa-solid fa-list-check"></i> Open Full Catalog & Advanced Filters
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==========================================================================
+       ABOUT US SECTION (3-COLUMN LAYOUT MATCHING PRIMENEST DESIGN)
+       ========================================================================== -->
+  <section class="about-primeluxe-section" id="about">
+    <div class="container">
+      <div class="about-primeluxe-grid">
+        <!-- Left: Curved Photo & Quote -->
+        <div class="about-curved-visual">
+          <img src="assets/images/hero_villa.jpg" alt="Interior living room design" loading="lazy">
+          <div class="about-quote-box">
+            <i class="fa-solid fa-quote-left" style="font-size:1.1rem; color:var(--poster-gold); margin-right:6px;"></i>
+            Real Estate is not just about properties, it's about people and their dreams.
+          </div>
+        </div>
+
+        <!-- Center: Narrative Content -->
+        <div class="about-center-copy">
+          <span class="section-tag-eyebrow">ABOUT US</span>
+          <h2 class="section-title-serif">Building Better Spaces for a Brighter Future</h2>
+          <p>
+            At <strong>JMJ & JOHNS</strong>, we help you find more than just a property. We help you find a place to call home. With years of experience and a passion for real estate, we are committed to delivering trust, value and satisfaction.
+          </p>
+          <p style="font-size:0.92rem; color:#7A6559;">
+            Led by retired military personnel, our consultancy brings the values of <strong>integrity, discipline, and uncompromising transparency</strong> to every land title, villa, and property deal across Cheemasandra and Greater Bengaluru.
+          </p>
+          <a href="about.html" class="btn btn-prime-pill" style="padding:12px 28px; font-size:0.92rem;">
+            <span>Learn More</span>
+            <i class="fa-solid fa-arrow-right"></i>
+          </a>
+        </div>
+
+        <!-- Right: 3 Metric Stats -->
+        <div class="about-metrics-stack">
+          <div class="metric-stat-item">
+            <div class="metric-stat-icon"><i class="fa-solid fa-house-chimney"></i></div>
+            <div class="metric-stat-text">
+              <span class="stat-num">500+</span>
+              <span class="stat-lbl">Properties Sold</span>
+            </div>
+          </div>
+
+          <div class="metric-stat-item">
+            <div class="metric-stat-icon"><i class="fa-solid fa-users"></i></div>
+            <div class="metric-stat-text">
+              <span class="stat-num">1,000+</span>
+              <span class="stat-lbl">Happy Clients</span>
+            </div>
+          </div>
+
+          <div class="metric-stat-item">
+            <div class="metric-stat-icon"><i class="fa-solid fa-shield-halved"></i></div>
+            <div class="metric-stat-text">
+              <span class="stat-num">5+</span>
+              <span class="stat-lbl">Years of Excellence</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==========================================================================
+       BOTTOM CTA BANNER (CAPSULE LEAD CAPTURE MATCHING PRIMENEST DESIGN)
+       ========================================================================== -->
+  <div class="container">
+    <div class="bottom-primeluxe-cta">
+      <div class="bottom-cta-left">
+        <div class="bottom-cta-icon"><i class="fa-solid fa-house"></i></div>
+        <div>
+          <h3>Let's Find Your Dream Home</h3>
+          <p>Get personalized property recommendations from our experts.</p>
+        </div>
+      </div>
+
+      <div class="cta-input-capsule">
+        <input type="tel" id="bottomLeadPhone" placeholder="Enter your phone number">
+        <button type="button" id="bottomLeadBtn" class="btn-cta-submit">
+          <span>Get Started</span>
+          <i class="fa-solid fa-arrow-right" style="margin-left:6px;"></i>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ==========================================================================
+       FLAGSHIP SPOTLIGHT: BRIGADE GRANADA – THE BIGGEST INTEGRATED TOWNSHIP IN WHITEFIELD
+       ========================================================================== -->
+  <section class="granada-showcase-section" id="brigade-granada" style="margin-top:60px;">
+    <div class="container">
+      
+      <div class="granada-main-card">
+        <!-- Top Announcement Ribbon -->
+        <div class="granada-badge-top">
+          <span><i class="fa-solid fa-fire text-espresso"></i> <strong>OFFICIAL PRE-LAUNCH INVITATION</strong> • LIMITED EOI WINDOW NOW OPEN</span>
+          <span><i class="fa-solid fa-location-dot"></i> Kadugodi, Whitefield, Bangalore</span>
+        </div>
+
+        <div class="granada-content-padding">
+          
+          <!-- Hero Header Grid -->
+          <div class="granada-hero-grid">
+            <div>
+              <div style="display:inline-flex; align-items:center; gap:8px; background:rgba(212, 168, 83, 0.2); border:1px solid var(--poster-gold); padding:6px 14px; border-radius:30px; font-size:0.8rem; font-weight:700; color:var(--poster-gold-light); margin-bottom:14px; letter-spacing:0.06em; text-transform:uppercase;">
+                <i class="fa-solid fa-city"></i> Iconic Mixed-Use Landmark
+              </div>
+              <h2 class="font-serif" style="color:#FFF; font-size:2.5rem; line-height:1.2; margin-bottom:12px;">
+                🏙️ BRIGADE GRANADA <br>
+                <span style="font-size:1.6rem; color:var(--poster-gold-light); font-weight:600;">The Biggest Integrated Township in Whitefield</span>
+              </h2>
+              <p style="font-size:1.15rem; font-style:italic; color:#E3D6C9; margin-bottom:14px;">
+                "A City Within a City – Live, Work, Shop & Thrive at One Iconic Address."
+              </p>
+              <p style="color:#C9B8A9; font-size:0.98rem; line-height:1.7; margin-bottom:20px;">
+                Welcome to <strong>Brigade Granada</strong>, an iconic <strong>40+ acre integrated township</strong> by <em>Brigade Group</em>, thoughtfully designed to redefine urban living. This landmark mixed-use development brings together premium residences, world-class commercial spaces, luxury hospitality, retail, healthcare, and entertainment—creating a self-sustained destination where every lifestyle need is just a few steps away.
+              </p>
+
+              <!-- Configuration Badges -->
+              <div style="background:rgba(255,255,255,0.06); border-radius:12px; padding:14px 18px; border:1px solid rgba(212, 168, 83, 0.3); margin-bottom:20px;">
+                <span style="font-size:0.78rem; text-transform:uppercase; letter-spacing:0.1em; color:var(--poster-gold-light); font-weight:800; display:block; margin-bottom:8px;">
+                  <i class="fa-solid fa-cubes-stacked"></i> Development Configuration
+                </span>
+                <div style="display:grid; grid-template-columns:repeat(2, 1fr); gap:8px; font-size:0.88rem; color:#F8F4EE;">
+                  <div>🏠 <strong>Residential:</strong> 4B + G + 48 Floors</div>
+                  <div>🏢 <strong>Commercial:</strong> 4B + G + 28 Floors</div>
+                  <div>🏨 <strong>Luxury Hotel:</strong> 4B + G + 28 Floors</div>
+                  <div>🛍️ <strong>Retail & F&B:</strong> 4B + G + 3 Floors</div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Architectural Render Image with Badges -->
+            <div class="granada-img-wrapper">
+              <img src="assets/images/brigade_granada.jpg" alt="Brigade Granada Integrated Township Kadugodi Whitefield Bangalore">
+              <div class="granada-img-overlay-tag">
+                <span><i class="fa-solid fa-crown text-gold"></i> 40+ Acres • 48-Floor Sky Towers</span>
+                <span style="color:#FFF;"><i class="fa-solid fa-hospital"></i> Campus Hospital</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Project Highlights Checklist -->
+          <div style="margin-bottom:34px;">
+            <h3 style="color:#FFF; font-size:1.3rem; margin-bottom:14px; display:flex; align-items:center; gap:8px;">
+              <span class="text-gold">🌟</span> Project Highlights & World-Class Infrastructure
+            </h3>
+            <div class="granada-highlights-grid">
+              <div class="granada-highlight-pill">
+                <i class="fa-solid fa-circle-check"></i>
+                <span>40+ Acres of Premium Master-Planned Integrated Township</span>
+              </div>
+              <div class="granada-highlight-pill">
+                <i class="fa-solid fa-building-wheat"></i>
+                <span>Premium Residential Towers up to 48 Floors (4B+G+48)</span>
+              </div>
+              <div class="granada-highlight-pill">
+                <i class="fa-solid fa-briefcase"></i>
+                <span>Grade-A Commercial: ~4.49 Lakh Sq.ft. Built-up Area</span>
+              </div>
+              <div class="granada-highlight-pill">
+                <i class="fa-solid fa-cart-shopping"></i>
+                <span>High-Street Retail & F&B: ~2.39 Lakh Sq.ft. Built-up Area</span>
+              </div>
+              <div class="granada-highlight-pill">
+                <i class="fa-solid fa-hotel"></i>
+                <span>Luxury 7-Star Hotel with Approx. 251 Hotel Keys (4B+G+28)</span>
+              </div>
+              <div class="granada-highlight-pill">
+                <i class="fa-solid fa-house-medical"></i>
+                <span>Comprehensive Hospital & Healthcare Facilities on Campus</span>
+              </div>
+              <div class="granada-highlight-pill" style="grid-column: span 2;">
+                <i class="fa-solid fa-train-subway"></i>
+                <span>Prime Connectivity to Whitefield Metro, ITPL, ORR, Outer Ring Road & Major Tech Parks</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Expected Pre-Launch Pricing Grid -->
+          <div style="margin-bottom:30px;">
+            <div style="display:flex; justify-content:space-between; align-items:flex-end; flex-wrap:wrap; gap:10px; margin-bottom:14px;">
+              <div>
+                <span style="font-size:0.8rem; font-weight:800; text-transform:uppercase; letter-spacing:0.12em; color:var(--poster-gold-light);">Priority Pre-Launch Opportunity</span>
+                <h3 style="color:#FFF; font-size:1.5rem; margin-top:4px;">💰 Expected Pre-Launch Pricing (Starting All-Inclusive*)</h3>
+              </div>
+              <span style="font-size:0.82rem; color:#DDD2C7; background:rgba(255,255,255,0.08); padding:4px 12px; border-radius:6px;">
+                *Inclusive of 1 Car Park, Clubhouse, Infra, Maintenance & GST
+              </span>
+            </div>
+
+            <div class="granada-pricing-grid">
+              <!-- 1 BHK -->
+              <div class="granada-pricing-card">
+                <div class="bhk-type">1 BHK Luxury</div>
+                <div class="sqft-spec">~730 Sq.ft. Built-up</div>
+                <div class="price-val">₹1.07 Cr*</div>
+                <div class="eoi-tag">EOI Priority Cheque: <strong>₹2 Lakhs</strong></div>
+              </div>
+
+              <!-- 2 BHK -->
+              <div class="granada-pricing-card">
+                <div class="bhk-type">2 BHK Premium</div>
+                <div class="sqft-spec">~1,275 Sq.ft. Built-up</div>
+                <div class="price-val">₹1.79 Cr*</div>
+                <div class="eoi-tag">EOI Priority Cheque: <strong>₹3 Lakhs</strong></div>
+              </div>
+
+              <!-- 3 BHK 2T -->
+              <div class="granada-pricing-card">
+                <div class="bhk-type">3 BHK (2 Toilet)</div>
+                <div class="sqft-spec">~1,540 Sq.ft. Built-up</div>
+                <div class="price-val">₹2.19 Cr*</div>
+                <div class="eoi-tag">EOI Priority Cheque: <strong>₹6 Lakhs</strong></div>
+              </div>
+
+              <!-- 3 BHK 3T -->
+              <div class="granada-pricing-card">
+                <div class="bhk-type">3 BHK (3 Toilet)</div>
+                <div class="sqft-spec">~1,820 Sq.ft. Built-up</div>
+                <div class="price-val">₹2.59 Cr*</div>
+                <div class="eoi-tag">EOI Priority Cheque: <strong>₹6 Lakhs</strong></div>
+              </div>
+
+              <!-- 3 BHK + Study -->
+              <div class="granada-pricing-card">
+                <div class="bhk-type">3 BHK + Study (3T)</div>
+                <div class="sqft-spec">~2,240 Sq.ft. Built-up</div>
+                <div class="price-val">₹3.29 Cr*</div>
+                <div class="eoi-tag">EOI Priority Cheque: <strong>₹6 Lakhs</strong></div>
+              </div>
+
+              <!-- 4 BHK + Maid -->
+              <div class="granada-pricing-card">
+                <div class="bhk-type">4 BHK + Maid (4T)</div>
+                <div class="sqft-spec">~2,760 Sq.ft. Built-up</div>
+                <div class="price-val">₹3.99 Cr*</div>
+                <div class="eoi-tag">EOI Priority Cheque: <strong>₹10 Lakhs</strong></div>
+              </div>
+            </div>
+
+            <!-- Pricing Notes Callout -->
+            <div style="background:rgba(255,255,255,0.04); border-radius:12px; padding:16px 20px; font-size:0.86rem; color:#C9B8A9; line-height:1.6; border:1px solid rgba(255,255,255,0.1);">
+              <strong style="color:#FFF;"><i class="fa-solid fa-circle-info text-gold"></i> Important Pricing Notes:</strong>
+              The above prices are starting all-inclusive prices covering 1 Covered Car Parking, Clubhouse Charges, Infrastructure Charges, Maintenance Charges, and Applicable GST. Floor Rise Charges, Preferential Location Charges (PLC), and SDR / Registration Charges are additional and not included.
+            </div>
+          </div>
+
+          <!-- EOI Window & Cheque Instructions + Vaibhav Contact Desk -->
+          <div class="granada-eoi-box">
+            <div>
+              <div style="display:flex; align-items:center; gap:8px; margin-bottom:8px;">
+                <span class="badge-pill" style="background:var(--poster-gold); color:#1C100B; font-weight:800; font-size:0.78rem;">LIMITED PERIOD ONLY</span>
+                <h4 style="color:#FFF; font-size:1.25rem; margin:0;">🚀 EOI Window is Now Open</h4>
+              </div>
+              <p style="color:#DDD2C7; font-size:0.9rem; margin-bottom:12px; line-height:1.6;">
+                Secure your preferred high-floor tower inventory and unit layout before the public launch by submitting an <strong>Expression of Interest (EOI)</strong> for priority allocation.
+              </p>
+
+              <div class="granada-cheque-callout">
+                <div style="font-weight:700; color:#FFF; margin-bottom:4px;">
+                  <i class="fa-solid fa-money-check text-gold"></i> Cheque Details:
+                </div>
+                <div style="color:#F3D99A; font-weight:800; font-size:0.96rem;">
+                  Favouring: <em>Brigade Enterprises Limited</em>
+                </div>
+                <div style="margin-top:6px; color:#FFF; font-size:0.84rem;">
+                  <strong style="color:var(--poster-gold-light);">IMPORTANT:</strong> Please write <strong>"NON-BANKABLE"</strong> on the reverse side of the cheque. The cheque is collected strictly for EOI registration and will not be presented for banking without further confirmation as per the official EOI process.
+                </div>
+              </div>
+            </div>
+
+            <!-- Vaibhav Contact Box -->
+            <div class="granada-contact-card">
+              <span style="font-size:0.75rem; text-transform:uppercase; letter-spacing:0.12em; color:var(--poster-gold-light); font-weight:800; display:block; margin-bottom:6px;">
+                Dedicated Project Lead
+              </span>
+              <h4 style="color:#FFF; font-size:1.45rem; margin-bottom:4px;">Vaibhav</h4>
+              <p style="color:#E0D5CB; font-size:0.86rem; margin-bottom:16px;">
+                For Floor Plans, Pricing, Site Visit & Priority EOI Assistance
+              </p>
+
+              <div style="display:flex; flex-direction:column; gap:10px;">
+                <a href="https://wa.me/916366416050?text=Hello%20Vaibhav,%20I%20am%20interested%20in%20Brigade%20Granada%20Whitefield%20(Floor%20Plans,%20Pricing%20%26%20EOI%20Booking)." target="_blank" class="btn btn-poster-phone" style="background:#25D366; color:#FFF; justify-content:center; padding:12px; font-size:0.95rem;">
+                  <i class="fa-brands fa-whatsapp" style="font-size:1.2rem;"></i> WhatsApp Vaibhav (6366416050)
+                </a>
+                <a href="tel:+916366416050" class="btn btn-gold" style="justify-content:center; padding:12px; font-size:0.95rem;">
+                  <i class="fa-solid fa-phone"></i> Call +91 63664 16050
+                </a>
+                <button onclick="openPropertyDetailsModal('BG-GRANADA')" class="btn btn-outline-white" style="justify-content:center; padding:10px; font-size:0.88rem;">
+                  <i class="fa-solid fa-eye"></i> View Full Specifications Modal
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <p style="text-align:center; color:#AFA094; font-size:0.88rem; font-style:italic; margin-top:28px; margin-bottom:0;">
+            Experience Whitefield's most anticipated integrated township—where luxury residences, premium retail, Grade-A commercial spaces, and a 7-star hotel come together to create a truly world-class destination.
+          </p>
+
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Quick Services Overview Strip -->
+  <section style="padding:80px 0; background:var(--poster-white);">
+    <div class="container">
+      <div style="text-align:center; max-width:760px; margin:0 auto 50px;">
+        <span style="font-size:0.85rem; font-weight:800; text-transform:uppercase; letter-spacing:0.14em; color:var(--poster-espresso); display:block; margin-bottom:8px;">What We Do</span>
+        <h2 style="font-size:2.5rem; margin-bottom:12px;">Our Real Estate Services</h2>
+        <p style="color:#5D493E; font-size:1.05rem;">
+          At JMJ & JOHNS CONSULTANCY, we make your property journey simple, smooth, and stress-free.
+        </p>
+      </div>
+
+      <div class="services-cards-grid">
+        <div class="service-box-poster">
+          <div class="service-icon-circle"><i class="fa-solid fa-house-chimney"></i></div>
+          <h3>Buy a Property</h3>
+          <p>Find apartments, villas, independent houses, and residential plots in Cheemasandra suited to your lifestyle and budget.</p>
+          <ul class="service-feature-checklist">
+            <li><i class="fa-solid fa-check"></i> Gated Layout Plots</li>
+            <li><i class="fa-solid fa-check"></i> Independent Villas</li>
+            <li><i class="fa-solid fa-check"></i> Clear Title Verification</li>
+          </ul>
+          <a href="services.html" class="btn btn-outline-dark btn-sm">Learn More</a>
+        </div>
+
+        <div class="service-box-poster">
+          <div class="service-icon-circle"><i class="fa-solid fa-hand-holding-dollar"></i></div>
+          <h3>Sell Your Property</h3>
+          <p>We connect property owners with prospective buyers and assist with enquiries, property presentations, and negotiations.</p>
+          <ul class="service-feature-checklist">
+            <li><i class="fa-solid fa-check"></i> Realistic Market Valuation</li>
+            <li><i class="fa-solid fa-check"></i> Verified Buyer Network</li>
+            <li><i class="fa-solid fa-check"></i> Complete Closing Support</li>
+          </ul>
+          <a href="services.html" class="btn btn-outline-dark btn-sm">Learn More</a>
+        </div>
+
+        <div class="service-box-poster">
+          <div class="service-icon-circle"><i class="fa-solid fa-key"></i></div>
+          <h3>Rent a Property</h3>
+          <p>Explore rental homes and commercial spaces based on your location, budget, and preferences in Cheemasandra and Bengaluru.</p>
+          <ul class="service-feature-checklist">
+            <li><i class="fa-solid fa-check"></i> Residential Rental Homes</li>
+            <li><i class="fa-solid fa-check"></i> Commercial Shops & Offices</li>
+            <li><i class="fa-solid fa-check"></i> Hassle-Free Agreements</li>
+          </ul>
+          <a href="services.html" class="btn btn-outline-dark btn-sm">Learn More</a>
+        </div>
+
+        <div class="service-box-poster">
+          <div class="service-icon-circle"><i class="fa-solid fa-scale-balanced"></i></div>
+          <h3>Property Consultancy</h3>
+          <p>Personalized assistance in exploring property opportunities, comparing options, and understanding all legal steps.</p>
+          <ul class="service-feature-checklist">
+            <li><i class="fa-solid fa-check"></i> Khata & DC Conversion</li>
+            <li><i class="fa-solid fa-check"></i> Sub-Registrar Support</li>
+            <li><i class="fa-solid fa-check"></i> Transparent Pricing</li>
+          </ul>
+          <a href="services.html" class="btn btn-outline-dark btn-sm">Learn More</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Location Map & Contact Section -->
+  <section class="contact-page-body" id="contact">
+    <div class="container">
+      <div class="contact-layout-grid">
+        <!-- Contact Information Card -->
+        <div class="contact-card-poster">
+          <div class="dot-matrix-light dot-top-right"></div>
+          <span style="font-size:0.8rem; font-weight:800; text-transform:uppercase; letter-spacing:0.12em; color:var(--poster-gold-light); display:block; margin-bottom:10px;">Contact JMJ & JOHNS</span>
+          <h3 class="font-serif">Let's Find Your Dream Property</h3>
+          <p class="lead">
+            Have a property to buy, sell, or rent? Our team is ready to help you explore your options in Cheemasandra and Bengaluru.
+          </p>
+
+          <div class="contact-info-list">
+            <div class="contact-row-poster">
+              <div class="contact-icon-poster"><i class="fa-solid fa-location-dot"></i></div>
+              <div class="contact-row-text">
+                <h5>Office Location & Landmark</h5>
+                <p><strong>Landmark:</strong> Near Government School<br><strong>Road:</strong> Cheemasandra Main Road<br>Bengaluru, Karnataka – 560049</p>
+              </div>
+            </div>
+
+            <div class="contact-row-poster">
+              <div class="contact-icon-poster"><i class="fa-solid fa-phone"></i></div>
+              <div class="contact-row-text">
+                <h5>Call / WhatsApp</h5>
+                <p><a href="tel:+919880430160">+91 98804 30160</a></p>
+              </div>
+            </div>
+
+            <div class="contact-row-poster">
+              <div class="contact-icon-poster"><i class="fa-solid fa-envelope"></i></div>
+              <div class="contact-row-text">
+                <h5>Email Us</h5>
+                <p><a href="mailto:jmjjohnsconsultancy@gmail.com">jmjjohnsconsultancy@gmail.com</a></p>
+              </div>
+            </div>
+          </div>
+
+          <div style="display:flex; gap:12px; flex-wrap:wrap;">
+            <a href="tel:+919880430160" class="btn btn-gold">
+              <i class="fa-solid fa-phone"></i> Call Now
+            </a>
+            <a href="https://wa.me/919880430160?text=Hello%20JMJ%20%26%20JOHNS%20CONSULTANCY,%20I%20have%20an%20enquiry%20regarding%20property%20in%20Cheemasandra." target="_blank" class="btn btn-outline-white">
+              <i class="fa-brands fa-whatsapp"></i> WhatsApp Chat
+            </a>
+          </div>
+        </div>
+
+        <!-- Interactive Enquiry Form -->
+        <div class="form-box-poster">
+          <h3>Send Us Your Property Enquiry</h3>
+          <p>Tell us whether you want to buy, sell, or rent a property. We will get in touch with you promptly.</p>
+
+          <form id="propertyEnquiryForm">
+            <div class="form-2col-grid">
+              <div class="form-group-poster">
+                <label for="contactName">Full Name *</label>
+                <input type="text" id="contactName" placeholder="e.g. Ramesh Kumar" required>
+              </div>
+
+              <div class="form-group-poster">
+                <label for="contactPhone">Phone Number *</label>
+                <input type="tel" id="contactPhone" placeholder="+91 98804 XXXXX" required>
+              </div>
+
+              <div class="form-group-poster">
+                <label for="contactEmail">Email Address</label>
+                <input type="email" id="contactEmail" placeholder="yourname@gmail.com">
+              </div>
+
+              <div class="form-group-poster">
+                <label for="contactService">Looking To *</label>
+                <select id="contactService">
+                  <option value="Buy a Property">Buy a Property</option>
+                  <option value="Buy a Residential Plot">Buy a Residential Plot / Site</option>
+                  <option value="Sell My Property">Sell My Property</option>
+                  <option value="Rent a Home / Commercial">Rent a Property</option>
+                  <option value="Property Consultancy">Property Consultancy</option>
+                </select>
+              </div>
+
+              <div class="form-group-poster full">
+                <label for="contactBudget">Budget Range / Preferences</label>
+                <input type="text" id="contactBudget" placeholder="e.g. ₹45 Lakhs - ₹60 Lakhs, 30x40 site">
+              </div>
+
+              <div class="form-group-poster full">
+                <label for="contactMessage">Specific Requirements</label>
+                <textarea id="contactMessage" rows="3" placeholder="Describe the property details or site visit requirements..."></textarea>
+              </div>
+            </div>
+
+            <div style="display:flex; gap:14px; flex-wrap:wrap;">
+              <button type="button" id="sendWhatsappBtn" class="btn btn-poster-phone" style="flex:1; background:var(--poster-green); color:#FFF;">
+                <i class="fa-brands fa-whatsapp"></i> Send via WhatsApp
+              </button>
+              <button type="button" id="sendEmailBtn" class="btn btn-primary" style="flex:1;">
+                <i class="fa-solid fa-paper-plane"></i> Send via Email
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+
+      <!-- Embedded Google Map for Cheemasandra, Bangalore 560049 -->
+      <div class="map-poster-box">
+        <div class="map-poster-header">
+          <h4><i class="fa-solid fa-map-location-dot"></i> Landmark & Road: Near Govt School, Cheemasandra Main Road, Bengaluru – 560049</h4>
+          <span style="font-size:0.85rem; color:#6E5B50;">Landmark: Near Government School • PIN: 560049</span>
+          <a href="https://maps.google.com/?q=Near+Government+School,Cheemasandra+Main+Road,Bengaluru,Karnataka,560049" target="_blank" class="btn btn-outline-dark btn-sm">
+            <i class="fa-solid fa-arrow-up-right-from-square"></i> Open in Google Maps
+          </a>
+        </div>
+        <div class="map-iframe-holder">
+          <iframe 
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d15547.45283733077!2d77.7289569769531!3d13.044321300000002!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bae052825bbd9b1%3A0x6b28fa95d6ff7bb6!2sCheemasandra%2C%20Bengaluru%2C%20Karnataka%20560049!5e0!3m2!1sen!2sin!4v1715000000000!5m2!1sen!2sin" 
+            title="JMJ & JOHNS CONSULTANCY Location Map - Cheemasandra Main Road Bengaluru 560049" 
+            loading="lazy" 
+            allowfullscreen="" 
+            referrerpolicy="no-referrer-when-downgrade">
+          </iframe>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Site Footer -->
+  <footer class="site-footer-poster">
+    <div class="container">
+      <div class="footer-grid-4col">
+        <div class="footer-brand-col">
+          <h3 class="font-serif">JMJ & JOHNS</h3>
+          <span class="sub">CONSULTANCY • REAL ESTATE & PROPERTY</span>
+          <p style="font-size:0.9rem; line-height:1.7; margin-bottom:16px;">
+            Your trusted partner for buying, selling, renting, and property consultancy in Cheemasandra, Bengaluru and surrounding areas.
+          </p>
+          <div style="display:flex; gap:10px;">
+            <a href="tel:+919880430160" class="btn btn-outline-white btn-sm"><i class="fa-solid fa-phone"></i></a>
+            <a href="mailto:jmjjohnsconsultancy@gmail.com" class="btn btn-outline-white btn-sm"><i class="fa-solid fa-envelope"></i></a>
+            <a href="https://wa.me/919880430160" target="_blank" class="btn btn-poster-phone btn-sm" style="background:var(--poster-green); color:#FFF;"><i class="fa-brands fa-whatsapp"></i></a>
+          </div>
+        </div>
+
+        <div class="footer-col">
+          <h4>Pages</h4>
+          <ul class="footer-links-list">
+            <li><a href="index.html">Home Page</a></li>
+            <li><a href="about.html">About Us</a></li>
+            <li><a href="services.html">Our Services</a></li>
+            <li><a href="properties.html">Properties Catalog</a></li>
+            <li><a href="contact.html">Contact Us</a></li>
+            <li><a href="admin.html">Admin Portal</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h4>Services</h4>
+          <ul class="footer-links-list">
+            <li><a href="services.html">Buy a Property</a></li>
+            <li><a href="services.html">Residential Plots</a></li>
+            <li><a href="services.html">Sell Your Property</a></li>
+            <li><a href="services.html">Rent a Property</a></li>
+            <li><a href="services.html">Property Consultancy</a></li>
+            <li><a href="services.html">Clear Title Verification</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h4>Contact & Location</h4>
+          <ul class="footer-contact-details">
+            <li><i class="fa-solid fa-location-dot"></i> Landmark: Near Govt School, Cheemasandra Main Road, Bengaluru – 560049</li>
+            <li><i class="fa-solid fa-phone"></i> <a href="tel:+919880430160" style="color:#FFF;">+91 98804 30160</a></li>
+            <li><i class="fa-solid fa-envelope"></i> <a href="mailto:jmjjohnsconsultancy@gmail.com" style="color:#FFF;">jmjjohnsconsultancy@gmail.com</a></li>
+            <li><i class="fa-solid fa-shield-halved"></i> <a href="admin.html" style="color:var(--poster-gold-light);">Admin Login</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="footer-bottom-bar">
+        <div>&copy; 2026 <strong>JMJ & JOHNS CONSULTANCY</strong>. All rights reserved. Landmark: Near Govt School, Cheemasandra Main Road, Bengaluru 560049.</div>
+        <div>Buy | Sell | Rent | Property Consultancy</div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Floating WhatsApp Action Button -->
+  <a href="https://wa.me/919880430160?text=Hello%20JMJ%20%26%20JOHNS%20CONSULTANCY,%20I%20have%20an%20enquiry%20regarding%20property%20in%20Cheemasandra." target="_blank" class="floating-whatsapp-btn" aria-label="Chat on WhatsApp">
+    <i class="fa-brands fa-whatsapp" style="font-size:1.4rem;"></i>
+    <span>Chat with Consultant</span>
+  </a>
+
+  <!-- ==========================================================================
+       MODALS
+       ========================================================================== -->
+
+  <!-- Admin Login Modal -->
+  <div class="modal-overlay" id="adminLoginModal">
+    <div class="modal-container">
+      <div class="modal-header">
+        <h3><i class="fa-solid fa-lock text-gold"></i> Admin Authentication</h3>
+        <button class="modal-close-btn"><i class="fa-solid fa-xmark"></i></button>
+      </div>
+      <div class="modal-body" style="text-align:center;">
+        <div style="width:68px; height:68px; border-radius:50%; background:var(--poster-cream); border:1px solid var(--poster-sand); display:flex; align-items:center; justify-content:center; margin:0 auto 16px; font-size:1.8rem; color:var(--poster-espresso);">
+          <i class="fa-solid fa-shield-halved"></i>
+        </div>
+        <h4 style="font-size:1.3rem; margin-bottom:6px;">JMJ & JOHNS Admin Portal</h4>
+        <p style="color:#6E5B50; font-size:0.9rem; margin-bottom:20px;">
+          Enter administrator PIN to add, edit, or delete property listings.
+        </p>
+
+        <form id="adminLoginForm">
+          <input type="password" id="adminPasswordInput" placeholder="Enter Admin PIN" style="width:100%; max-width:320px; padding:12px; text-align:center; font-size:1.1rem; letter-spacing:0.15em; border-radius:8px; border:2px solid var(--poster-sand); margin-bottom:14px; outline:none;" required>
+          <div style="font-size:0.8rem; color:#6E5B50; margin-bottom:18px;">
+            <i class="fa-solid fa-lock"></i> Authorized Personnel Access Only
+          </div>
+          <button type="submit" class="btn btn-primary" style="width:100%; max-width:320px;">
+            <i class="fa-solid fa-unlock"></i> Unlock Admin Controls
+          </button>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <!-- Add Property Modal (Admin Only) -->
+  <div class="modal-overlay" id="addPropertyModal">
+    <div class="modal-container modal-lg">
+      <div class="modal-header">
+        <h3 id="addPropertyModalTitle"><i class="fa-solid fa-circle-plus"></i> Add New Property (Admin)</h3>
+        <button class="modal-close-btn"><i class="fa-solid fa-xmark"></i></button>
+      </div>
+      <div class="modal-body">
+        <form id="addPropertyForm">
+          <input type="hidden" id="propertyEditId" value="">
+
+          <div class="form-2col-grid">
+            <div class="form-group-poster full">
+              <label for="propTitle">Property Listing Title *</label>
+              <input type="text" id="propTitle" placeholder="e.g. 30x40 Gated Layout Corner Plot near Govt School" required>
+            </div>
+
+            <div class="form-group-poster">
+              <label for="propCategory">Property Category *</label>
+              <select id="propCategory" required>
+                <option value="plot">Residential Plot / Site</option>
+                <option value="villa">Independent House / Villa</option>
+                <option value="apartment">Apartment</option>
+                <option value="commercial">Commercial Property</option>
+              </select>
+            </div>
+
+            <div class="form-group-poster">
+              <label for="propListingType">Listing Type *</label>
+              <select id="propListingType" required>
+                <option value="sale">For Sale (Buy)</option>
+                <option value="rent">For Rent / Lease</option>
+              </select>
+            </div>
+
+            <div class="form-group-poster">
+              <label for="propPrice">Price in INR (Numeric) *</label>
+              <input type="number" id="propPrice" placeholder="e.g. 4500000 or 25000 for rent" required>
+            </div>
+
+            <div class="form-group-poster">
+              <label for="propArea">Area / Dimensions *</label>
+              <input type="text" id="propArea" placeholder="e.g. 1200 sq.ft (30x40)" required>
+            </div>
+
+            <div class="form-group-poster">
+              <label for="propBeds">Bedrooms (BHK)</label>
+              <input type="number" id="propBeds" value="0" min="0">
+            </div>
+
+            <div class="form-group-poster">
+              <label for="propBaths">Bathrooms</label>
+              <input type="number" id="propBaths" value="0" min="0">
+            </div>
+
+            <div class="form-group-poster full">
+              <label for="propLocation">Location / Address *</label>
+              <input type="text" id="propLocation" value="Near Govt School, Cheemasandra Main Road, Bengaluru 560049" required>
+            </div>
+
+            <!-- Image Selection -->
+            <div class="form-group-poster full">
+              <label>Property Photo (Choose Preset, URL or Upload)</label>
+              <div style="display:grid; grid-template-columns:repeat(5, 1fr); gap:10px; margin-top:6px;">
+                <div class="preset-img-option selected" data-img="assets/images/residential_plot.jpg" style="height:60px; border-radius:6px; overflow:hidden; cursor:pointer; border:2px solid var(--poster-espresso);">
+                  <img src="assets/images/residential_plot.jpg" alt="Plot" style="width:100%; height:100%; object-fit:cover;">
+                </div>
+                <div class="preset-img-option" data-img="assets/images/hero_villa.jpg" style="height:60px; border-radius:6px; overflow:hidden; cursor:pointer; border:2px solid transparent;">
+                  <img src="assets/images/hero_villa.jpg" alt="Villa" style="width:100%; height:100%; object-fit:cover;">
+                </div>
+                <div class="preset-img-option" data-img="assets/images/luxury_apartment.jpg" style="height:60px; border-radius:6px; overflow:hidden; cursor:pointer; border:2px solid transparent;">
+                  <img src="assets/images/luxury_apartment.jpg" alt="Apartment" style="width:100%; height:100%; object-fit:cover;">
+                </div>
+                <div class="preset-img-option" data-img="assets/images/commercial_building.jpg" style="height:60px; border-radius:6px; overflow:hidden; cursor:pointer; border:2px solid transparent;">
+                  <img src="assets/images/commercial_building.jpg" alt="Commercial" style="width:100%; height:100%; object-fit:cover;">
+                </div>
+                <div class="preset-img-option" data-img="assets/images/independent_house.jpg" style="height:60px; border-radius:6px; overflow:hidden; cursor:pointer; border:2px solid transparent;">
+                  <img src="assets/images/independent_house.jpg" alt="House" style="width:100%; height:100%; object-fit:cover;">
+                </div>
+              </div>
+
+              <div style="display:flex; gap:10px; margin-top:10px;">
+                <input type="text" id="propImageUrl" value="assets/images/residential_plot.jpg" style="flex:1;" placeholder="Image URL">
+                <label class="btn btn-outline-dark btn-sm" style="margin:0; cursor:pointer; white-space:nowrap;">
+                  <i class="fa-solid fa-upload"></i> Upload <input type="file" id="propImageFile" accept="image/*" style="display:none;">
+                </label>
+              </div>
+            </div>
+
+            <!-- Badges -->
+            <div class="form-group-poster full">
+              <label>Special Badges</label>
+              <div style="display:flex; gap:20px;">
+                <label style="display:flex; align-items:center; gap:8px; cursor:pointer;"><input type="checkbox" id="propBadgeHot"> 🔥 Hot Deal</label>
+                <label style="display:flex; align-items:center; gap:8px; cursor:pointer;"><input type="checkbox" id="propBadgeVerified" checked> ✓ Verified Title</label>
+              </div>
+            </div>
+
+            <!-- Amenities -->
+            <div class="form-group-poster full">
+              <label>Amenities</label>
+              <div style="display:grid; grid-template-columns:repeat(3, 1fr); gap:10px; font-size:0.85rem;">
+                <label><input type="checkbox" name="propAmenities" value="Khata A" checked> Khata A</label>
+                <label><input type="checkbox" name="propAmenities" value="DC Converted" checked> DC Converted</label>
+                <label><input type="checkbox" name="propAmenities" value="Borewell Water" checked> Borewell Water</label>
+                <label><input type="checkbox" name="propAmenities" value="30ft Wide Road" checked> 30ft Wide Road</label>
+                <label><input type="checkbox" name="propAmenities" value="Gated Layout"> Gated Layout</label>
+                <label><input type="checkbox" name="propAmenities" value="Near Govt School" checked> Near Govt School</label>
+              </div>
+            </div>
+
+            <div class="form-group-poster full">
+              <label for="propDescription">Description *</label>
+              <textarea id="propDescription" rows="3" placeholder="Accurate description..." required></textarea>
+            </div>
+          </div>
+
+          <div style="display:flex; justify-content:flex-end; gap:12px; margin-top:16px;">
+            <button type="button" class="btn btn-outline-dark modal-close-btn">Cancel</button>
+            <button type="submit" class="btn btn-primary"><i class="fa-solid fa-cloud-arrow-up"></i> Publish Property</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <!-- Property Details Modal -->
+  <div class="modal-overlay" id="propertyDetailsModal">
+    <div class="modal-container modal-lg">
+      <div class="modal-header">
+        <h3><i class="fa-solid fa-house"></i> Property Specifications</h3>
+        <button class="modal-close-btn"><i class="fa-solid fa-xmark"></i></button>
+      </div>
+      <div class="modal-body" id="propertyDetailsContent">
+        <!-- Rendered via JS -->
+      </div>
+    </div>
+  </div>
+
+  <!-- Wishlist Modal -->
+  <div class="modal-overlay" id="wishlistModal">
+    <div class="modal-container">
+      <div class="modal-header">
+        <h3><i class="fa-solid fa-heart" style="color:#E11D48;"></i> Saved Properties</h3>
+        <button class="modal-close-btn"><i class="fa-solid fa-xmark"></i></button>
+      </div>
+      <div class="modal-body" id="wishlistItemsContainer">
+        <!-- Rendered via JS -->
+      </div>
+    </div>
+  </div>
+
+  <!-- Video Virtual Tour Modal -->
+  <div class="modal-overlay" id="videoModal">
+    <div class="modal-container modal-lg">
+      <div class="modal-header">
+        <h3><i class="fa-solid fa-circle-play text-gold"></i> Property Virtual Tour</h3>
+        <button class="modal-close-btn"><i class="fa-solid fa-xmark"></i></button>
+      </div>
+      <div class="modal-body" style="padding:0; background:#000; border-radius:0 0 16px 16px; overflow:hidden;">
+        <div style="position:relative; padding-top:56.25%;">
+          <iframe 
+            src="https://www.youtube-nocookie.com/embed/dQw4w9WgXcQ?autoplay=0" 
+            title="Bangalore Luxury Property Tour"
+            style="position:absolute; top:0; left:0; width:100%; height:100%; border:none;"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+            allowfullscreen>
+          </iframe>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Toast Notification Container -->
+  <div class="toast-container" id="toastContainer"></div>
+
+  <!-- Main JS -->
+  <script src="app.js"></script>
+</body>
+</html>
