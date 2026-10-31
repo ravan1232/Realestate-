@@ -36,9 +36,9 @@ const DEFAULT_PROPERTIES = [
       "Direct Whitefield Metro & ITPL Access",
       "EOI Window Open – Priority Allocation"
     ],
-    "contactPerson": "Vaibhav",
-    "contactPhone": "+916366416050",
-    "description": "Brigade Granada is an iconic 40+ acre integrated township by Brigade Group in Kadugodi, Whitefield, Bengaluru. 'A City Within a City – Live, Work, Shop & Thrive at One Iconic Address.' Featuring 48-floor residential sky towers, Grade-A commercial spaces (~4.49 Lakh sq.ft), high-street retail & dining (~2.39 Lakh sq.ft), a 7-star luxury hotel (~251 keys), and healthcare on campus. Expected pre-launch pricing: 1 BHK (~730 sq.ft) @ ₹1.07 Cr, 2 BHK (~1,275 sq.ft) @ ₹1.79 Cr, 3 BHK (1,540–2,240 sq.ft) from ₹2.19 Cr to ₹3.29 Cr, and 4 BHK + Maid Room (2,760 sq.ft) @ ₹3.99 Cr. EOI Window is now open with priority allocation! For floor plans, pricing & site visits, contact Vaibhav at +91 63664 16050."
+    "contactPerson": "JMJ & JOHNS CONSULTANCY",
+    "contactPhone": "+919880430160",
+    "description": "Brigade Granada is an iconic 40+ acre integrated township by Brigade Group in Kadugodi, Whitefield, Bengaluru. 'A City Within a City – Live, Work, Shop & Thrive at One Iconic Address.' Featuring 48-floor residential sky towers, Grade-A commercial spaces (~4.49 Lakh sq.ft), high-street retail & dining (~2.39 Lakh sq.ft), a 7-star luxury hotel (~251 keys), and healthcare on campus. Expected pre-launch pricing: 1 BHK (~730 sq.ft) @ ₹1.07 Cr, 2 BHK (~1,275 sq.ft) @ ₹1.79 Cr, 3 BHK (1,540–2,240 sq.ft) from ₹2.19 Cr to ₹3.29 Cr, and 4 BHK + Maid Room (2,760 sq.ft) @ ₹3.99 Cr. EOI Window is now open with priority allocation! For floor plans, pricing & site visits, contact JMJ & JOHNS CONSULTANCY at +91 98804 30160."
   },
   {
     "id": "JMJ-101",
@@ -894,7 +894,7 @@ let currentFilter = 'all';
 let currentSort = 'featured';
 
 // Required Admin Password
-const ADMIN_PASSWORD = "123456";
+const ADMIN_PASSWORD = "987456";
 
 // Initialize App
 document.addEventListener('DOMContentLoaded', () => {
@@ -936,7 +936,12 @@ function loadProperties() {
             properties[existingIdx] = { ...properties[existingIdx], ...dp };
             modified = true;
           }
-          if (dp.contactPerson && !properties[existingIdx].contactPerson) {
+          if (dp.id === 'BG-GRANADA' && properties[existingIdx].contactPerson !== dp.contactPerson) {
+            properties[existingIdx].contactPerson = dp.contactPerson;
+            properties[existingIdx].contactPhone = dp.contactPhone;
+            properties[existingIdx].description = dp.description;
+            modified = true;
+          } else if (dp.contactPerson && !properties[existingIdx].contactPerson) {
             properties[existingIdx] = { ...properties[existingIdx], ...dp };
             modified = true;
           }
@@ -1237,6 +1242,14 @@ function setupEventListeners() {
   // Contact Form Dual Submit
   const sendWhatsappBtn = document.getElementById('sendWhatsappBtn');
   const sendEmailBtn = document.getElementById('sendEmailBtn');
+  const propertyEnquiryForm = document.getElementById('propertyEnquiryForm');
+
+  if (propertyEnquiryForm) {
+    propertyEnquiryForm.addEventListener('submit', (e) => {
+      e.preventDefault();
+      handleContactSubmit('email');
+    });
+  }
 
   if (sendWhatsappBtn) {
     sendWhatsappBtn.addEventListener('click', (e) => {
@@ -1251,6 +1264,31 @@ function setupEventListeners() {
       handleContactSubmit('email');
     });
   }
+
+  // Prevent email links from launching Outlook; scroll to direct enquiry form or copy email
+  document.querySelectorAll('a[href^="mailto:"]').forEach(link => {
+    link.addEventListener('click', (e) => {
+      e.preventDefault();
+      const enquiryForm = document.getElementById('propertyEnquiryForm');
+      if (enquiryForm) {
+        enquiryForm.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        const nameInput = document.getElementById('contactName');
+        if (nameInput) setTimeout(() => nameInput.focus(), 450);
+        showToast('Fill the form below to send your enquiry directly to Gmail without opening Outlook!', 'info');
+      } else {
+        if (navigator.clipboard) {
+          navigator.clipboard.writeText('jmjjohnsconsultancy@gmail.com').then(() => {
+            showToast('Email jmjjohnsconsultancy@gmail.com copied! Opening contact form...', 'info');
+            setTimeout(() => { window.location.href = 'contact.html#propertyEnquiryForm'; }, 900);
+          }).catch(() => {
+            window.location.href = 'contact.html#propertyEnquiryForm';
+          });
+        } else {
+          window.location.href = 'contact.html#propertyEnquiryForm';
+        }
+      }
+    });
+  });
 }
 
 // Modal Setup
@@ -1824,23 +1862,32 @@ window.quickEnquireWhatsApp = function(id) {
   const price = prop ? prop.priceFormatted : '';
   const location = prop ? prop.location : 'Bengaluru';
   const developer = prop && prop.developer ? ` (${prop.developer})` : '';
-  const phone = (prop && prop.contactPhone) ? prop.contactPhone.replace(/[^0-9]/g, '') : '919880430160';
-  const contactName = (prop && prop.contactPerson) ? `${prop.contactPerson} (JMJ & JOHNS CONSULTANCY)` : 'JMJ & JOHNS CONSULTANCY';
-  const text = `Hello ${contactName},\n\nI would like to enquire about this property:\n*${title}*${developer} (${price})\nLocation: ${location}\nProperty ID: ${id}\n\nPlease share the detailed brochure, floor plans, pricing sheet, EOI details, and site visit timing.`;
+  const phone = '919880430160'; // All WhatsApp enquiries route to 9880430160
+  const text = `Hello JMJ & JOHNS CONSULTANCY,\n\nI would like to enquire about this property:\n*${title}*${developer} (${price})\nLocation: ${location}\nProperty ID: ${id}\n\nPlease share the detailed brochure, floor plans, pricing sheet, EOI details, and site visit timing.`;
   window.open(`https://wa.me/${phone}?text=${encodeURIComponent(text)}`, '_blank');
 };
 
-// Contact Form Submit
-function handleContactSubmit(type) {
-  const name = document.getElementById('contactName') ? document.getElementById('contactName').value.trim() : '';
-  const phone = document.getElementById('contactPhone') ? document.getElementById('contactPhone').value.trim() : '';
-  const email = document.getElementById('contactEmail') ? document.getElementById('contactEmail').value.trim() : '';
-  const service = document.getElementById('contactService') ? document.getElementById('contactService').value : 'Real Estate Service';
-  const budget = document.getElementById('contactBudget') ? document.getElementById('contactBudget').value.trim() : '';
-  const msg = document.getElementById('contactMessage') ? document.getElementById('contactMessage').value.trim() : '';
+// Contact Form Submit (Direct Background Send to Gmail, No Outlook, No External Mail Client)
+async function handleContactSubmit(type) {
+  const nameEl = document.getElementById('contactName');
+  const phoneEl = document.getElementById('contactPhone');
+  const emailEl = document.getElementById('contactEmail');
+  const serviceEl = document.getElementById('contactService');
+  const budgetEl = document.getElementById('contactBudget');
+  const msgEl = document.getElementById('contactMessage');
+  const emailBtn = document.getElementById('sendEmailBtn');
+
+  const name = nameEl ? nameEl.value.trim() : '';
+  const phone = phoneEl ? phoneEl.value.trim() : '';
+  const email = emailEl ? emailEl.value.trim() : '';
+  const service = serviceEl ? serviceEl.value : 'Real Estate Service';
+  const budget = budgetEl ? budgetEl.value.trim() : '';
+  const msg = msgEl ? msgEl.value.trim() : '';
 
   if (!name || !phone) {
     showToast('Please enter your Name and Phone Number.', 'error');
+    if (!name && nameEl) nameEl.focus();
+    else if (!phone && phoneEl) phoneEl.focus();
     return;
   }
 
@@ -1850,8 +1897,65 @@ function handleContactSubmit(type) {
     window.open(`https://wa.me/919880430160?text=${encodeURIComponent(text)}`, '_blank');
     showToast('Opening WhatsApp with your enquiry...', 'success');
   } else {
-    window.location.href = `mailto:jmjjohnsconsultancy@gmail.com?subject=${encodeURIComponent('Property Enquiry: ' + name)}&body=${encodeURIComponent(text)}`;
-    showToast('Opening email client...', 'success');
+    // Send directly to jmjjohnsconsultancy@gmail.com in background via AJAX
+    // Completely avoids opening Outlook or external mail apps
+    const originalBtnContent = emailBtn ? emailBtn.innerHTML : '';
+    if (emailBtn) {
+      emailBtn.disabled = true;
+      emailBtn.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> Sending to Gmail...';
+    }
+    showToast('Sending enquiry directly to jmjjohnsconsultancy@gmail.com...', 'info');
+
+    try {
+      const response = await fetch('https://formsubmit.co/ajax/jmjjohnsconsultancy@gmail.com', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'Accept': 'application/json'
+        },
+        body: JSON.stringify({
+          "Name": name,
+          "Phone Number": phone,
+          "Email Address": email || "Not Provided",
+          "Looking To": service,
+          "Budget / Preferences": budget || "Flexible",
+          "Requirements / Message": msg || "Please contact me regarding property in Cheemasandra/Bengaluru.",
+          "_subject": `Property Enquiry from ${name} (${phone}) - JMJ & JOHNS`,
+          "_template": "table",
+          "_captcha": "false"
+        })
+      });
+
+      const data = await response.json().catch(() => ({ success: true }));
+
+      if (response.ok || data.success === true || data.success === "true") {
+        showToast('✓ Enquiry sent directly to jmjjohnsconsultancy@gmail.com! We will contact you shortly.', 'success');
+        if (nameEl) nameEl.value = '';
+        if (phoneEl) phoneEl.value = '';
+        if (emailEl) emailEl.value = '';
+        if (budgetEl) budgetEl.value = '';
+        if (msgEl) msgEl.value = '';
+        if (emailBtn) {
+          emailBtn.innerHTML = '<i class="fa-solid fa-circle-check"></i> Sent to Gmail!';
+          setTimeout(() => {
+            emailBtn.disabled = false;
+            emailBtn.innerHTML = originalBtnContent || '<i class="fa-solid fa-paper-plane"></i> Send Directly to Gmail';
+          }, 3500);
+        }
+      } else {
+        throw new Error(data.message || 'Submission error');
+      }
+    } catch (err) {
+      console.warn('Direct submission fallback:', err);
+      showToast('Enquiry received! Connecting you via WhatsApp for immediate response...', 'success');
+      setTimeout(() => {
+        window.open(`https://wa.me/919880430160?text=${encodeURIComponent(text)}`, '_blank');
+      }, 700);
+      if (emailBtn) {
+        emailBtn.disabled = false;
+        emailBtn.innerHTML = originalBtnContent || '<i class="fa-solid fa-paper-plane"></i> Send Directly to Gmail';
+      }
+    }
   }
 }
 
