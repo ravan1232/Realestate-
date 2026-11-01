@@ -1,10 +1,11 @@
 /**
  * JMJ & JOHNS CONSULTANCY - Real Estate & Property Consultants
- * Location: Landmark: Near Government School, Cheemasandra Main Road, Bengaluru – 560049
+ * Buy | Sell | Rent | Property Consultancy Across Bangalore
+ * Office: #22, Ananya Layout, Opposite to Govt School, Cheemasandra, Bangalore – 560049
  * Phone: +91 98804 30160 | Email: jmjjohnsconsultancy@gmail.com
  */
 
-// Default Seed Properties (Cheemasandra & Surrounding Bengaluru)
+// Default Seed Properties (Across Bangalore & Office: #22 Ananya Layout, Cheemasandra)
 const DEFAULT_PROPERTIES = [
   {
     "id": "BG-GRANADA",
@@ -47,7 +48,7 @@ const DEFAULT_PROPERTIES = [
     "listingType": "sale",
     "price": 4500000,
     "priceFormatted": "₹45.00 Lakhs",
-    "location": "Near Govt School, Cheemasandra Main Road, Bengaluru 560049",
+    "location": "#22, Ananya Layout, Opposite to Govt School, Cheemasandra, Bangalore 560049",
     "area": "1,200 sq.ft (30x40)",
     "beds": 0,
     "baths": 0,
@@ -64,7 +65,7 @@ const DEFAULT_PROPERTIES = [
       "Underground Drainage",
       "Near Govt School"
     ],
-    "description": "Prime residential layout corner plot situated right near Government School, Cheemasandra Main Road. Clear titles, immediate registration, clear road access, well-connected to Budigere Cross and Old Madras Road."
+    "description": "Prime residential layout corner plot situated near #22 Ananya Layout, Opposite to Govt School, Cheemasandra, Bangalore 560049. Clear titles, immediate registration, clear road access, well-connected to Budigere Cross and Old Madras Road."
   },
   {
     "id": "JMJ-102",
@@ -73,7 +74,7 @@ const DEFAULT_PROPERTIES = [
     "listingType": "sale",
     "price": 13500000,
     "priceFormatted": "₹1.35 Crore",
-    "location": "Cheemasandra Main Road, Bengaluru 560049",
+    "location": "East Bangalore (Near Ananya Layout), Bangalore 560049",
     "area": "2,400 sq.ft Built-up",
     "beds": 3,
     "baths": 3,
@@ -90,7 +91,7 @@ const DEFAULT_PROPERTIES = [
       "Borewell + Cauvery provision",
       "24/7 Security"
     ],
-    "description": "Architect-designed 3 BHK contemporary duplex villa on Cheemasandra Main Road with high ceilings, private deck, branded Italian fittings, and serene green surroundings. Close to schools and daily conveniences."
+    "description": "Architect-designed 3 BHK contemporary duplex villa in East Bangalore with high ceilings, private deck, branded Italian fittings, and serene green surroundings. Close to schools and daily conveniences."
   },
   {
     "id": "JMJ-103",
@@ -99,7 +100,7 @@ const DEFAULT_PROPERTIES = [
     "listingType": "sale",
     "price": 6800000,
     "priceFormatted": "₹68.00 Lakhs",
-    "location": "Budigere Cross Link Road, near Cheemasandra Main Road, Bengaluru 560049",
+    "location": "Budigere Cross Link Road, East Bangalore 560049",
     "area": "1,180 sq.ft",
     "beds": 2,
     "baths": 2,
@@ -124,7 +125,7 @@ const DEFAULT_PROPERTIES = [
     "listingType": "rent",
     "price": 32000,
     "priceFormatted": "₹32,000 / month",
-    "location": "Near Govt School, Cheemasandra Main Road, Bengaluru 560049",
+    "location": "#22, Ananya Layout, Opposite to Govt School, Cheemasandra, Bangalore 560049",
     "area": "2,100 sq.ft",
     "beds": 4,
     "baths": 4,
@@ -139,7 +140,7 @@ const DEFAULT_PROPERTIES = [
       "24/7 Water Supply",
       "Pet Friendly"
     ],
-    "description": "Spacious and peaceful 4 BHK independent duplex house available for family rent. Situated in a safe residential layout near Cheemasandra Govt School with pleasant ventilation."
+    "description": "Spacious and peaceful 4 BHK independent duplex house available for family rent. Situated in a safe residential layout near Govt School, Ananya Layout with pleasant ventilation."
   },
   {
     "id": "JMJ-105",
@@ -148,7 +149,7 @@ const DEFAULT_PROPERTIES = [
     "listingType": "rent",
     "price": 65000,
     "priceFormatted": "₹65,000 / month",
-    "location": "Cheemasandra Main Road - Avalahalli Link, Bengaluru 560049",
+    "location": "Avalahalli Link Road, East Bangalore 560049",
     "area": "1,850 sq.ft",
     "beds": 0,
     "baths": 2,
@@ -173,7 +174,7 @@ const DEFAULT_PROPERTIES = [
     "listingType": "sale",
     "price": 5500000,
     "priceFormatted": "₹55.00 Lakhs",
-    "location": "Near Govt School, Cheemasandra Main Road, Bengaluru 560049",
+    "location": "#22, Ananya Layout, Opposite to Govt School, Cheemasandra, Bangalore 560049",
     "area": "1,500 sq.ft (30x50)",
     "beds": 0,
     "baths": 0,
@@ -189,7 +190,7 @@ const DEFAULT_PROPERTIES = [
       "A-Khata Eligible",
       "Electricity & Water"
     ],
-    "description": "100% Vastu-compliant East-facing plot in a fast-appreciating locality of Cheemasandra. Ideal for immediate home construction or high-return investment."
+    "description": "100% Vastu-compliant East-facing plot in a fast-appreciating locality across Bangalore. Ideal for immediate home construction or high-return investment."
   },
   {
     "id": "VRE-201",
@@ -948,13 +949,11 @@ function loadProperties() {
         }
       });
 
-      // Migrate legacy 560059 references in location to 560049
+      // Migrate legacy references to new address
       properties.forEach(p => {
-        if (p.location && p.location.includes('560059')) {
+        if (p.location && (p.location.includes('560059') || p.location.includes('Near Govt School, Cheemasandra Main Road'))) {
           p.location = p.location.replace(/560059/g, '560049');
-          if (!p.location.includes('Main Road') && p.location.includes('Cheemasandra')) {
-            p.location = p.location.replace('Cheemasandra', 'Cheemasandra Main Road');
-          }
+          p.location = p.location.replace('Near Govt School, Cheemasandra Main Road, Bengaluru 560049', '#22, Ananya Layout, Opposite to Govt School, Cheemasandra, Bangalore 560049');
           modified = true;
         }
       });
@@ -1229,7 +1228,7 @@ function setupEventListeners() {
   // Restore Defaults Button
   document.querySelectorAll('.restore-defaults-btn').forEach(btn => {
     btn.addEventListener('click', () => {
-      if (confirm('Restore default properties in Cheemasandra?')) {
+      if (confirm('Restore default properties across Bangalore?')) {
         properties = [...DEFAULT_PROPERTIES];
         saveProperties();
         if (document.getElementById('propertiesGrid')) renderProperties();
@@ -1891,7 +1890,7 @@ async function handleContactSubmit(type) {
     return;
   }
 
-  const text = `Hello JMJ & JOHNS CONSULTANCY,\n\nI have an enquiry regarding real estate near Govt School, Cheemasandra Main Road, Bengaluru 560049.\n\n*Name:* ${name}\n*Phone:* ${phone}\n*Email:* ${email || 'N/A'}\n*Requirement:* ${service}\n*Budget/Preferences:* ${budget || 'Flexible'}\n*Notes:* ${msg || 'Please get in touch with me.'}`;
+  const text = `Hello JMJ & JOHNS CONSULTANCY,\n\nI have an enquiry regarding real estate across Bangalore (Office: #22 Ananya Layout, Opposite Govt School, Cheemasandra, Bangalore 560049).\n\n*Name:* ${name}\n*Phone:* ${phone}\n*Email:* ${email || 'N/A'}\n*Requirement:* ${service}\n*Budget/Preferences:* ${budget || 'Flexible'}\n*Notes:* ${msg || 'Please get in touch with me.'}`;
 
   if (type === 'whatsapp') {
     window.open(`https://wa.me/919880430160?text=${encodeURIComponent(text)}`, '_blank');
@@ -1919,7 +1918,7 @@ async function handleContactSubmit(type) {
           "Email Address": email || "Not Provided",
           "Looking To": service,
           "Budget / Preferences": budget || "Flexible",
-          "Requirements / Message": msg || "Please contact me regarding property in Cheemasandra/Bengaluru.",
+          "Requirements / Message": msg || "Please contact me regarding property across Bangalore.",
           "_subject": `Property Enquiry from ${name} (${phone}) - JMJ & JOHNS`,
           "_template": "table",
           "_captcha": "false"

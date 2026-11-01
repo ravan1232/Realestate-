@@ -1825,6 +1825,11 @@ img {
     padding: 8px 16px;
     font-size: 0.84rem;
   }
+  .btn-brigade-partner-pill {
+    padding: 6px 12px;
+    font-size: 0.78rem;
+    gap: 6px;
+  }
 }
 
 @media (max-width: 1080px) {
@@ -3128,6 +3133,39 @@ img {
   color: var(--poster-white);
   transform: translateY(-1px);
   box-shadow: 0 6px 18px rgba(36, 23, 18, 0.25);
+}
+
+.btn-brigade-partner-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(212, 175, 55, 0.12);
+  color: var(--poster-espresso);
+  border: 1.5px solid var(--poster-gold);
+  padding: 8px 18px;
+  border-radius: 9999px;
+  font-size: 0.85rem;
+  font-weight: 700;
+  text-decoration: none;
+  transition: all var(--trans-fast);
+  white-space: nowrap;
+}
+
+.btn-brigade-partner-pill i {
+  color: var(--poster-gold-dark);
+  font-size: 0.95rem;
+}
+
+.btn-brigade-partner-pill:hover {
+  background: var(--poster-espresso);
+  color: var(--poster-gold-light);
+  border-color: var(--poster-espresso);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 14px rgba(36, 23, 18, 0.18);
+}
+
+.btn-brigade-partner-pill:hover i {
+  color: var(--poster-gold-light);
 }
 
 /* Hero Section */
