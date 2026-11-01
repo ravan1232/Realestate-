@@ -897,8 +897,18 @@ let currentSort = 'featured';
 // Required Admin Password
 const ADMIN_PASSWORD = "987456";
 
+// Force all pages to always open from the beginning / top of the page
+if ('scrollRestoration' in history) {
+  history.scrollRestoration = 'manual';
+}
+
 // Initialize App
 document.addEventListener('DOMContentLoaded', () => {
+  // If no anchor hash is specified, ensure page loads right from the top
+  if (!window.location.hash) {
+    window.scrollTo(0, 0);
+  }
+
   loadProperties();
   checkAdminSession();
   setupNavbar();
@@ -1277,13 +1287,13 @@ function setupEventListeners() {
       } else {
         if (navigator.clipboard) {
           navigator.clipboard.writeText('jmjjohnsconsultancy@gmail.com').then(() => {
-            showToast('Email jmjjohnsconsultancy@gmail.com copied! Opening contact form...', 'info');
-            setTimeout(() => { window.location.href = 'contact.html#propertyEnquiryForm'; }, 900);
+            showToast('Email jmjjohnsconsultancy@gmail.com copied! Opening contact page...', 'info');
+            setTimeout(() => { window.location.href = 'contact.html'; }, 900);
           }).catch(() => {
-            window.location.href = 'contact.html#propertyEnquiryForm';
+            window.location.href = 'contact.html';
           });
         } else {
-          window.location.href = 'contact.html#propertyEnquiryForm';
+          window.location.href = 'contact.html';
         }
       }
     });

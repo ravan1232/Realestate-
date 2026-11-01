@@ -3244,6 +3244,37 @@ img {
   color: #FFF;
 }
 
+.btn-brigade-partner-hero {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  background: linear-gradient(135deg, #1C100B 0%, #2E1B13 100%);
+  color: #FFF;
+  border: 1.5px solid var(--poster-gold);
+  padding: 13px 24px;
+  border-radius: 9999px;
+  font-size: 0.92rem;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  text-decoration: none;
+  transition: all 0.25s ease;
+  box-shadow: 0 8px 22px rgba(28, 16, 11, 0.25);
+}
+
+.btn-brigade-partner-hero:hover {
+  transform: translateY(-2px);
+  background: linear-gradient(135deg, #2E1B13 0%, #42281D 100%);
+  border-color: var(--poster-gold-light);
+  box-shadow: 0 12px 28px rgba(212, 175, 55, 0.35);
+  color: #FFF;
+}
+
+.btn-brigade-partner-hero i.fa-building-circle-check {
+  font-size: 1.15rem;
+  color: var(--poster-gold);
+  flex-shrink: 0;
+}
+
 .btn-watch-video {
   display: inline-flex;
   align-items: center;
@@ -3907,6 +3938,21 @@ img {
 }
 
 @media (max-width: 768px) {
+  .hero-buttons-row {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 12px;
+  }
+  .btn-explore-prime,
+  .btn-brigade-partner-hero {
+    width: 100%;
+    justify-content: center;
+    text-align: center;
+  }
+  .btn-watch-video {
+    justify-content: center;
+    padding: 8px 0;
+  }
   .hero-primeluxe-section {
     padding: 24px 0 60px;
   }

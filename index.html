@@ -11,6 +11,12 @@
   <link rel="icon" type="image/jpeg" href="assets/images/logo.jpg">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
   <link rel="stylesheet" href="styles.css">
+  <script>
+    if ('scrollRestoration' in history) {
+      history.scrollRestoration = 'manual';
+    }
+    window.scrollTo(0, 0);
+  </script>
 </head>
 <body>
 
@@ -19,7 +25,7 @@
     <div class="container">
       <div class="topbar-info">
         <span class="topbar-item">
-          <i class="fa-solid fa-location-dot"></i> Office: #22, Ananya Layout, Opposite to Govt School, Cheemasandra, Bangalore – 560049
+          <i class="fa-solid fa-location-dot"></i> <a href="https://maps.app.goo.gl/wHwjw6VWLZv4vazL9?g_st=iw" target="_blank" rel="noopener noreferrer" style="color:inherit; text-decoration:none;">Office: #22, Ananya Layout, Opposite to Govt School, Cheemasandra, Bangalore – 560049</a>
         </span>
         <span class="topbar-item">
           <i class="fa-solid fa-phone"></i> <a href="tel:+919880430160">+91 98804 30160</a>
@@ -43,7 +49,7 @@
         <img src="assets/images/logo.jpg" alt="JMJ & JOHNS Logo">
         <div class="brand-title-wrap">
           <h1 class="brand-title">JMJ & JOHNS</h1>
-          <span class="brand-subtitle">EX-SERVICEMEN REAL ESTATE CONSULTANCY</span>
+          <span class="brand-subtitle">EX AIRFORCE REAL ESTATE CONSULTANCY</span>
         </div>
       </a>
 
@@ -55,11 +61,6 @@
           <li><a href="properties.html" class="nav-link">Properties</a></li>
           <li><a href="contact.html" class="nav-link">Contact Us</a></li>
           <li><a href="admin.html" class="nav-link nav-link-admin admin-login-trigger" id="adminLoginNavBtn"><i class="fa-solid fa-shield-halved"></i> Admin</a></li>
-          <li class="mobile-only">
-            <a href="#brigade-granada" class="nav-link" style="color:var(--poster-gold-dark); font-weight:700;">
-              <i class="fa-solid fa-building-circle-check text-gold"></i> Dedicated Channel Partner - Brigade Properties
-            </a>
-          </li>
           <li class="mobile-drawer-footer mobile-only">
             <a href="contact.html" class="btn-drawer-cta">
               <span>Get In Touch</span>
@@ -74,17 +75,13 @@
               </a>
             </div>
             <div class="drawer-meta-info">
-              <i class="fa-solid fa-location-dot"></i> #22, Ananya Layout, Opposite to Govt School, Cheemasandra, Bangalore – 560049
+              <i class="fa-solid fa-location-dot"></i> <a href="https://maps.app.goo.gl/wHwjw6VWLZv4vazL9?g_st=iw" target="_blank" rel="noopener noreferrer" style="color:inherit; text-decoration:none;">#22, Ananya Layout, Opposite to Govt School, Cheemasandra, Bangalore – 560049</a>
             </div>
           </li>
         </ul>
       </nav>
 
       <div class="nav-actions">
-        <a href="#brigade-granada" class="btn-brigade-partner-pill desktop-only" title="Dedicated Channel Partner for all Brigade Properties">
-          <i class="fa-solid fa-building-circle-check text-gold"></i>
-          <span>Dedicated Channel Partner for all Brigade Properties</span>
-        </a>
         <a href="contact.html" class="btn-prime-pill desktop-only">
           <span>Get In Touch</span>
           <i class="fa-solid fa-arrow-right"></i>
@@ -139,6 +136,10 @@
             <a href="#properties" class="btn-explore-prime">
               <span>Explore Properties</span>
               <i class="fa-solid fa-arrow-right"></i>
+            </a>
+            <a href="#brigade-granada" class="btn-brigade-partner-hero">
+              <i class="fa-solid fa-building-circle-check text-gold"></i>
+              <span>Dedicated Channel Partner for all Brigade Properties</span>
             </a>
             <button type="button" class="btn-watch-video" onclick="openVideoModal()">
               <span class="play-icon-bubble"><i class="fa-solid fa-play"></i></span>
@@ -804,7 +805,7 @@
               <div class="contact-icon-poster"><i class="fa-solid fa-location-dot"></i></div>
               <div class="contact-row-text">
                 <h5>Office Location</h5>
-                <p><strong>Address:</strong> #22, Ananya Layout, Opposite to Govt School, Cheemasandra, Bangalore – 560049</p>
+                <p><strong>Address:</strong> <a href="https://maps.app.goo.gl/wHwjw6VWLZv4vazL9?g_st=iw" target="_blank" rel="noopener noreferrer" style="color:inherit; text-decoration:none;">#22, Ananya Layout, Opposite to Govt School, Cheemasandra, Bangalore – 560049 <i class="fa-solid fa-arrow-up-right-from-square" style="font-size:0.75rem; margin-left:4px; color:var(--poster-gold);"></i></a></p>
               </div>
             </div>
 
@@ -896,7 +897,7 @@
         <div class="map-poster-header">
           <h4><i class="fa-solid fa-map-location-dot"></i> Office Location: #22, Ananya Layout, Opposite to Govt School, Cheemasandra, Bangalore – 560049</h4>
           <span style="font-size:0.85rem; color:#6E5B50;">Landmark: #22 Ananya Layout, Opp. Govt School • PIN: 560049</span>
-          <a href="https://maps.google.com/?q=%2322+Ananya+Layout+Opposite+to+Govt+School+Cheemasandra+Bangalore+560049" target="_blank" class="btn btn-outline-dark btn-sm">
+          <a href="https://maps.app.goo.gl/wHwjw6VWLZv4vazL9?g_st=iw" target="_blank" rel="noopener noreferrer" class="btn btn-outline-dark btn-sm">
             <i class="fa-solid fa-arrow-up-right-from-square"></i> Open in Google Maps
           </a>
         </div>
@@ -957,7 +958,7 @@
         <div class="footer-col">
           <h4>Contact & Location</h4>
           <ul class="footer-contact-details">
-            <li><i class="fa-solid fa-location-dot"></i> Office: #22, Ananya Layout, Opposite to Govt School, Cheemasandra, Bangalore – 560049</li>
+            <li><i class="fa-solid fa-location-dot"></i> <a href="https://maps.app.goo.gl/wHwjw6VWLZv4vazL9?g_st=iw" target="_blank" rel="noopener noreferrer" style="color:#FFF; text-decoration:none;">Office: #22, Ananya Layout, Opposite to Govt School, Cheemasandra, Bangalore – 560049</a></li>
             <li><i class="fa-solid fa-phone"></i> <a href="tel:+919880430160" style="color:#FFF;">+91 98804 30160</a></li>
             <li><i class="fa-solid fa-envelope"></i> <a href="mailto:jmjjohnsconsultancy@gmail.com" style="color:#FFF;">jmjjohnsconsultancy@gmail.com</a></li>
             <li><i class="fa-solid fa-shield-halved"></i> <a href="admin.html" style="color:var(--poster-gold-light);">Admin Login</a></li>
