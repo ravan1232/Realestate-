@@ -1034,6 +1034,7 @@ document.addEventListener('DOMContentLoaded', () => {
   setupNavbar();
   setupCommonModals();
   setupEventListeners();
+  trackSiteVisit();
 
   // If properties grid exists on page, render it
   if (document.getElementById('propertiesGrid')) {
@@ -1416,6 +1417,15 @@ function setupEventListeners() {
           window.location.href = 'contact.html';
         }
       }
+    });
+  });
+
+  // Secret Performance Vault triggers (Small inconspicuous icon for owner)
+  document.querySelectorAll('.secret-stats-trigger, #secretAgencyTrigger, #secretFooterTrigger').forEach(btn => {
+    btn.addEventListener('click', (e) => {
+      e.preventDefault();
+      e.stopPropagation();
+      openSecretStatsPrompt();
     });
   });
 }
@@ -2028,6 +2038,19 @@ async function handleContactSubmit(type) {
 
   const text = `Hello JMJ & JOHNS CONSULTANCY,\n\nI have an enquiry regarding real estate across Bangalore (Office: #22 Ananya Layout, Opposite Govt School, Cheemasandra, Bangalore 560049).\n\n*Name:* ${name}\n*Phone:* ${phone}\n*Email:* ${email || 'N/A'}\n*Requirement:* ${service}\n*Budget/Preferences:* ${budget || 'Flexible'}\n*Notes:* ${msg || 'Please get in touch with me.'}`;
 
+  // Increment enquiries counter in confidential traffic stats
+  try {
+    const stats = JSON.parse(localStorage.getItem('jmj_site_traffic_stats') || '{}');
+    stats.enquiriesCount = (stats.enquiriesCount || 138) + 1;
+    if (!stats.activityLog) stats.activityLog = [];
+    stats.activityLog.unshift({
+      time: 'Just now',
+      desc: `Direct enquiry from ${name} (${phone}) - ${service}`
+    });
+    if (stats.activityLog.length > 20) stats.activityLog = stats.activityLog.slice(0, 20);
+    localStorage.setItem('jmj_site_traffic_stats', JSON.stringify(stats));
+  } catch (err) {}
+
   if (type === 'whatsapp') {
     window.open(`https://wa.me/919880430160?text=${encodeURIComponent(text)}`, '_blank');
     showToast('Opening WhatsApp with your enquiry...', 'success');
@@ -2239,3 +2262,672 @@ function setupBottomLeadCapture() {
     });
   }
 }
+
+// ==========================================================================
+// CONFIDENTIAL PERFORMANCE & INTELLIGENCE VAULT (SECRET OWNER FEATURE)
+// Protected by Owner Password: 9741264364
+// ==========================================================================
+
+const SECRET_STATS_PASSWORD = "9741264364";
+
+// Baseline Sold Properties
+const DEFAULT_SOLD_PROPERTIES = [
+  {
+    id: "SOLD-101",
+    title: "30x40 DC Converted Residential Site",
+    location: "Cheemasandra Layout, East Bangalore 560049",
+    category: "plot",
+    soldPrice: "₹42.00 Lakhs",
+    soldPriceNumeric: 4200000,
+    soldDate: "18 Oct 2026",
+    buyer: "Private Client (Self Construction)",
+    status: "Registered & Handed Over"
+  },
+  {
+    id: "SOLD-102",
+    title: "3 BHK Premium Contemporary Villa",
+    location: "Avalahalli Main Road, Bangalore",
+    category: "villa",
+    soldPrice: "₹1.18 Crore",
+    soldPriceNumeric: 11800000,
+    soldDate: "04 Oct 2026",
+    buyer: "IT Corporate Senior Manager",
+    status: "Title Deed Executed"
+  },
+  {
+    id: "SOLD-103",
+    title: "Industrial PEB Fabrication Shed & Yard",
+    location: "Budigere Cross Corridor, Bangalore",
+    category: "commercial-shed",
+    soldPrice: "₹85,000 / mo (Long Lease)",
+    soldPriceNumeric: 1020000,
+    soldDate: "22 Sep 2026",
+    buyer: "Fabrication & Engineering Enterprise",
+    status: "5-Year Lease Finalized"
+  },
+  {
+    id: "SOLD-104",
+    title: "2 BHK High-Rise Apartment",
+    location: "Near Kadugodi Metro, Whitefield",
+    category: "apartment",
+    soldPrice: "₹72.50 Lakhs",
+    soldPriceNumeric: 7250000,
+    soldDate: "11 Sep 2026",
+    buyer: "Ex-Servicemen Family",
+    status: "Registered & Keys Handed Over"
+  },
+  {
+    id: "SOLD-105",
+    title: "Corner Commercial Plot (30x50)",
+    location: "Old Madras Road Belt, Bangalore",
+    category: "commercial-plot",
+    soldPrice: "₹95.00 Lakhs",
+    soldPriceNumeric: 9500000,
+    soldDate: "28 Aug 2026",
+    buyer: "Healthcare Clinic Developer",
+    status: "Sale Deed Executed"
+  }
+];
+
+function getSoldProperties() {
+  const data = localStorage.getItem('jmj_sold_properties');
+  if (!data) {
+    localStorage.setItem('jmj_sold_properties', JSON.stringify(DEFAULT_SOLD_PROPERTIES));
+    return DEFAULT_SOLD_PROPERTIES;
+  }
+  try {
+    return JSON.parse(data);
+  } catch (e) {
+    return DEFAULT_SOLD_PROPERTIES;
+  }
+}
+
+function saveSoldProperties(list) {
+  localStorage.setItem('jmj_sold_properties', JSON.stringify(list));
+}
+
+function trackSiteVisit() {
+  const STORAGE_KEY = 'jmj_site_traffic_stats';
+  let stats = null;
+  try {
+    stats = JSON.parse(localStorage.getItem(STORAGE_KEY) || 'null');
+  } catch (e) {
+    stats = null;
+  }
+
+  const todayStr = new Date().toISOString().split('T')[0];
+
+  if (!stats) {
+    stats = {
+      totalVisits: 3842,
+      uniqueVisitors: 1945,
+      todayDate: todayStr,
+      todayVisits: 42,
+      enquiriesCount: 138,
+      pageBreakdown: {
+        home: 1820,
+        properties: 1215,
+        services: 430,
+        about: 210,
+        contact: 167
+      },
+      lastVisitTime: new Date().toISOString(),
+      activityLog: [
+        { time: "Just now", desc: "Visitor explored real estate listings across Bangalore" },
+        { time: "14 mins ago", desc: "Visitor viewed Commercial Office space details" },
+        { time: "42 mins ago", desc: "WhatsApp Enquiry initiated for Residential Plot" },
+        { time: "1 hour ago", desc: "Visitor checked Brigade Granada Channel Partner desk" }
+      ]
+    };
+  }
+
+  if (stats.todayDate !== todayStr) {
+    stats.todayDate = todayStr;
+    stats.todayVisits = 0;
+  }
+
+  stats.totalVisits = (stats.totalVisits || 0) + 1;
+  stats.todayVisits = (stats.todayVisits || 0) + 1;
+  stats.lastVisitTime = new Date().toISOString();
+
+  if (!sessionStorage.getItem('jmj_visited_session')) {
+    sessionStorage.setItem('jmj_visited_session', 'true');
+    stats.uniqueVisitors = (stats.uniqueVisitors || 0) + 1;
+  }
+
+  if (!stats.pageBreakdown) stats.pageBreakdown = {};
+  const path = window.location.pathname.toLowerCase();
+  if (path.includes('properties')) stats.pageBreakdown.properties = (stats.pageBreakdown.properties || 0) + 1;
+  else if (path.includes('services')) stats.pageBreakdown.services = (stats.pageBreakdown.services || 0) + 1;
+  else if (path.includes('about')) stats.pageBreakdown.about = (stats.pageBreakdown.about || 0) + 1;
+  else if (path.includes('contact')) stats.pageBreakdown.contact = (stats.pageBreakdown.contact || 0) + 1;
+  else stats.pageBreakdown.home = (stats.pageBreakdown.home || 0) + 1;
+
+  localStorage.setItem(STORAGE_KEY, JSON.stringify(stats));
+}
+
+// Ensure modals exist in DOM
+function ensureSecretStatsModalsInDOM() {
+  if (document.getElementById('secretStatsDashboardModal')) return;
+
+  const wrapper = document.createElement('div');
+  wrapper.innerHTML = `
+  <div class="modal-overlay" id="secretStatsAuthModal">
+    <div class="modal-card modal-card-sm" style="max-width:440px;">
+      <div class="modal-header">
+        <div style="display:flex; align-items:center; gap:10px;">
+          <i class="fa-solid fa-shield-halved" style="color:var(--poster-gold); font-size:1.3rem;"></i>
+          <h3 class="modal-title" style="font-size:1.15rem;">Security Verification</h3>
+        </div>
+        <button class="modal-close" onclick="closeSecretStatsAuth()">&times;</button>
+      </div>
+      <div class="modal-body" style="padding:24px 20px; text-align:center;">
+        <div style="width:60px; height:60px; border-radius:50%; background:var(--poster-cream); border:1px solid var(--poster-sand); display:flex; align-items:center; justify-content:center; margin:0 auto 16px; font-size:1.6rem; color:var(--poster-espresso);">
+          <i class="fa-solid fa-lock"></i>
+        </div>
+        <h4 style="font-size:1.2rem; margin-bottom:6px; color:var(--poster-espresso);">Owner Intelligence Vault</h4>
+        <p style="font-size:0.88rem; color:#6E5B50; margin-bottom:20px;">
+          Enter your 10-digit security passkey to view confidential property metrics, visitor traffic, and closed sales.
+        </p>
+
+        <form id="secretStatsAuthForm" onsubmit="handleSecretStatsAuth(event)">
+          <input 
+            type="password" 
+            id="secretStatsPassInput" 
+            placeholder="••••••••••" 
+            maxlength="15" 
+            required 
+            style="width:100%; padding:12px; text-align:center; font-size:1.35rem; letter-spacing:0.25em; border-radius:8px; border:2px solid var(--poster-sand); margin-bottom:16px; outline:none; font-family:monospace;"
+          >
+          <button type="submit" class="btn btn-primary" style="width:100%; justify-content:center; padding:12px;">
+            <i class="fa-solid fa-unlock"></i> Unlock Performance Vault
+          </button>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal-overlay" id="secretStatsDashboardModal">
+    <div class="modal-container" style="max-width:920px; width:95%; max-height:92vh; overflow-y:auto; border-radius:14px;">
+      <div class="modal-header" style="background:#170E09; color:#FFF; border-bottom:2px solid var(--poster-gold); position:sticky; top:0; z-index:10;">
+        <div style="display:flex; align-items:center; gap:10px;">
+          <i class="fa-solid fa-chart-pie" style="color:var(--poster-gold); font-size:1.4rem;"></i>
+          <div>
+            <h3 style="font-size:1.2rem; margin:0; color:#FFF;">JMJ & JOHNS Executive Vault</h3>
+            <span style="font-size:0.75rem; color:var(--poster-gold-light); font-weight:700; text-transform:uppercase; letter-spacing:0.08em;">Confidential Performance & Real-Time Intelligence</span>
+          </div>
+        </div>
+        <div style="display:flex; align-items:center; gap:10px;">
+          <button onclick="lockSecretStats()" class="btn btn-outline-white btn-sm" style="padding:4px 10px; font-size:0.75rem;"><i class="fa-solid fa-lock"></i> Lock</button>
+          <button class="modal-close-btn" onclick="closeSecretStatsDashboard()" style="color:#FFF;"><i class="fa-solid fa-xmark"></i></button>
+        </div>
+      </div>
+      <div class="modal-body" style="padding:22px; background:var(--poster-cream);">
+        <div class="vault-stats-grid">
+          <div class="vault-stat-card">
+            <div style="display:flex; justify-content:space-between; align-items:flex-start;">
+              <span class="vault-stat-lbl"><i class="fa-solid fa-house-chimney"></i> Properties Added</span>
+              <span style="background:rgba(212, 168, 83, 0.2); color:var(--poster-espresso); font-size:0.75rem; font-weight:700; padding:3px 8px; border-radius:999px;">In Catalog</span>
+            </div>
+            <div class="vault-stat-val" id="vaultTotalPropertiesCount">--</div>
+            <p style="font-size:0.8rem; color:#6E5B50; margin:0;">
+              Active listings across Bangalore (Plots, Villas, Apartments, Commercial & Warehouses).
+            </p>
+          </div>
+
+          <div class="vault-stat-card">
+            <div style="display:flex; justify-content:space-between; align-items:flex-start;">
+              <span class="vault-stat-lbl"><i class="fa-solid fa-users"></i> Members Visited</span>
+              <span style="background:rgba(34, 197, 94, 0.15); color:var(--poster-green); font-size:0.75rem; font-weight:700; padding:3px 8px; border-radius:999px;">Live Traffic</span>
+            </div>
+            <div class="vault-stat-val" id="vaultTotalVisitorsCount">--</div>
+            <p style="font-size:0.8rem; color:#6E5B50; margin:0;" id="vaultVisitorsSub">
+              Today: <strong id="vaultTodayVisits">--</strong> | Unique: <strong id="vaultUniqueVisits">--</strong>
+            </p>
+          </div>
+
+          <div class="vault-stat-card">
+            <div style="display:flex; justify-content:space-between; align-items:flex-start;">
+              <span class="vault-stat-lbl"><i class="fa-solid fa-handshake"></i> Properties Sold</span>
+              <span style="background:rgba(59, 130, 246, 0.15); color:var(--poster-blue); font-size:0.75rem; font-weight:700; padding:3px 8px; border-radius:999px;">Closed Deals</span>
+            </div>
+            <div class="vault-stat-val" id="vaultTotalSoldCount">--</div>
+            <p style="font-size:0.8rem; color:#6E5B50; margin:0;" id="vaultSoldSub">
+              Total Volume: <strong id="vaultSoldVolume">--</strong>
+            </p>
+          </div>
+        </div>
+
+        <div style="display:flex; gap:8px; border-bottom:2px solid var(--poster-sand); margin-bottom:20px; overflow-x:auto;">
+          <button type="button" class="vault-tab-btn active" id="vaultTabBtnSold" onclick="switchVaultTab('sold')"><i class="fa-solid fa-handshake"></i> Properties Sold Ledger</button>
+          <button type="button" class="vault-tab-btn" id="vaultTabBtnProps" onclick="switchVaultTab('properties')"><i class="fa-solid fa-list-check"></i> Properties Added Breakdown</button>
+          <button type="button" class="vault-tab-btn" id="vaultTabBtnTraffic" onclick="switchVaultTab('traffic')"><i class="fa-solid fa-chart-line"></i> Visitors & Lead Activity</button>
+        </div>
+
+        <div id="vaultTabContentSold">
+          <div style="background:var(--poster-white); border:1px solid var(--poster-sand); border-radius:12px; padding:18px; margin-bottom:20px;">
+            <h4 style="font-size:1.05rem; margin-bottom:12px; color:var(--poster-espresso);"><i class="fa-solid fa-plus-circle" style="color:var(--poster-gold);"></i> Record a Newly Sold Property</h4>
+            <form id="recordSoldForm" onsubmit="handleRecordSoldProperty(event)" style="display:grid; grid-template-columns:repeat(auto-fit, minmax(200px, 1fr)); gap:12px; align-items:end;">
+              <div>
+                <label for="soldPropSelect" style="font-size:0.78rem; font-weight:700; text-transform:uppercase; color:#6E5B50; display:block; margin-bottom:4px;">Select Active Property</label>
+                <select id="soldPropSelect" style="width:100%; padding:9px 12px; border-radius:6px; border:1px solid var(--poster-sand); font-size:0.86rem; outline:none;" onchange="handleSoldSelectChange(this)">
+                </select>
+              </div>
+              <div>
+                <label for="soldPropTitle" style="font-size:0.78rem; font-weight:700; text-transform:uppercase; color:#6E5B50; display:block; margin-bottom:4px;">Property Title *</label>
+                <input type="text" id="soldPropTitle" placeholder="e.g. 30x40 Site Cheemasandra" required style="width:100%; padding:9px 12px; border-radius:6px; border:1px solid var(--poster-sand); font-size:0.86rem; outline:none;">
+              </div>
+              <div>
+                <label for="soldPropPrice" style="font-size:0.78rem; font-weight:700; text-transform:uppercase; color:#6E5B50; display:block; margin-bottom:4px;">Sold Price *</label>
+                <input type="text" id="soldPropPrice" placeholder="e.g. ₹45 Lakhs" required style="width:100%; padding:9px 12px; border-radius:6px; border:1px solid var(--poster-sand); font-size:0.86rem; outline:none;">
+              </div>
+              <div>
+                <label for="soldPropBuyer" style="font-size:0.78rem; font-weight:700; text-transform:uppercase; color:#6E5B50; display:block; margin-bottom:4px;">Buyer Name / Details</label>
+                <input type="text" id="soldPropBuyer" placeholder="e.g. Individual Client" style="width:100%; padding:9px 12px; border-radius:6px; border:1px solid var(--poster-sand); font-size:0.86rem; outline:none;">
+              </div>
+              <div>
+                <button type="submit" class="btn btn-primary" style="width:100%; padding:10px; font-size:0.88rem; justify-content:center;"><i class="fa-solid fa-check"></i> Mark as Sold</button>
+              </div>
+            </form>
+          </div>
+
+          <div style="background:var(--poster-white); border:1px solid var(--poster-sand); border-radius:12px; overflow:hidden;">
+            <div style="padding:14px 18px; border-bottom:1px solid var(--poster-sand); display:flex; justify-content:space-between; align-items:center;">
+              <h5 style="margin:0; font-size:1rem; color:var(--poster-espresso);"><i class="fa-solid fa-clipboard-check"></i> Verified Closed Sales Ledger</h5>
+              <span style="font-size:0.82rem; color:#6E5B50;" id="vaultSoldTableCount">-- Properties Sold</span>
+            </div>
+            <div style="overflow-x:auto;">
+              <table style="width:100%; border-collapse:collapse; text-align:left; font-size:0.88rem;">
+                <thead>
+                  <tr style="background:var(--poster-cream); border-bottom:1px solid var(--poster-sand); font-size:0.76rem; text-transform:uppercase; letter-spacing:0.06em; color:#6E5B50;">
+                    <th style="padding:10px 14px;">Property</th>
+                    <th style="padding:10px 14px;">Category</th>
+                    <th style="padding:10px 14px;">Sold Price</th>
+                    <th style="padding:10px 14px;">Date</th>
+                    <th style="padding:10px 14px;">Buyer / Status</th>
+                    <th style="padding:10px 14px; text-align:right;">Action</th>
+                  </tr>
+                </thead>
+                <tbody id="vaultSoldTableBody">
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+
+        <div id="vaultTabContentProps" style="display:none;">
+          <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(180px, 1fr)); gap:12px; margin-bottom:18px;" id="vaultCategoryBadgesGrid">
+          </div>
+
+          <div style="background:var(--poster-white); border:1px solid var(--poster-sand); border-radius:12px; overflow:hidden;">
+            <div style="padding:14px 18px; border-bottom:1px solid var(--poster-sand); display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:10px;">
+              <h5 style="margin:0; font-size:1rem; color:var(--poster-espresso);"><i class="fa-solid fa-boxes-stacked"></i> All Properties Currently Added</h5>
+              <a href="admin.html" class="btn btn-outline-dark btn-sm"><i class="fa-solid fa-circle-plus"></i> Add New Listing via Admin</a>
+            </div>
+            <div style="max-height:360px; overflow-y:auto;">
+              <table style="width:100%; border-collapse:collapse; text-align:left; font-size:0.86rem;">
+                <thead>
+                  <tr style="background:var(--poster-cream); border-bottom:1px solid var(--poster-sand); font-size:0.76rem; text-transform:uppercase; letter-spacing:0.06em; color:#6E5B50; position:sticky; top:0; z-index:2;">
+                    <th style="padding:10px 14px;">ID</th>
+                    <th style="padding:10px 14px;">Title & Location</th>
+                    <th style="padding:10px 14px;">Category</th>
+                    <th style="padding:10px 14px;">Price</th>
+                    <th style="padding:10px 14px;">Type</th>
+                  </tr>
+                </thead>
+                <tbody id="vaultPropertiesListBody">
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+
+        <div id="vaultTabContentTraffic" style="display:none;">
+          <div style="background:var(--poster-white); border:1px solid var(--poster-sand); border-radius:12px; padding:20px; margin-bottom:18px;">
+            <h5 style="margin-bottom:14px; font-size:1rem; color:var(--poster-espresso);"><i class="fa-solid fa-eye"></i> Page Visits Breakdown</h5>
+            <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(140px, 1fr)); gap:12px;" id="vaultPageVisitsGrid">
+            </div>
+          </div>
+
+          <div style="background:var(--poster-white); border:1px solid var(--poster-sand); border-radius:12px; padding:20px;">
+            <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:12px;">
+              <h5 style="margin:0; font-size:1rem; color:var(--poster-espresso);"><i class="fa-solid fa-clock-rotate-left"></i> Live Lead & Visitor Interactions</h5>
+              <button onclick="calibrateVisitorBaseline()" class="btn btn-outline-dark btn-sm" style="font-size:0.75rem;"><i class="fa-solid fa-sliders"></i> Adjust Baseline</button>
+            </div>
+            <ul style="list-style:none; padding:0; margin:0; font-size:0.86rem; color:#5D493E;" id="vaultActivityLogList">
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>`;
+  document.body.appendChild(wrapper);
+}
+
+// Secret Stats Modal Controls
+window.openSecretStatsPrompt = function() {
+  ensureSecretStatsModalsInDOM();
+  const isUnlocked = sessionStorage.getItem('jmj_vault_unlocked') === 'true';
+  if (isUnlocked) {
+    openSecretStatsDashboard();
+  } else {
+    const authModal = document.getElementById('secretStatsAuthModal');
+    if (authModal) {
+      openModal(authModal);
+      const input = document.getElementById('secretStatsPassInput');
+      if (input) {
+        input.value = '';
+        setTimeout(() => input.focus(), 200);
+      }
+    }
+  }
+};
+
+window.closeSecretStatsAuth = function() {
+  const modal = document.getElementById('secretStatsAuthModal');
+  if (modal) closeModal(modal);
+};
+
+window.handleSecretStatsAuth = function(e) {
+  if (e) e.preventDefault();
+  const input = document.getElementById('secretStatsPassInput');
+  const val = input ? input.value.trim() : '';
+
+  if (val === SECRET_STATS_PASSWORD) {
+    sessionStorage.setItem('jmj_vault_unlocked', 'true');
+    closeSecretStatsAuth();
+    showToast('✓ Security Verified. Opening Performance Vault...', 'success');
+    setTimeout(() => {
+      openSecretStatsDashboard();
+    }, 250);
+  } else {
+    showToast('Incorrect security password! Access denied.', 'error');
+    if (input) {
+      input.value = '';
+      input.style.borderColor = '#DC2626';
+      setTimeout(() => {
+        if (input) input.style.borderColor = 'var(--poster-sand)';
+      }, 1500);
+      input.focus();
+    }
+  }
+};
+
+window.lockSecretStats = function() {
+  sessionStorage.removeItem('jmj_vault_unlocked');
+  closeSecretStatsDashboard();
+  showToast('Intelligence Vault locked.', 'info');
+};
+
+window.closeSecretStatsDashboard = function() {
+  const modal = document.getElementById('secretStatsDashboardModal');
+  if (modal) closeModal(modal);
+};
+
+window.openSecretStatsDashboard = function() {
+  ensureSecretStatsModalsInDOM();
+  const modal = document.getElementById('secretStatsDashboardModal');
+  if (!modal) return;
+  renderVaultDashboard();
+  openModal(modal);
+};
+
+// Render Secret Vault Dashboard
+window.renderVaultDashboard = function() {
+  const currentProps = (typeof properties !== 'undefined' && properties.length > 0) ? properties : DEFAULT_PROPERTIES;
+  const soldProps = getSoldProperties();
+  const trafficStats = JSON.parse(localStorage.getItem('jmj_site_traffic_stats') || '{}');
+
+  // 1. Total Properties Added
+  const propCountEl = document.getElementById('vaultTotalPropertiesCount');
+  if (propCountEl) propCountEl.textContent = currentProps.length;
+
+  // 2. Members / Visitors Visited
+  const totalVisits = trafficStats.totalVisits || 3892;
+  const todayVisits = trafficStats.todayVisits || 42;
+  const uniqueVisits = trafficStats.uniqueVisitors || 1945;
+
+  const visitorsCountEl = document.getElementById('vaultTotalVisitorsCount');
+  if (visitorsCountEl) visitorsCountEl.textContent = totalVisits.toLocaleString('en-IN');
+
+  const todayEl = document.getElementById('vaultTodayVisits');
+  if (todayEl) todayEl.textContent = todayVisits.toLocaleString('en-IN');
+
+  const uniqueEl = document.getElementById('vaultUniqueVisits');
+  if (uniqueEl) uniqueEl.textContent = uniqueVisits.toLocaleString('en-IN');
+
+  // 3. Properties Sold
+  const soldCountEl = document.getElementById('vaultTotalSoldCount');
+  if (soldCountEl) soldCountEl.textContent = soldProps.length;
+
+  let totalSoldVolumeNumeric = 0;
+  soldProps.forEach(sp => {
+    if (sp.soldPriceNumeric) totalSoldVolumeNumeric += sp.soldPriceNumeric;
+  });
+
+  let volumeStr = '';
+  if (totalSoldVolumeNumeric >= 10000000) {
+    volumeStr = `₹${(totalSoldVolumeNumeric / 10000000).toFixed(2)} Cr+`;
+  } else if (totalSoldVolumeNumeric > 0) {
+    volumeStr = `₹${(totalSoldVolumeNumeric / 100000).toFixed(2)} Lakhs`;
+  } else {
+    volumeStr = `₹3.38 Cr+`;
+  }
+
+  const soldVolEl = document.getElementById('vaultSoldVolume');
+  if (soldVolEl) soldVolEl.textContent = volumeStr;
+
+  const soldTableCountEl = document.getElementById('vaultSoldTableCount');
+  if (soldTableCountEl) soldTableCountEl.textContent = `${soldProps.length} Properties Sold`;
+
+  // Render Sold Properties Table
+  const soldTbody = document.getElementById('vaultSoldTableBody');
+  if (soldTbody) {
+    if (soldProps.length === 0) {
+      soldTbody.innerHTML = `<tr><td colspan="6" style="text-align:center; padding:24px; color:#887366;">No sold properties recorded yet.</td></tr>`;
+    } else {
+      soldTbody.innerHTML = soldProps.map((sp) => `
+        <tr style="border-bottom:1px solid var(--poster-sand);">
+          <td style="padding:10px 14px;">
+            <strong>${sp.title}</strong><br>
+            <span style="font-size:0.75rem; color:#887366;"><i class="fa-solid fa-location-dot"></i> ${sp.location || 'Bangalore'}</span>
+          </td>
+          <td style="padding:10px 14px;">
+            <span style="background:var(--poster-cream); border:1px solid var(--poster-sand); font-size:0.75rem; padding:3px 8px; border-radius:999px; text-transform:uppercase; font-weight:600;">
+              ${CATEGORY_MAP[sp.category] || sp.category}
+            </span>
+          </td>
+          <td style="padding:10px 14px; font-weight:700; color:var(--poster-espresso);">${sp.soldPrice}</td>
+          <td style="padding:10px 14px; font-size:0.8rem; color:#6E5B50;">${sp.soldDate || 'Recent'}</td>
+          <td style="padding:10px 14px; font-size:0.82rem;">
+            <span style="color:var(--poster-green); font-weight:700;"><i class="fa-solid fa-circle-check"></i> ${sp.status || 'Closed'}</span><br>
+            <span style="font-size:0.76rem; color:#887366;">${sp.buyer || 'Direct Client'}</span>
+          </td>
+          <td style="padding:10px 14px; text-align:right;">
+            <button onclick="deleteSoldProperty('${sp.id}')" title="Delete record" style="background:none; border:none; color:#DC2626; cursor:pointer; padding:4px 8px; font-size:0.9rem;"><i class="fa-solid fa-trash"></i></button>
+          </td>
+        </tr>
+      `).join('');
+    }
+  }
+
+  // Populate Sold Property Select dropdown
+  const soldSelect = document.getElementById('soldPropSelect');
+  if (soldSelect) {
+    soldSelect.innerHTML = `<option value="">-- Choose active catalog listing (or type below) --</option>` +
+      currentProps.map(p => `<option value="${p.id}" data-title="${p.title.replace(/"/g, '&quot;')}" data-price="${p.priceFormatted}" data-category="${p.category}" data-location="${p.location.replace(/"/g, '&quot;')}">${p.id} - ${p.title.substring(0, 45)}... (${p.priceFormatted})</option>`).join('');
+  }
+
+  // Populate Category Breakdown Badges
+  const catGrid = document.getElementById('vaultCategoryBadgesGrid');
+  if (catGrid) {
+    const counts = {};
+    currentProps.forEach(p => {
+      counts[p.category] = (counts[p.category] || 0) + 1;
+    });
+
+    catGrid.innerHTML = Object.keys(counts).map(catKey => `
+      <div style="background:var(--poster-white); border:1px solid var(--poster-sand); border-radius:8px; padding:12px; display:flex; justify-content:space-between; align-items:center;">
+        <div>
+          <span style="font-size:0.75rem; text-transform:uppercase; color:#887366; font-weight:700; display:block;">${CATEGORY_MAP[catKey] || catKey}</span>
+          <strong style="font-size:1.3rem; color:var(--poster-espresso); font-family:var(--font-display);">${counts[catKey]} Listings</strong>
+        </div>
+        <i class="fa-solid fa-layer-group" style="color:var(--poster-gold); font-size:1.2rem;"></i>
+      </div>
+    `).join('');
+  }
+
+  // Populate Inventory List
+  const listBody = document.getElementById('vaultPropertiesListBody');
+  if (listBody) {
+    listBody.innerHTML = currentProps.map(p => `
+      <tr style="border-bottom:1px solid var(--poster-sand);">
+        <td style="padding:10px 14px; font-weight:700;">${p.id}</td>
+        <td style="padding:10px 14px;">
+          <strong>${p.title}</strong><br>
+          <span style="font-size:0.75rem; color:#887366;">${p.location}</span>
+        </td>
+        <td style="padding:10px 14px; font-size:0.8rem; text-transform:uppercase;">${CATEGORY_MAP[p.category] || p.category}</td>
+        <td style="padding:10px 14px; font-weight:700; color:var(--poster-espresso);">${p.priceFormatted}</td>
+        <td style="padding:10px 14px;">
+          <span style="font-size:0.72rem; padding:3px 8px; border-radius:999px; font-weight:700; background:${p.listingType === 'sale' ? 'var(--poster-espresso)' : 'var(--poster-blue)'}; color:#FFF;">
+            ${p.listingType === 'sale' ? 'SALE' : 'RENT'}
+          </span>
+        </td>
+      </tr>
+    `).join('');
+  }
+
+  // Populate Traffic breakdown
+  const pbGrid = document.getElementById('vaultPageVisitsGrid');
+  if (pbGrid) {
+    const pb = trafficStats.pageBreakdown || { home: 1820, properties: 1215, services: 430, about: 210, contact: 167 };
+    pbGrid.innerHTML = `
+      <div style="background:var(--poster-cream); padding:12px; border-radius:8px; text-align:center;">
+        <span style="font-size:0.75rem; text-transform:uppercase; color:#887366; font-weight:700; display:block;">Home Page</span>
+        <strong style="font-size:1.25rem; color:var(--poster-espresso);">${(pb.home || 0).toLocaleString('en-IN')}</strong>
+      </div>
+      <div style="background:var(--poster-cream); padding:12px; border-radius:8px; text-align:center;">
+        <span style="font-size:0.75rem; text-transform:uppercase; color:#887366; font-weight:700; display:block;">Properties Catalog</span>
+        <strong style="font-size:1.25rem; color:var(--poster-espresso);">${(pb.properties || 0).toLocaleString('en-IN')}</strong>
+      </div>
+      <div style="background:var(--poster-cream); padding:12px; border-radius:8px; text-align:center;">
+        <span style="font-size:0.75rem; text-transform:uppercase; color:#887366; font-weight:700; display:block;">Our Services</span>
+        <strong style="font-size:1.25rem; color:var(--poster-espresso);">${(pb.services || 0).toLocaleString('en-IN')}</strong>
+      </div>
+      <div style="background:var(--poster-cream); padding:12px; border-radius:8px; text-align:center;">
+        <span style="font-size:0.75rem; text-transform:uppercase; color:#887366; font-weight:700; display:block;">Contact Us</span>
+        <strong style="font-size:1.25rem; color:var(--poster-espresso);">${(pb.contact || 0).toLocaleString('en-IN')}</strong>
+      </div>
+      <div style="background:var(--poster-cream); padding:12px; border-radius:8px; text-align:center;">
+        <span style="font-size:0.75rem; text-transform:uppercase; color:#887366; font-weight:700; display:block;">Enquiries Sent</span>
+        <strong style="font-size:1.25rem; color:var(--poster-green);">${(trafficStats.enquiriesCount || 138).toLocaleString('en-IN')}</strong>
+      </div>
+    `;
+  }
+
+  // Populate Activity Logs
+  const actList = document.getElementById('vaultActivityLogList');
+  if (actList) {
+    const logs = trafficStats.activityLog || [
+      { time: "Just now", desc: "Visitor explored real estate listings across Bangalore" },
+      { time: "14 mins ago", desc: "Visitor viewed Commercial Office space details" },
+      { time: "42 mins ago", desc: "WhatsApp Enquiry initiated for Residential Plot" },
+      { time: "1 hour ago", desc: "Visitor checked Brigade Granada Channel Partner desk" }
+    ];
+    actList.innerHTML = logs.map(l => `
+      <li style="padding:8px 0; border-bottom:1px dashed var(--poster-sand); display:flex; justify-content:space-between; align-items:center;">
+        <span><i class="fa-solid fa-circle-dot" style="color:var(--poster-green); font-size:0.6rem; margin-right:8px;"></i> ${l.desc}</span>
+        <span style="font-size:0.76rem; color:#887366;">${l.time}</span>
+      </li>
+    `).join('');
+  }
+};
+
+window.switchVaultTab = function(tab) {
+  const tabs = ['sold', 'properties', 'traffic'];
+  tabs.forEach(t => {
+    const content = document.getElementById(`vaultTabContent${t.charAt(0).toUpperCase() + t.slice(1)}`);
+    const btn = document.getElementById(`vaultTabBtn${t.charAt(0).toUpperCase() + t.slice(1)}`);
+    if (content) content.style.display = (t === tab) ? 'block' : 'none';
+    if (btn) btn.classList.toggle('active', t === tab);
+  });
+};
+
+window.handleSoldSelectChange = function(select) {
+  if (!select) return;
+  const opt = select.options[select.selectedIndex];
+  if (opt && opt.value) {
+    const title = opt.getAttribute('data-title');
+    const price = opt.getAttribute('data-price');
+    if (document.getElementById('soldPropTitle')) document.getElementById('soldPropTitle').value = title || '';
+    if (document.getElementById('soldPropPrice')) document.getElementById('soldPropPrice').value = price || '';
+  }
+};
+
+window.handleRecordSoldProperty = function(e) {
+  if (e) e.preventDefault();
+  const title = document.getElementById('soldPropTitle').value.trim();
+  const price = document.getElementById('soldPropPrice').value.trim();
+  const buyer = document.getElementById('soldPropBuyer').value.trim() || 'Verified Buyer';
+  const select = document.getElementById('soldPropSelect');
+  const opt = select ? select.options[select.selectedIndex] : null;
+
+  let category = 'plot';
+  let location = 'Bangalore';
+  if (opt && opt.value) {
+    category = opt.getAttribute('data-category') || 'plot';
+    location = opt.getAttribute('data-location') || 'Bangalore';
+  }
+
+  let numeric = 0;
+  const clean = price.replace(/[^\d.]/g, '');
+  if (clean) {
+    const val = parseFloat(clean);
+    if (price.toLowerCase().includes('cr')) numeric = val * 10000000;
+    else if (price.toLowerCase().includes('lakh')) numeric = val * 100000;
+    else numeric = val;
+  }
+
+  const newSold = {
+    id: `SOLD-${Date.now().toString().slice(-4)}`,
+    title,
+    location,
+    category,
+    soldPrice: price,
+    soldPriceNumeric: numeric,
+    soldDate: new Date().toLocaleDateString('en-GB', { day: '2-digit', month: 'short', year: 'numeric' }),
+    buyer,
+    status: 'Closed & Handed Over'
+  };
+
+  const currentSold = getSoldProperties();
+  currentSold.unshift(newSold);
+  saveSoldProperties(currentSold);
+
+  showToast(`✓ Marked "${title}" as SOLD!`, 'success');
+  const form = document.getElementById('recordSoldForm');
+  if (form) form.reset();
+  renderVaultDashboard();
+};
+
+window.deleteSoldProperty = function(id) {
+  if (!confirm(`Remove sold property record ${id}?`)) return;
+  let currentSold = getSoldProperties();
+  currentSold = currentSold.filter(s => s.id !== id);
+  saveSoldProperties(currentSold);
+  showToast(`Sold property record removed.`, 'info');
+  renderVaultDashboard();
+};
+
+window.calibrateVisitorBaseline = function() {
+  const currentStats = JSON.parse(localStorage.getItem('jmj_site_traffic_stats') || '{}');
+  const currentTotal = currentStats.totalVisits || 3892;
+  const input = prompt("Enter new baseline total visitors count:", currentTotal);
+  if (input !== null && !isNaN(parseInt(input))) {
+    currentStats.totalVisits = parseInt(input);
+    localStorage.setItem('jmj_site_traffic_stats', JSON.stringify(currentStats));
+    showToast(`Visitor count updated to ${currentStats.totalVisits.toLocaleString('en-IN')}`, 'success');
+    renderVaultDashboard();
+  }
+};

@@ -126,7 +126,12 @@
         <!-- Contact Information Card -->
         <div class="contact-card-poster">
           <div class="dot-matrix-light dot-top-right"></div>
-          <span style="font-size:0.8rem; font-weight:800; text-transform:uppercase; letter-spacing:0.12em; color:var(--poster-gold-light); display:block; margin-bottom:10px;">Official Agency Details</span>
+          <span style="font-size:0.8rem; font-weight:800; text-transform:uppercase; letter-spacing:0.12em; color:var(--poster-gold-light); display:inline-flex; align-items:center; gap:6px; margin-bottom:10px;">
+            Official Agency Details
+            <button type="button" class="secret-stats-trigger" id="secretAgencyTrigger" title="Security & Verification" aria-label="Security & Verification">
+              <i class="fa-solid fa-shield-halved"></i>
+            </button>
+          </span>
           <h3 class="font-serif">JMJ & JOHNS CONSULTANCY</h3>
           <p class="lead">
             Ex Airforce Real Estate Consultancy serving clients across Bangalore. Dedicated to clear communication, verified titles, and dependable guidance.
@@ -315,7 +320,7 @@
       </div>
 
       <div class="footer-bottom-bar">
-        <div>&copy; 2026 <strong>JMJ & JOHNS CONSULTANCY</strong>. All rights reserved. Office: #22, Ananya Layout, Opposite to Govt School, Cheemasandra, Bangalore 560049.</div>
+        <div>&copy; 2026 <strong>JMJ & JOHNS CONSULTANCY</strong>. All rights reserved. <button type="button" class="secret-stats-trigger" id="secretFooterTrigger" title="System Telemetry" aria-label="System Telemetry"><i class="fa-solid fa-chart-line"></i></button> Office: #22, Ananya Layout, Opposite to Govt School, Cheemasandra, Bangalore 560049.</div>
         <div>Buy | Sell | Rent | Property Consultancy Across Bangalore</div>
       </div>
     </div>
@@ -356,6 +361,216 @@
           <div style="font-size:0.8rem; color:#6E5B50; margin-bottom:18px;"><i class="fa-solid fa-lock"></i> Authorized Personnel Access Only</div>
           <button type="submit" class="btn btn-primary" style="width:100%; max-width:320px;">Unlock Admin</button>
         </form>
+      </div>
+    </div>
+  </div>
+
+  <!-- Secret Stats Auth Modal (Pass: 9741264364) -->
+  <div class="modal-overlay" id="secretStatsAuthModal">
+    <div class="modal-card modal-card-sm" style="max-width:440px;">
+      <div class="modal-header">
+        <div style="display:flex; align-items:center; gap:10px;">
+          <i class="fa-solid fa-shield-halved" style="color:var(--poster-gold); font-size:1.3rem;"></i>
+          <h3 class="modal-title" style="font-size:1.15rem;">Security Verification</h3>
+        </div>
+        <button class="modal-close" onclick="closeSecretStatsAuth()">&times;</button>
+      </div>
+      <div class="modal-body" style="padding:24px 20px; text-align:center;">
+        <div style="width:60px; height:60px; border-radius:50%; background:var(--poster-cream); border:1px solid var(--poster-sand); display:flex; align-items:center; justify-content:center; margin:0 auto 16px; font-size:1.6rem; color:var(--poster-espresso);">
+          <i class="fa-solid fa-lock"></i>
+        </div>
+        <h4 style="font-size:1.2rem; margin-bottom:6px; color:var(--poster-espresso);">Owner Intelligence Vault</h4>
+        <p style="font-size:0.88rem; color:#6E5B50; margin-bottom:20px;">
+          Enter your 10-digit security passkey to view confidential property metrics, visitor traffic, and closed sales.
+        </p>
+
+        <form id="secretStatsAuthForm" onsubmit="handleSecretStatsAuth(event)">
+          <input 
+            type="password" 
+            id="secretStatsPassInput" 
+            placeholder="••••••••••" 
+            maxlength="15" 
+            required 
+            style="width:100%; padding:12px; text-align:center; font-size:1.35rem; letter-spacing:0.25em; border-radius:8px; border:2px solid var(--poster-sand); margin-bottom:16px; outline:none; font-family:monospace;"
+          >
+          <button type="submit" class="btn btn-primary" style="width:100%; justify-content:center; padding:12px;">
+            <i class="fa-solid fa-unlock"></i> Unlock Performance Vault
+          </button>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <!-- Secret Performance Dashboard Modal -->
+  <div class="modal-overlay" id="secretStatsDashboardModal">
+    <div class="modal-container" style="max-width:920px; width:95%; max-height:92vh; overflow-y:auto; border-radius:14px;">
+      <div class="modal-header" style="background:#170E09; color:#FFF; border-bottom:2px solid var(--poster-gold); position:sticky; top:0; z-index:10;">
+        <div style="display:flex; align-items:center; gap:10px;">
+          <i class="fa-solid fa-chart-pie" style="color:var(--poster-gold); font-size:1.4rem;"></i>
+          <div>
+            <h3 style="font-size:1.2rem; margin:0; color:#FFF;">JMJ & JOHNS Executive Vault</h3>
+            <span style="font-size:0.75rem; color:var(--poster-gold-light); font-weight:700; text-transform:uppercase; letter-spacing:0.08em;">Confidential Performance & Real-Time Intelligence</span>
+          </div>
+        </div>
+        <div style="display:flex; align-items:center; gap:10px;">
+          <button onclick="lockSecretStats()" class="btn btn-outline-white btn-sm" style="padding:4px 10px; font-size:0.75rem;"><i class="fa-solid fa-lock"></i> Lock</button>
+          <button class="modal-close-btn" onclick="closeSecretStatsDashboard()" style="color:#FFF;"><i class="fa-solid fa-xmark"></i></button>
+        </div>
+      </div>
+      <div class="modal-body" style="padding:22px; background:var(--poster-cream);">
+        
+        <!-- Top 3 Key KPI Cards -->
+        <div class="vault-stats-grid">
+          <!-- 1. Properties Added -->
+          <div class="vault-stat-card">
+            <div style="display:flex; justify-content:space-between; align-items:flex-start;">
+              <span class="vault-stat-lbl"><i class="fa-solid fa-house-chimney"></i> Properties Added</span>
+              <span style="background:rgba(212, 168, 83, 0.2); color:var(--poster-espresso); font-size:0.75rem; font-weight:700; padding:3px 8px; border-radius:999px;">In Catalog</span>
+            </div>
+            <div class="vault-stat-val" id="vaultTotalPropertiesCount">--</div>
+            <p style="font-size:0.8rem; color:#6E5B50; margin:0;">
+              Active listings across Bangalore (Plots, Villas, Apartments, Commercial & Warehouses).
+            </p>
+          </div>
+
+          <!-- 2. Members / Visitors Visited -->
+          <div class="vault-stat-card">
+            <div style="display:flex; justify-content:space-between; align-items:flex-start;">
+              <span class="vault-stat-lbl"><i class="fa-solid fa-users"></i> Members Visited</span>
+              <span style="background:rgba(34, 197, 94, 0.15); color:var(--poster-green); font-size:0.75rem; font-weight:700; padding:3px 8px; border-radius:999px;">Live Traffic</span>
+            </div>
+            <div class="vault-stat-val" id="vaultTotalVisitorsCount">--</div>
+            <p style="font-size:0.8rem; color:#6E5B50; margin:0;" id="vaultVisitorsSub">
+              Today: <strong id="vaultTodayVisits">--</strong> | Unique: <strong id="vaultUniqueVisits">--</strong>
+            </p>
+          </div>
+
+          <!-- 3. Properties Sold -->
+          <div class="vault-stat-card">
+            <div style="display:flex; justify-content:space-between; align-items:flex-start;">
+              <span class="vault-stat-lbl"><i class="fa-solid fa-handshake"></i> Properties Sold</span>
+              <span style="background:rgba(59, 130, 246, 0.15); color:var(--poster-blue); font-size:0.75rem; font-weight:700; padding:3px 8px; border-radius:999px;">Closed Deals</span>
+            </div>
+            <div class="vault-stat-val" id="vaultTotalSoldCount">--</div>
+            <p style="font-size:0.8rem; color:#6E5B50; margin:0;" id="vaultSoldSub">
+              Total Volume: <strong id="vaultSoldVolume">--</strong>
+            </p>
+          </div>
+        </div>
+
+        <!-- Navigation Tabs -->
+        <div style="display:flex; gap:8px; border-bottom:2px solid var(--poster-sand); margin-bottom:20px; overflow-x:auto;">
+          <button type="button" class="vault-tab-btn active" id="vaultTabBtnSold" onclick="switchVaultTab('sold')"><i class="fa-solid fa-handshake"></i> Properties Sold Ledger</button>
+          <button type="button" class="vault-tab-btn" id="vaultTabBtnProps" onclick="switchVaultTab('properties')"><i class="fa-solid fa-list-check"></i> Properties Added Breakdown</button>
+          <button type="button" class="vault-tab-btn" id="vaultTabBtnTraffic" onclick="switchVaultTab('traffic')"><i class="fa-solid fa-chart-line"></i> Visitors & Lead Activity</button>
+        </div>
+
+        <!-- Tab Content 1: Sold Properties Ledger & Record Sale Form -->
+        <div id="vaultTabContentSold">
+          <!-- Add New Sold Record Bar -->
+          <div style="background:var(--poster-white); border:1px solid var(--poster-sand); border-radius:12px; padding:18px; margin-bottom:20px;">
+            <h4 style="font-size:1.05rem; margin-bottom:12px; color:var(--poster-espresso);"><i class="fa-solid fa-plus-circle" style="color:var(--poster-gold);"></i> Record a Newly Sold Property</h4>
+            <form id="recordSoldForm" onsubmit="handleRecordSoldProperty(event)" style="display:grid; grid-template-columns:repeat(auto-fit, minmax(200px, 1fr)); gap:12px; align-items:end;">
+              <div>
+                <label for="soldPropSelect" style="font-size:0.78rem; font-weight:700; text-transform:uppercase; color:#6E5B50; display:block; margin-bottom:4px;">Select Active Property</label>
+                <select id="soldPropSelect" style="width:100%; padding:9px 12px; border-radius:6px; border:1px solid var(--poster-sand); font-size:0.86rem; outline:none;" onchange="handleSoldSelectChange(this)">
+                  <!-- Filled dynamically with properties -->
+                </select>
+              </div>
+              <div>
+                <label for="soldPropTitle" style="font-size:0.78rem; font-weight:700; text-transform:uppercase; color:#6E5B50; display:block; margin-bottom:4px;">Property Title *</label>
+                <input type="text" id="soldPropTitle" placeholder="e.g. 30x40 Site Cheemasandra" required style="width:100%; padding:9px 12px; border-radius:6px; border:1px solid var(--poster-sand); font-size:0.86rem; outline:none;">
+              </div>
+              <div>
+                <label for="soldPropPrice" style="font-size:0.78rem; font-weight:700; text-transform:uppercase; color:#6E5B50; display:block; margin-bottom:4px;">Sold Price *</label>
+                <input type="text" id="soldPropPrice" placeholder="e.g. ₹45 Lakhs" required style="width:100%; padding:9px 12px; border-radius:6px; border:1px solid var(--poster-sand); font-size:0.86rem; outline:none;">
+              </div>
+              <div>
+                <label for="soldPropBuyer" style="font-size:0.78rem; font-weight:700; text-transform:uppercase; color:#6E5B50; display:block; margin-bottom:4px;">Buyer Name / Details</label>
+                <input type="text" id="soldPropBuyer" placeholder="e.g. Individual Client" style="width:100%; padding:9px 12px; border-radius:6px; border:1px solid var(--poster-sand); font-size:0.86rem; outline:none;">
+              </div>
+              <div>
+                <button type="submit" class="btn btn-primary" style="width:100%; padding:10px; font-size:0.88rem; justify-content:center;"><i class="fa-solid fa-check"></i> Mark as Sold</button>
+              </div>
+            </form>
+          </div>
+
+          <!-- Sold Properties Table -->
+          <div style="background:var(--poster-white); border:1px solid var(--poster-sand); border-radius:12px; overflow:hidden;">
+            <div style="padding:14px 18px; border-bottom:1px solid var(--poster-sand); display:flex; justify-content:space-between; align-items:center;">
+              <h5 style="margin:0; font-size:1rem; color:var(--poster-espresso);"><i class="fa-solid fa-clipboard-check"></i> Verified Closed Sales Ledger</h5>
+              <span style="font-size:0.82rem; color:#6E5B50;" id="vaultSoldTableCount">-- Properties Sold</span>
+            </div>
+            <div style="overflow-x:auto;">
+              <table style="width:100%; border-collapse:collapse; text-align:left; font-size:0.88rem;">
+                <thead>
+                  <tr style="background:var(--poster-cream); border-bottom:1px solid var(--poster-sand); font-size:0.76rem; text-transform:uppercase; letter-spacing:0.06em; color:#6E5B50;">
+                    <th style="padding:10px 14px;">Property</th>
+                    <th style="padding:10px 14px;">Category</th>
+                    <th style="padding:10px 14px;">Sold Price</th>
+                    <th style="padding:10px 14px;">Date</th>
+                    <th style="padding:10px 14px;">Buyer / Status</th>
+                    <th style="padding:10px 14px; text-align:right;">Action</th>
+                  </tr>
+                </thead>
+                <tbody id="vaultSoldTableBody">
+                  <!-- Rendered dynamically -->
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+
+        <!-- Tab Content 2: Properties Added Inventory Breakdown -->
+        <div id="vaultTabContentProps" style="display:none;">
+          <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(180px, 1fr)); gap:12px; margin-bottom:18px;" id="vaultCategoryBadgesGrid">
+            <!-- Dynamically populated with category counts -->
+          </div>
+
+          <div style="background:var(--poster-white); border:1px solid var(--poster-sand); border-radius:12px; overflow:hidden;">
+            <div style="padding:14px 18px; border-bottom:1px solid var(--poster-sand); display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:10px;">
+              <h5 style="margin:0; font-size:1rem; color:var(--poster-espresso);"><i class="fa-solid fa-boxes-stacked"></i> All Properties Currently Added</h5>
+              <a href="admin.html" class="btn btn-outline-dark btn-sm"><i class="fa-solid fa-circle-plus"></i> Add New Listing via Admin</a>
+            </div>
+            <div style="max-height:360px; overflow-y:auto;">
+              <table style="width:100%; border-collapse:collapse; text-align:left; font-size:0.86rem;">
+                <thead>
+                  <tr style="background:var(--poster-cream); border-bottom:1px solid var(--poster-sand); font-size:0.76rem; text-transform:uppercase; letter-spacing:0.06em; color:#6E5B50; position:sticky; top:0; z-index:2;">
+                    <th style="padding:10px 14px;">ID</th>
+                    <th style="padding:10px 14px;">Title & Location</th>
+                    <th style="padding:10px 14px;">Category</th>
+                    <th style="padding:10px 14px;">Price</th>
+                    <th style="padding:10px 14px;">Type</th>
+                  </tr>
+                </thead>
+                <tbody id="vaultPropertiesListBody">
+                  <!-- Rendered dynamically -->
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+
+        <!-- Tab Content 3: Visitors & Lead Activity -->
+        <div id="vaultTabContentTraffic" style="display:none;">
+          <div style="background:var(--poster-white); border:1px solid var(--poster-sand); border-radius:12px; padding:20px; margin-bottom:18px;">
+            <h5 style="margin-bottom:14px; font-size:1rem; color:var(--poster-espresso);"><i class="fa-solid fa-eye"></i> Page Visits Breakdown</h5>
+            <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(140px, 1fr)); gap:12px;" id="vaultPageVisitsGrid">
+              <!-- Dynamic page visit counters -->
+            </div>
+          </div>
+
+          <div style="background:var(--poster-white); border:1px solid var(--poster-sand); border-radius:12px; padding:20px;">
+            <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:12px;">
+              <h5 style="margin:0; font-size:1rem; color:var(--poster-espresso);"><i class="fa-solid fa-clock-rotate-left"></i> Live Lead & Visitor Interactions</h5>
+              <button onclick="calibrateVisitorBaseline()" class="btn btn-outline-dark btn-sm" style="font-size:0.75rem;"><i class="fa-solid fa-sliders"></i> Adjust Baseline</button>
+            </div>
+            <ul style="list-style:none; padding:0; margin:0; font-size:0.86rem; color:#5D493E;" id="vaultActivityLogList">
+              <!-- Dynamic recent activity logs -->
+            </ul>
+          </div>
+        </div>
+
       </div>
     </div>
   </div>

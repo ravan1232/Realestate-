@@ -4059,4 +4059,98 @@ img {
   }
 }
 
+/* ==========================================================================
+   CONFIDENTIAL INTELLIGENCE & PERFORMANCE VAULT (SECRET OWNER FEATURE)
+   ========================================================================== */
+
+.secret-stats-trigger {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  opacity: 0.35;
+  font-size: 0.76rem;
+  padding: 3px 5px;
+  margin-left: 6px;
+  border-radius: 4px;
+  vertical-align: middle;
+  transition: all 0.25s ease;
+  color: inherit;
+  border: none;
+  background: transparent;
+  outline: none;
+}
+
+.secret-stats-trigger:hover {
+  opacity: 0.95;
+  color: var(--poster-gold);
+  transform: scale(1.15);
+}
+
+.vault-stats-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+  margin-bottom: 24px;
+}
+
+.vault-stat-card {
+  background: var(--poster-white);
+  border: 1px solid var(--poster-sand);
+  border-radius: 12px;
+  padding: 18px;
+  box-shadow: var(--shadow-sm);
+  position: relative;
+  overflow: hidden;
+}
+
+.vault-stat-card .vault-stat-val {
+  font-size: 1.85rem;
+  font-weight: 800;
+  font-family: var(--font-display);
+  color: var(--poster-espresso);
+  line-height: 1.2;
+  margin: 6px 0 4px;
+}
+
+.vault-stat-card .vault-stat-lbl {
+  font-size: 0.78rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: #887366;
+}
+
+.vault-tab-btn {
+  background: transparent;
+  border: none;
+  border-bottom: 2px solid transparent;
+  border-radius: 0;
+  color: #6E5B50;
+  padding: 8px 16px;
+  font-weight: 600;
+  font-size: 0.86rem;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: all 0.2s ease;
+}
+
+.vault-tab-btn:hover {
+  color: var(--poster-espresso);
+}
+
+.vault-tab-btn.active {
+  color: var(--poster-espresso);
+  border-bottom-color: var(--poster-espresso);
+  background: rgba(36, 23, 18, 0.05);
+}
+
+@media (max-width: 768px) {
+  .vault-stats-grid {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+}
+
+
 
