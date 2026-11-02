@@ -193,6 +193,114 @@ const DEFAULT_PROPERTIES = [
     "description": "100% Vastu-compliant East-facing plot in a fast-appreciating locality across Bangalore. Ideal for immediate home construction or high-return investment."
   },
   {
+    "id": "JMJ-107",
+    "title": "Grade-A Furnished Commercial Office Space",
+    "category": "commercial-office",
+    "listingType": "rent",
+    "price": 125000,
+    "priceFormatted": "₹1.25 Lakhs / month",
+    "location": "ITPL Main Road, Whitefield Corridor, Bangalore 560066",
+    "locality": "Whitefield / ITPL",
+    "area": "2,800 sq.ft (35 Workstations + 2 Cabins)",
+    "beds": 0,
+    "baths": 3,
+    "badges": [
+      "rent",
+      "verified"
+    ],
+    "image": "assets/images/commercial_building.jpg",
+    "amenities": [
+      "Plug & Play Furnished",
+      "100% DG Power Backup",
+      "Central Air Conditioning",
+      "Reserved 4-Car Parking",
+      "High-Speed Fiber Ready",
+      "24/7 Security & CCTV"
+    ],
+    "description": "Premium fully furnished commercial office space suited for IT/ITES, corporate consultancy, or financial firms. High-visibility building with reception, conference room, and executive cabins."
+  },
+  {
+    "id": "JMJ-108",
+    "title": "Heavy-Duty Commercial & Industrial Fabrication Shed",
+    "category": "commercial-shed",
+    "listingType": "rent",
+    "price": 85000,
+    "priceFormatted": "₹85,000 / month",
+    "location": "Budigere Cross Industrial Corridor, East Bangalore 560049",
+    "locality": "Budigere Cross / East Bangalore",
+    "area": "4,500 sq.ft Covered Shed + 1,500 sq.ft Open Yard",
+    "beds": 0,
+    "baths": 2,
+    "badges": [
+      "rent",
+      "hot"
+    ],
+    "image": "assets/images/commercial_building.jpg",
+    "amenities": [
+      "Heavy 3-Phase Power (60 HP)",
+      "High Center Height (28ft)",
+      "VDF Industrial Flooring",
+      "Wide Container Truck Access",
+      "Borewell Water",
+      "Worker Restrooms"
+    ],
+    "description": "Industrial/commercial grade PEB steel shed built for light manufacturing, CNC fabrication, workshop, or wholesale distribution with 40ft road frontage and easy highway connection."
+  },
+  {
+    "id": "JMJ-109",
+    "title": "40x60 Prime Corner Commercial Plot",
+    "category": "commercial-plot",
+    "listingType": "sale",
+    "price": 14500000,
+    "priceFormatted": "₹1.45 Crore",
+    "location": "Main Road Junction, East Bangalore 560049",
+    "locality": "East Bangalore",
+    "area": "2,400 sq.ft (40x60)",
+    "beds": 0,
+    "baths": 0,
+    "badges": [
+      "sale",
+      "verified"
+    ],
+    "image": "assets/images/residential_plot.jpg",
+    "amenities": [
+      "Commercial Conversion",
+      "Main Road 60ft Facing",
+      "Clear BDA/BMRDA Approval",
+      "Corner Double Frontage",
+      "High Footfall & Transit",
+      "Immediate Registration"
+    ],
+    "description": "High-value commercial converted corner plot ideal for hospital, retail shopping complex, diagnostic centre, or commercial bank branch. 100% litigation-free title verified by ex-servicemen team."
+  },
+  {
+    "id": "JMJ-110",
+    "title": "Modern Logistics & Industrial Warehouse",
+    "category": "industrial-warehouse",
+    "listingType": "rent",
+    "price": 195000,
+    "priceFormatted": "₹1.95 Lakhs / month",
+    "location": "Old Madras Road - Hoskote Logistics Belt, Bangalore 562114",
+    "locality": "Hoskote / OMR Hub",
+    "area": "8,000 sq.ft Clear Storage",
+    "beds": 0,
+    "baths": 4,
+    "badges": [
+      "rent",
+      "verified"
+    ],
+    "image": "assets/images/commercial_building.jpg",
+    "amenities": [
+      "3 Hydraulic Loading Docks",
+      "32ft Clear Ceiling Height",
+      "Fire Hydrant & Sprinklers",
+      "Laser Screed High Load Floor",
+      "Trailer Maneuvering Yard",
+      "24/7 Gated Security"
+    ],
+    "description": "Grade-A logistics warehouse designed for FMCG distribution, e-commerce fulfillment, 3PL storage, and bulk warehousing. Smooth connectivity to NH-75 and Bengaluru Outer Ring Road."
+  },
+  {
     "id": "VRE-201",
     "title": "Sobha Neopolis – Greek Architectural Luxury Enclave",
     "developer": "Sobha Limited",
@@ -897,6 +1005,18 @@ let currentSort = 'featured';
 // Required Admin Password
 const ADMIN_PASSWORD = "987456";
 
+// Category Display Map
+const CATEGORY_MAP = {
+  plot: 'Residential Plot',
+  villa: 'Villa / House',
+  apartment: 'Apartment / High-Rise',
+  commercial: 'Commercial Space',
+  'commercial-office': 'Commercial Office',
+  'commercial-shed': 'Commercial Shed',
+  'commercial-plot': 'Commercial Plot',
+  'industrial-warehouse': 'Industrial Warehouse'
+};
+
 // Force all pages to always open from the beginning / top of the page
 if ('scrollRestoration' in history) {
   history.scrollRestoration = 'manual';
@@ -1386,6 +1506,8 @@ function handleHomeSearch() {
   if (type !== 'all') {
     if (type === 'builder') {
       list = list.filter(p => !!p.developer || (p.badges && p.badges.includes('builder-project')));
+    } else if (type === 'commercial') {
+      list = list.filter(p => p.category === 'commercial' || (p.category && p.category.startsWith('commercial-')));
     } else {
       list = list.filter(p => p.category === type);
     }
@@ -1423,6 +1545,8 @@ function filterCatalogBySearch(q) {
       list = list.filter(p => p.listingType === currentFilter);
     } else if (currentFilter === 'builder') {
       list = list.filter(p => !!p.developer || (p.badges && p.badges.includes('builder-project')));
+    } else if (currentFilter === 'commercial') {
+      list = list.filter(p => p.category === 'commercial' || (p.category && p.category.startsWith('commercial-')));
     } else {
       list = list.filter(p => p.category === currentFilter);
     }
@@ -1459,8 +1583,13 @@ function checkUrlQueryParams() {
     let list = [...properties];
     if (purpose && purpose !== 'all') list = list.filter(p => p.listingType === purpose);
     if (type && type !== 'all') {
-      if (type === 'builder') list = list.filter(p => !!p.developer || (p.badges && p.badges.includes('builder-project')));
-      else list = list.filter(p => p.category === type);
+      if (type === 'builder') {
+        list = list.filter(p => !!p.developer || (p.badges && p.badges.includes('builder-project')));
+      } else if (type === 'commercial') {
+        list = list.filter(p => p.category === 'commercial' || (p.category && p.category.startsWith('commercial-')));
+      } else {
+        list = list.filter(p => p.category === type);
+      }
     }
     if (location && location !== 'all') {
       list = list.filter(p => {
@@ -1488,6 +1617,8 @@ function renderProperties() {
       list = list.filter(p => p.listingType === currentFilter);
     } else if (currentFilter === 'builder') {
       list = list.filter(p => !!p.developer || (p.badges && p.badges.includes('builder-project')));
+    } else if (currentFilter === 'commercial') {
+      list = list.filter(p => p.category === 'commercial' || (p.category && p.category.startsWith('commercial-')));
     } else {
       list = list.filter(p => p.category === currentFilter);
     }
@@ -1521,12 +1652,7 @@ function renderCustomList(list) {
     return;
   }
 
-  const catMap = {
-    plot: 'Residential Plot',
-    villa: 'Villa / House',
-    apartment: 'Apartment / High-Rise',
-    commercial: 'Commercial Space'
-  };
+  const catMap = CATEGORY_MAP;
 
   grid.innerHTML = list.map(prop => {
     const isSale = prop.listingType === 'sale';
@@ -1646,7 +1772,7 @@ window.openPropertyDetailsModal = function(id) {
       <div style="display:flex; justify-content:space-between; align-items:flex-start; margin-bottom:16px; flex-wrap:wrap; gap:12px;">
         <div>
           <span style="font-size:0.8rem; font-weight:700; text-transform:uppercase; color:#887366; letter-spacing:0.08em;">
-            ${prop.listingType === 'sale' ? 'FOR SALE' : 'FOR RENT'} • ${prop.category.toUpperCase()} ${prop.developer ? '• ' + prop.developer.toUpperCase() : ''}
+            ${prop.listingType === 'sale' ? 'FOR SALE' : 'FOR RENT'} • ${(CATEGORY_MAP[prop.category] || prop.category).toUpperCase()} ${prop.developer ? '• ' + prop.developer.toUpperCase() : ''}
           </span>
           <h2 style="font-size:1.8rem; margin-top:4px; color:var(--poster-espresso);">${prop.title}</h2>
           <p style="color:#6E5B50; font-size:0.95rem; margin-top:4px;"><i class="fa-solid fa-location-dot" style="color:var(--poster-espresso);"></i> ${prop.location}</p>
@@ -1849,7 +1975,7 @@ function renderAdminTable() {
           </div>
         </div>
       </td>
-      <td style="padding: 14px 16px; text-transform:uppercase; font-size:0.85rem; font-weight:600;">${p.category}</td>
+      <td style="padding: 14px 16px; font-size:0.85rem; font-weight:600; color:var(--poster-espresso);">${CATEGORY_MAP[p.category] || p.category}</td>
       <td style="padding: 14px 16px; font-weight:700; color:var(--poster-espresso);">${p.priceFormatted}</td>
       <td style="padding: 14px 16px;">
         <span style="background:${p.listingType === 'sale' ? 'var(--poster-espresso)' : 'var(--poster-blue)'}; color:#FFF; font-size:0.75rem; padding:4px 10px; border-radius:999px; font-weight:700;">

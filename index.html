@@ -200,11 +200,15 @@
         <div class="search-field-info">
           <label class="search-field-label" for="homeSearchType">Property Type</label>
           <select id="homeSearchType" class="search-field-select">
-            <option value="all">Any</option>
+            <option value="all">Any Property Type</option>
             <option value="apartment">Apartment</option>
             <option value="villa">Luxury Villa</option>
             <option value="plot">Residential Plot</option>
-            <option value="commercial">Commercial Space</option>
+            <option value="commercial">Commercial Space / Shop</option>
+            <option value="commercial-office">Commercial Office</option>
+            <option value="commercial-shed">Commercial Shed</option>
+            <option value="commercial-plot">Commercial Plot</option>
+            <option value="industrial-warehouse">Industrial Warehouse</option>
             <option value="builder">Top Builder Projects</option>
           </select>
         </div>
@@ -396,14 +400,18 @@
 
         <div class="properties-filter-bar" style="margin-bottom:24px;">
           <div class="filter-pills-group">
-            <button class="filter-btn active" data-filter="all">All Properties (28)</button>
+            <button class="filter-btn active" data-filter="all">All Properties</button>
             <button class="filter-btn" data-filter="builder"><i class="fa-solid fa-building"></i> Top Builders</button>
             <button class="filter-btn" data-filter="sale">For Sale</button>
             <button class="filter-btn" data-filter="rent">For Rent</button>
             <button class="filter-btn" data-filter="apartment">Apartments</button>
             <button class="filter-btn" data-filter="villa">Houses & Villas</button>
-            <button class="filter-btn" data-filter="plot">Plots / Sites</button>
-            <button class="filter-btn" data-filter="commercial">Commercial</button>
+            <button class="filter-btn" data-filter="plot">Residential Plots</button>
+            <button class="filter-btn" data-filter="commercial">Commercial (All)</button>
+            <button class="filter-btn" data-filter="commercial-office">Offices</button>
+            <button class="filter-btn" data-filter="commercial-shed">Commercial Sheds</button>
+            <button class="filter-btn" data-filter="commercial-plot">Commercial Plots</button>
+            <button class="filter-btn" data-filter="industrial-warehouse">Industrial Warehouses</button>
           </div>
         </div>
 
@@ -1035,7 +1043,11 @@
                 <option value="plot">Residential Plot / Site</option>
                 <option value="villa">Independent House / Villa</option>
                 <option value="apartment">Apartment</option>
-                <option value="commercial">Commercial Property</option>
+                <option value="commercial">Commercial Space / Retail Shop</option>
+                <option value="commercial-office">Commercial Office</option>
+                <option value="commercial-shed">Commercial Shed</option>
+                <option value="commercial-plot">Commercial Plot</option>
+                <option value="industrial-warehouse">Industrial Warehouse</option>
               </select>
             </div>
 
@@ -1075,7 +1087,7 @@
             <!-- Image Selection -->
             <div class="form-group-poster full">
               <label>Property Photo (Choose Preset, URL or Upload)</label>
-              <div style="display:grid; grid-template-columns:repeat(5, 1fr); gap:10px; margin-top:6px;">
+              <div class="preset-img-picker-grid" style="display:grid; grid-template-columns:repeat(5, 1fr); gap:10px; margin-top:6px;">
                 <div class="preset-img-option selected" data-img="assets/images/residential_plot.jpg" style="height:60px; border-radius:6px; overflow:hidden; cursor:pointer; border:2px solid var(--poster-espresso);">
                   <img src="assets/images/residential_plot.jpg" alt="Plot" style="width:100%; height:100%; object-fit:cover;">
                 </div>

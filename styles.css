@@ -991,6 +991,14 @@ img {
   gap: 20px;
 }
 
+.admin-card-box {
+  background: var(--poster-white);
+  border: 1px solid var(--poster-sand);
+  border-radius: 18px;
+  padding: 36px;
+  box-shadow: var(--shadow-sm);
+}
+
 /* ==========================================================================
    PROPERTY CARDS & GRID
    ========================================================================== */
@@ -2504,6 +2512,56 @@ img {
   .services-cards-grid {
     grid-template-columns: 1fr;
     gap: 18px;
+  }
+
+  /* Services Deep Dive Responsive */
+  .service-card-box {
+    padding: 24px 18px !important;
+    border-radius: 14px !important;
+    margin-bottom: 24px !important;
+  }
+
+  .service-card-grid {
+    grid-template-columns: 1fr !important;
+    gap: 20px !important;
+  }
+
+  .service-card-grid img {
+    height: 220px !important;
+    width: 100% !important;
+  }
+
+  .service-card-grid h2 {
+    font-size: 1.6rem !important;
+  }
+
+  .process-strip-box {
+    padding: 30px 18px !important;
+    border-radius: 14px !important;
+    margin-top: 36px !important;
+  }
+
+  .process-steps-grid {
+    grid-template-columns: 1fr !important;
+    gap: 20px !important;
+  }
+
+  /* Preset Image Picker Responsive on Mobile */
+  .preset-img-picker-grid {
+    grid-template-columns: repeat(3, 1fr) !important;
+    gap: 8px !important;
+  }
+
+  /* Admin Cards Responsive on Mobile */
+  .admin-card-box {
+    padding: 20px 14px !important;
+    border-radius: 14px !important;
+    margin-bottom: 28px !important;
+  }
+
+  #adminLockedView {
+    padding: 28px 16px !important;
+    margin: 20px auto !important;
   }
 
   /* Contact Page */
