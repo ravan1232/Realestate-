@@ -1771,7 +1771,7 @@ window.openPropertyDetailsModal = function(id) {
   body.innerHTML = `
     <div>
       <div style="position:relative; margin-bottom:20px;">
-        <img src="${prop.image || 'assets/images/hero_villa.jpg'}" alt="${prop.title}" style="width:100%; height:380px; object-fit:cover; border-radius:12px;" onerror="this.src='${prop.cdnFallback || 'assets/images/hero_villa.jpg'}'">
+        <img src="${prop.image || 'assets/images/hero_villa.jpg'}" alt="${prop.title}" class="modal-property-hero-img" style="width:100%; height:340px; object-fit:cover; border-radius:12px;" onerror="this.src='${prop.cdnFallback || 'assets/images/hero_villa.jpg'}'">
         ${prop.developer ? `
           <span class="card-developer-pill" style="font-size:0.82rem; padding:6px 16px; top:16px; right:16px;">
             <i class="fa-solid fa-building"></i> Developed by ${prop.developer}
@@ -1793,7 +1793,7 @@ window.openPropertyDetailsModal = function(id) {
         </div>
       </div>
 
-      <div style="display:grid; grid-template-columns:repeat(4, 1fr); gap:12px; background:var(--poster-cream); padding:16px; border-radius:10px; margin-bottom:20px;">
+      <div class="modal-specs-grid" style="display:grid; grid-template-columns:repeat(4, 1fr); gap:12px; background:var(--poster-cream); padding:16px; border-radius:10px; margin-bottom:20px;">
         <div>
           <span style="font-size:0.75rem; text-transform:uppercase; color:#887366; display:block;">Property ID</span>
           <strong style="color:var(--poster-espresso);">${prop.id}</strong>
@@ -1822,7 +1822,7 @@ window.openPropertyDetailsModal = function(id) {
         <div style="display:flex; flex-wrap:wrap; gap:8px;">${amenitiesTags}</div>
       </div>
 
-      <div style="display:flex; gap:14px; flex-wrap:wrap;">
+      <div class="modal-actions-row" style="display:flex; gap:14px; flex-wrap:wrap;">
         <button class="btn btn-poster-phone" style="flex:1; background:var(--poster-green); color:#FFF; font-weight:700;" onclick="quickEnquireWhatsApp('${prop.id}')">
           <i class="fa-brands fa-whatsapp"></i> Chat on WhatsApp (Get Brochure)
         </button>
