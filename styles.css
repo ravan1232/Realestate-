@@ -4514,6 +4514,14 @@ img {
     font-size: 0.78rem !important;
     line-height: 1.35;
   }
+
+  .hero-airforce-badge {
+    font-size: 0.72rem !important;
+    padding: 6px 12px !important;
+    letter-spacing: 0.05em !important;
+    line-height: 1.35 !important;
+    text-align: left !important;
+  }
 }
 
 
