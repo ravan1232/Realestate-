@@ -2140,23 +2140,25 @@ img {
 
   .drawer-contact-chips {
     display: flex;
+    flex-wrap: wrap;
     gap: 8px;
     width: 100%;
   }
 
   .drawer-chip {
-    flex: 1;
+    flex: 1 1 calc(50% - 4px);
     display: inline-flex;
     align-items: center;
     justify-content: center;
     gap: 6px;
     padding: 10px 8px;
     border-radius: 10px;
-    font-size: 0.84rem;
+    font-size: 0.82rem;
     font-weight: 600;
     text-decoration: none;
     text-align: center;
     transition: all 0.2s;
+    min-width: 125px;
   }
 
   .drawer-chip-call {
@@ -2166,6 +2168,7 @@ img {
   }
 
   .drawer-chip-whatsapp {
+    flex: 1 1 100%;
     background: #25D366;
     color: #FFFFFF !important;
     border: 1px solid #25D366;
