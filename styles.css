@@ -130,40 +130,50 @@ img {
 .topbar {
   background: var(--poster-espresso);
   color: var(--poster-cream);
-  font-size: 0.85rem;
-  padding: 9px 0;
+  font-size: 0.8rem;
+  padding: 8px 0;
   border-bottom: 2px solid var(--poster-gold);
+  white-space: nowrap !important;
+  line-height: 1.35;
 }
 
 .topbar .container {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  flex-wrap: wrap;
-  gap: 12px;
+  display: flex !important;
+  justify-content: space-between !important;
+  align-items: center !important;
+  flex-wrap: nowrap !important;
+  gap: 16px;
+  width: 100%;
 }
 
 .topbar-info {
-  display: flex;
-  align-items: center;
-  gap: 22px;
-  flex-wrap: wrap;
+  display: flex !important;
+  align-items: center !important;
+  gap: 18px !important;
+  flex-wrap: nowrap !important;
+  white-space: nowrap !important;
+  min-width: 0;
 }
 
 .topbar-item {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
+  display: inline-flex !important;
+  align-items: center !important;
+  gap: 6px !important;
+  white-space: nowrap !important;
+  flex-shrink: 0;
 }
 
 .topbar-item i {
   color: var(--poster-gold);
+  flex-shrink: 0;
 }
 
 .topbar-actions {
-  display: flex;
-  align-items: center;
-  gap: 16px;
+  display: flex !important;
+  align-items: center !important;
+  gap: 12px !important;
+  flex-shrink: 0;
+  white-space: nowrap !important;
 }
 
 /* Main Navbar */
@@ -1578,8 +1588,8 @@ img {
 
 .footer-grid-4col {
   display: grid;
-  grid-template-columns: 1.6fr 1fr 1fr 1.4fr;
-  gap: 40px;
+  grid-template-columns: 1.4fr 0.9fr 0.9fr 1.6fr;
+  gap: 36px;
   margin-bottom: 50px;
 }
 
@@ -1591,12 +1601,19 @@ img {
 
 .footer-brand-col span.sub {
   display: block;
-  font-size: 0.75rem;
-  letter-spacing: 0.15em;
+  font-size: 0.72rem;
+  letter-spacing: 0.08em;
   text-transform: uppercase;
   color: var(--poster-gold-light);
   font-weight: 700;
-  margin-bottom: 16px;
+  margin-bottom: 14px;
+  line-height: 1.4;
+}
+
+.footer-social-row {
+  display: flex;
+  gap: 10px;
+  align-items: center;
 }
 
 .footer-col h4 {
@@ -1622,11 +1639,15 @@ img {
   display: flex;
   flex-direction: column;
   gap: 10px;
+  padding: 0;
+  margin: 0;
 }
 
 .footer-links-list a {
   color: #D2C4B8;
   font-size: 0.9rem;
+  text-decoration: none;
+  transition: all var(--trans-fast);
 }
 
 .footer-links-list a:hover {
@@ -1640,17 +1661,73 @@ img {
   flex-direction: column;
   gap: 14px;
   font-size: 0.9rem;
+  padding: 0;
+  margin: 0;
 }
 
-.footer-contact-details li {
+.footer-contact-details > li {
   display: flex;
   align-items: flex-start;
   gap: 10px;
 }
 
-.footer-contact-details li i {
+.footer-contact-details > li > i {
   color: var(--poster-gold);
   margin-top: 4px;
+  font-size: 0.95rem;
+  flex-shrink: 0;
+}
+
+/* Footer Phone Numbers Group */
+.footer-phone-block {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+}
+
+.footer-phone-group {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  width: 100%;
+}
+
+.footer-phone-label {
+  color: var(--poster-gold-light, #E3B366);
+  font-size: 0.8rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.footer-phone-links {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.footer-num-link {
+  color: #FFFFFF !important;
+  text-decoration: none;
+  font-size: 0.92rem;
+  font-weight: 600;
+  white-space: nowrap !important;
+  transition: color 0.2s ease, transform 0.2s ease;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.footer-num-link:hover {
+  color: var(--poster-gold-light, #E3B366) !important;
+  transform: translateX(3px);
+}
+
+.footer-wa-pill {
+  font-size: 0.72rem;
+  font-weight: 700;
+  color: var(--poster-green, #22C55E);
+  letter-spacing: 0.02em;
 }
 
 .footer-bottom-bar {
@@ -1871,6 +1948,24 @@ img {
     padding: 6px 12px;
     font-size: 0.78rem;
     gap: 6px;
+  }
+  .topbar {
+    font-size: 0.74rem;
+    padding: 6px 0;
+  }
+  .topbar-info {
+    gap: 12px !important;
+  }
+  .topbar-actions {
+    gap: 10px !important;
+  }
+  .topbar-office a {
+    max-width: 240px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    display: inline-block;
+    vertical-align: middle;
   }
 }
 
