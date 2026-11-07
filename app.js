@@ -2,7 +2,7 @@
  * JMJ & JOHNS CONSULTANCY - Real Estate & Property Consultants
  * Buy | Sell | Rent | Property Consultancy Across Bangalore
  * Office: #22, Ananya Layout, Opposite to Govt School, Cheemasandra, Bangalore – 560049
- * Phone Calls: +91 81052 97648 / +91 89514 14189 | WhatsApp: +91 98804 30160 | Email: jmjjohnsconsultancy@gmail.com
+ * Phone Calls: +91 81052 97648 / +91 89514 14189 / +91 98804 30160 | WhatsApp: +91 98804 30160 | Email: jmjjohnsconsultancy@gmail.com
  */
 
 // Default Seed Properties (Across Bangalore & Office: #22 Ananya Layout, Cheemasandra)
@@ -38,8 +38,8 @@ const DEFAULT_PROPERTIES = [
       "EOI Window Open – Priority Allocation"
     ],
     "contactPerson": "JMJ & JOHNS CONSULTANCY",
-    "contactPhone": "+91 81052 97648 / +91 89514 14189",
-    "description": "Brigade Granada is an iconic 40+ acre integrated township by Brigade Group in Kadugodi, Whitefield, Bengaluru. 'A City Within a City – Live, Work, Shop & Thrive at One Iconic Address.' Featuring 48-floor residential sky towers, Grade-A commercial spaces (~4.49 Lakh sq.ft), high-street retail & dining (~2.39 Lakh sq.ft), a 7-star luxury hotel (~251 keys), and healthcare on campus. Expected pre-launch pricing: 1 BHK (~730 sq.ft) @ ₹1.07 Cr, 2 BHK (~1,275 sq.ft) @ ₹1.79 Cr, 3 BHK (1,540–2,240 sq.ft) from ₹2.19 Cr to ₹3.29 Cr, and 4 BHK + Maid Room (2,760 sq.ft) @ ₹3.99 Cr. EOI Window is now open with priority allocation! For floor plans, pricing & site visits, contact JMJ & JOHNS CONSULTANCY: Call +91 81052 97648 / +91 89514 14189 or WhatsApp +91 98804 30160."
+    "contactPhone": "+91 81052 97648 / +91 89514 14189 / +91 98804 30160",
+    "description": "Brigade Granada is an iconic 40+ acre integrated township by Brigade Group in Kadugodi, Whitefield, Bengaluru. 'A City Within a City – Live, Work, Shop & Thrive at One Iconic Address.' Featuring 48-floor residential sky towers, Grade-A commercial spaces (~4.49 Lakh sq.ft), high-street retail & dining (~2.39 Lakh sq.ft), a 7-star luxury hotel (~251 keys), and healthcare on campus. Expected pre-launch pricing: 1 BHK (~730 sq.ft) @ ₹1.07 Cr, 2 BHK (~1,275 sq.ft) @ ₹1.79 Cr, 3 BHK (1,540–2,240 sq.ft) from ₹2.19 Cr to ₹3.29 Cr, and 4 BHK + Maid Room (2,760 sq.ft) @ ₹3.99 Cr. EOI Window is now open with priority allocation! For floor plans, pricing & site visits, contact JMJ & JOHNS CONSULTANCY: Call +91 81052 97648 / +91 89514 14189 / +91 98804 30160 or WhatsApp +91 98804 30160."
   },
   {
     "id": "JMJ-101",
@@ -1826,12 +1826,15 @@ window.openPropertyDetailsModal = function(id) {
         <button class="btn btn-poster-phone" style="width:100%; background:var(--poster-green); color:#FFF; font-weight:700; padding:12px; justify-content:center;" onclick="quickEnquireWhatsApp('${prop.id}')">
           <i class="fa-brands fa-whatsapp" style="font-size:1.2rem;"></i> Chat on WhatsApp (Get Brochure & Details)
         </button>
-        <div style="display:flex; gap:10px; flex-wrap:wrap; width:100%;">
-          <a href="tel:+918105297648" class="btn btn-primary" style="flex:1; font-weight:700; justify-content:center; white-space:nowrap; padding:12px 10px;">
+        <div style="display:flex; gap:8px; flex-wrap:wrap; width:100%;">
+          <a href="tel:+918105297648" class="btn btn-primary" style="flex:1; font-weight:700; justify-content:center; white-space:nowrap; padding:10px 8px; font-size:0.86rem;">
             <i class="fa-solid fa-phone"></i> Call 81052 97648
           </a>
-          <a href="tel:+918951414189" class="btn btn-primary" style="flex:1; font-weight:700; justify-content:center; white-space:nowrap; padding:12px 10px;">
+          <a href="tel:+918951414189" class="btn btn-primary" style="flex:1; font-weight:700; justify-content:center; white-space:nowrap; padding:10px 8px; font-size:0.86rem;">
             <i class="fa-solid fa-phone"></i> Call 89514 14189
+          </a>
+          <a href="tel:+919880430160" class="btn btn-primary" style="flex:1; font-weight:700; justify-content:center; white-space:nowrap; padding:10px 8px; font-size:0.86rem;">
+            <i class="fa-solid fa-phone"></i> Call 98804 30160
           </a>
         </div>
       </div>

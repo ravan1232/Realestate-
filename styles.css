@@ -2151,14 +2151,14 @@ img {
     align-items: center;
     justify-content: center;
     gap: 6px;
-    padding: 10px 8px;
+    padding: 10px 6px;
     border-radius: 10px;
-    font-size: 0.82rem;
+    font-size: 0.78rem;
     font-weight: 600;
     text-decoration: none;
     text-align: center;
     transition: all 0.2s;
-    min-width: 125px;
+    min-width: 110px;
   }
 
   .drawer-chip-call {
@@ -2172,6 +2172,8 @@ img {
     background: #25D366;
     color: #FFFFFF !important;
     border: 1px solid #25D366;
+    font-size: 0.86rem;
+    padding: 10px 12px;
   }
 
   .drawer-meta-info {
