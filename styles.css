@@ -1937,7 +1937,7 @@ img {
     gap: 10px;
     flex-shrink: 1;
     min-width: 0;
-    max-width: calc(100% - 96px);
+    max-width: calc(100% - 56px);
     text-decoration: none;
   }
 
@@ -1965,7 +1965,17 @@ img {
   }
 
   .brand-title-wrap span.brand-subtitle {
-    display: none !important;
+    display: block !important;
+    font-size: 0.52rem !important;
+    letter-spacing: 0.04em !important;
+    color: var(--poster-gold-dark, #A0742E) !important;
+    font-weight: 700 !important;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 100%;
+    margin-top: 2px;
+    text-transform: uppercase;
   }
 
   nav {
@@ -4468,6 +4478,11 @@ img {
 
   .brand-title-wrap h1 {
     font-size: 1.02rem !important;
+  }
+
+  .brand-title-wrap span.brand-subtitle {
+    font-size: 0.48rem !important;
+    letter-spacing: 0.03em !important;
   }
 
   .value-pillars-strip {
