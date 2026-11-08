@@ -157,8 +157,6 @@
         <div class="filter-pills-group">
           <button class="filter-btn active" data-filter="all">All Listings</button>
           <button class="filter-btn" data-filter="builder"><i class="fa-solid fa-building"></i> Top Builders</button>
-          <button class="filter-btn" data-filter="sale">For Sale (Buy)</button>
-          <button class="filter-btn" data-filter="rent">For Rent (Lease)</button>
           <button class="filter-btn" data-filter="apartment">Apartments</button>
           <button class="filter-btn" data-filter="villa">Houses & Villas</button>
           <button class="filter-btn" data-filter="plot">Plots / Sites</button>
@@ -169,14 +167,36 @@
           <button class="filter-btn" data-filter="industrial-warehouse">Industrial Warehouses</button>
         </div>
 
-        <div style="display:flex; align-items:center; gap:10px;">
-          <label for="propertySortSelect" style="font-size:0.85rem; font-weight:700;"><i class="fa-solid fa-arrow-down-short-wide"></i> Sort By:</label>
-          <select id="propertySortSelect" style="padding:9px 14px; border-radius:8px; border:1px solid var(--poster-sand); font-size:0.86rem; outline:none;">
-            <option value="featured">Featured First</option>
-            <option value="price-low">Price: Low to High</option>
-            <option value="price-high">Price: High to Low</option>
-            <option value="newest">Recently Added</option>
-          </select>
+        <div class="inventory-controls-row">
+          <div class="inventory-control-item">
+            <label for="propertyPurposeSelect" style="font-size:0.84rem; font-weight:700; color:var(--poster-espresso); white-space:nowrap;"><i class="fa-solid fa-handshake"></i> Option:</label>
+            <select id="propertyPurposeSelect" class="filter-select-box">
+              <option value="all">All (Rent, Lease, Sale, Buy)</option>
+              <option value="rent">For Rent</option>
+              <option value="lease">For Lease</option>
+              <option value="sale">For Sale</option>
+              <option value="buy">For Buy</option>
+            </select>
+          </div>
+          <div class="inventory-control-item">
+            <label for="propertyBudgetSelect" style="font-size:0.84rem; font-weight:700; color:var(--poster-espresso); white-space:nowrap;"><i class="fa-solid fa-wallet"></i> Price Range:</label>
+            <select id="propertyBudgetSelect" class="filter-select-box">
+              <option value="all">All Prices</option>
+              <option value="under-50l">Under ₹50 Lakhs</option>
+              <option value="50l-1cr">₹50L - ₹1 Crore</option>
+              <option value="1cr-2.5cr">₹1Cr - ₹2.5 Crore</option>
+              <option value="above-2.5cr">Above ₹2.5 Crore</option>
+            </select>
+          </div>
+          <div class="inventory-control-item">
+            <label for="propertySortSelect" style="font-size:0.84rem; font-weight:700; color:var(--poster-espresso); white-space:nowrap;"><i class="fa-solid fa-arrow-down-short-wide"></i> Sort By:</label>
+            <select id="propertySortSelect" class="filter-select-box">
+              <option value="featured">Featured First</option>
+              <option value="price-low">Price: Low to High</option>
+              <option value="price-high">Price: High to Low</option>
+              <option value="newest">Recently Added</option>
+            </select>
+          </div>
         </div>
       </div>
 

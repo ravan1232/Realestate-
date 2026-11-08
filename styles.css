@@ -1032,6 +1032,37 @@ img {
   box-shadow: var(--shadow-sm);
 }
 
+.inventory-controls-row {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.inventory-control-item {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.filter-select-box {
+  padding: 8px 12px;
+  border-radius: 8px;
+  border: 1px solid var(--poster-sand);
+  background: var(--poster-white);
+  color: var(--poster-espresso);
+  font-size: 0.85rem;
+  font-weight: 600;
+  outline: none;
+  cursor: pointer;
+  transition: all var(--trans-fast);
+}
+
+.filter-select-box:focus {
+  border-color: var(--poster-espresso);
+  box-shadow: 0 0 0 2px rgba(36, 23, 18, 0.1);
+}
+
 .filter-pills-group {
   display: flex;
   gap: 8px;
@@ -1116,8 +1147,18 @@ img {
   color: var(--poster-white);
 }
 
+.badge-tag-buy {
+  background: #15803D;
+  color: #FFF;
+}
+
 .badge-tag-rent {
   background: var(--poster-blue);
+  color: #FFF;
+}
+
+.badge-tag-lease {
+  background: #B45309;
   color: #FFF;
 }
 
@@ -2512,6 +2553,29 @@ img {
     align-items: stretch;
     gap: 14px;
     margin-bottom: 24px;
+  }
+
+  .inventory-controls-row {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-top: 10px;
+  }
+
+  .inventory-control-item {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+  }
+
+  .inventory-control-item select,
+  .inventory-control-item .filter-select-box {
+    flex: 1;
+    max-width: 60%;
+    font-size: 16px !important;
   }
 
   .filter-pills-group {

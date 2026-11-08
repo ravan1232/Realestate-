@@ -1000,6 +1000,8 @@ const DEFAULT_PROPERTIES = [
 let properties = [];
 let isAdminLoggedIn = false;
 let currentFilter = 'all';
+let currentPurpose = 'all';
+let currentBudget = 'all';
 let currentSort = 'featured';
 
 // Required Admin Password
@@ -1231,12 +1233,36 @@ function setupEventListeners() {
     });
   });
 
+  // Purpose Filter (For Rent, For Lease, For Sale, For Buy)
+  const purposeSelect = document.getElementById('propertyPurposeSelect');
+  if (purposeSelect) {
+    purposeSelect.addEventListener('change', (e) => {
+      currentPurpose = e.target.value;
+      const q = catalogSearchInput ? catalogSearchInput.value.trim().toLowerCase() : '';
+      if (q) filterCatalogBySearch(q);
+      else renderProperties();
+    });
+  }
+
+  // Budget / Price Range Filter
+  const budgetSelect = document.getElementById('propertyBudgetSelect');
+  if (budgetSelect) {
+    budgetSelect.addEventListener('change', (e) => {
+      currentBudget = e.target.value;
+      const q = catalogSearchInput ? catalogSearchInput.value.trim().toLowerCase() : '';
+      if (q) filterCatalogBySearch(q);
+      else renderProperties();
+    });
+  }
+
   // Sorting
   const sortSelect = document.getElementById('propertySortSelect');
   if (sortSelect) {
     sortSelect.addEventListener('change', (e) => {
       currentSort = e.target.value;
-      renderProperties();
+      const q = catalogSearchInput ? catalogSearchInput.value.trim().toLowerCase() : '';
+      if (q) filterCatalogBySearch(q);
+      else renderProperties();
     });
   }
 
@@ -1551,9 +1577,7 @@ function filterCatalogBySearch(q) {
   }
   let list = [...properties];
   if (currentFilter !== 'all') {
-    if (currentFilter === 'sale' || currentFilter === 'rent') {
-      list = list.filter(p => p.listingType === currentFilter);
-    } else if (currentFilter === 'builder') {
+    if (currentFilter === 'builder') {
       list = list.filter(p => !!p.developer || (p.badges && p.badges.includes('builder-project')));
     } else if (currentFilter === 'commercial') {
       list = list.filter(p => p.category === 'commercial' || (p.category && p.category.startsWith('commercial-')));
@@ -1561,6 +1585,30 @@ function filterCatalogBySearch(q) {
       list = list.filter(p => p.category === currentFilter);
     }
   }
+
+  // Purpose Filter (For Rent, For Lease, For Sale, For Buy)
+  if (currentPurpose !== 'all') {
+    if (currentPurpose === 'sale' || currentPurpose === 'buy') {
+      list = list.filter(p => p.listingType === 'sale' || p.listingType === 'buy');
+    } else if (currentPurpose === 'rent') {
+      list = list.filter(p => p.listingType === 'rent');
+    } else if (currentPurpose === 'lease') {
+      list = list.filter(p => {
+        if (p.listingType === 'lease') return true;
+        const txt = (p.title + ' ' + (p.description || '') + ' ' + (p.priceFormatted || '')).toLowerCase();
+        return txt.includes('lease') || (p.category && (p.category.includes('commercial') || p.category.includes('warehouse') || p.category.includes('shed')));
+      });
+      if (list.length === 0) {
+        list = properties.filter(p => p.listingType === 'rent');
+      }
+    }
+  }
+
+  // Budget Filter
+  if (currentBudget === 'under-50l') list = list.filter(p => p.price <= 5000000);
+  else if (currentBudget === '50l-1cr') list = list.filter(p => p.price >= 5000000 && p.price <= 10000000);
+  else if (currentBudget === '1cr-2.5cr') list = list.filter(p => p.price >= 10000000 && p.price <= 25000000);
+  else if (currentBudget === 'above-2.5cr') list = list.filter(p => p.price > 25000000);
 
   list = list.filter(p => {
     const haystack = [
@@ -1577,6 +1625,15 @@ function filterCatalogBySearch(q) {
     return haystack.includes(q);
   });
 
+  // Sorting
+  if (currentSort === 'price-low') {
+    list.sort((a, b) => a.price - b.price);
+  } else if (currentSort === 'price-high') {
+    list.sort((a, b) => b.price - a.price);
+  } else if (currentSort === 'newest') {
+    list.reverse();
+  }
+
   renderCustomList(list);
 }
 
@@ -1591,8 +1648,16 @@ function checkUrlQueryParams() {
 
   if (type || purpose || budget || location) {
     let list = [...properties];
-    if (purpose && purpose !== 'all') list = list.filter(p => p.listingType === purpose);
+    if (purpose && purpose !== 'all') {
+      currentPurpose = purpose;
+      const purposeEl = document.getElementById('propertyPurposeSelect');
+      if (purposeEl) purposeEl.value = purpose;
+      if (purpose === 'sale' || purpose === 'buy') list = list.filter(p => p.listingType === 'sale' || p.listingType === 'buy');
+      else if (purpose === 'rent') list = list.filter(p => p.listingType === 'rent');
+      else if (purpose === 'lease') list = list.filter(p => p.listingType === 'lease' || (p.category && (p.category.includes('commercial') || p.category.includes('warehouse') || p.category.includes('shed'))));
+    }
     if (type && type !== 'all') {
+      currentFilter = type;
       if (type === 'builder') {
         list = list.filter(p => !!p.developer || (p.badges && p.badges.includes('builder-project')));
       } else if (type === 'commercial') {
@@ -1607,10 +1672,15 @@ function checkUrlQueryParams() {
         return searchTarget.includes(location.toLowerCase());
       });
     }
-    if (budget === 'under-50l') list = list.filter(p => p.price <= 5000000);
-    else if (budget === '50l-1cr') list = list.filter(p => p.price >= 5000000 && p.price <= 10000000);
-    else if (budget === '1cr-2.5cr') list = list.filter(p => p.price >= 10000000 && p.price <= 25000000);
-    else if (budget === 'above-2.5cr') list = list.filter(p => p.price > 25000000);
+    if (budget && budget !== 'all') {
+      currentBudget = budget;
+      const budgetEl = document.getElementById('propertyBudgetSelect');
+      if (budgetEl) budgetEl.value = budget;
+      if (budget === 'under-50l') list = list.filter(p => p.price <= 5000000);
+      else if (budget === '50l-1cr') list = list.filter(p => p.price >= 5000000 && p.price <= 10000000);
+      else if (budget === '1cr-2.5cr') list = list.filter(p => p.price >= 10000000 && p.price <= 25000000);
+      else if (budget === 'above-2.5cr') list = list.filter(p => p.price > 25000000);
+    }
 
     renderCustomList(list);
     showToast(`Showing ${list.length} properties matching your search criteria!`, 'info');
@@ -1623,9 +1693,7 @@ function renderProperties() {
 
   // Category filter
   if (currentFilter !== 'all') {
-    if (currentFilter === 'sale' || currentFilter === 'rent') {
-      list = list.filter(p => p.listingType === currentFilter);
-    } else if (currentFilter === 'builder') {
+    if (currentFilter === 'builder') {
       list = list.filter(p => !!p.developer || (p.badges && p.badges.includes('builder-project')));
     } else if (currentFilter === 'commercial') {
       list = list.filter(p => p.category === 'commercial' || (p.category && p.category.startsWith('commercial-')));
@@ -1633,6 +1701,30 @@ function renderProperties() {
       list = list.filter(p => p.category === currentFilter);
     }
   }
+
+  // Purpose Filter (For Rent, For Lease, For Sale, For Buy)
+  if (currentPurpose !== 'all') {
+    if (currentPurpose === 'sale' || currentPurpose === 'buy') {
+      list = list.filter(p => p.listingType === 'sale' || p.listingType === 'buy');
+    } else if (currentPurpose === 'rent') {
+      list = list.filter(p => p.listingType === 'rent');
+    } else if (currentPurpose === 'lease') {
+      list = list.filter(p => {
+        if (p.listingType === 'lease') return true;
+        const txt = (p.title + ' ' + (p.description || '') + ' ' + (p.priceFormatted || '')).toLowerCase();
+        return txt.includes('lease') || (p.category && (p.category.includes('commercial') || p.category.includes('warehouse') || p.category.includes('shed')));
+      });
+      if (list.length === 0) {
+        list = properties.filter(p => p.listingType === 'rent');
+      }
+    }
+  }
+
+  // Budget Filter
+  if (currentBudget === 'under-50l') list = list.filter(p => p.price <= 5000000);
+  else if (currentBudget === '50l-1cr') list = list.filter(p => p.price >= 5000000 && p.price <= 10000000);
+  else if (currentBudget === '1cr-2.5cr') list = list.filter(p => p.price >= 10000000 && p.price <= 25000000);
+  else if (currentBudget === 'above-2.5cr') list = list.filter(p => p.price > 25000000);
 
   // Sorting
   if (currentSort === 'price-low') {
@@ -1665,13 +1757,18 @@ function renderCustomList(list) {
   const catMap = CATEGORY_MAP;
 
   grid.innerHTML = list.map(prop => {
-    const isSale = prop.listingType === 'sale';
+    const isSale = prop.listingType === 'sale' || prop.listingType === 'buy';
+    const isBuy = prop.listingType === 'buy';
+    const isLease = prop.listingType === 'lease';
     const badgeHTML = (prop.badges || []).map(b => {
       let cls = 'badge-tag-sale';
-      let label = isSale ? 'FOR SALE' : 'FOR RENT';
+      let label = isSale ? (isBuy ? 'FOR BUY' : 'FOR SALE') : (isLease ? 'FOR LEASE' : 'FOR RENT');
       if (b === 'rent') { cls = 'badge-tag-rent'; label = 'FOR RENT'; }
-      if (b === 'hot') { cls = 'badge-tag-sale'; label = '🔥 HOT DEAL'; }
-      if (b === 'verified') { cls = 'badge-tag-sale'; label = '✓ VERIFIED'; }
+      else if (b === 'lease') { cls = 'badge-tag-lease'; label = 'FOR LEASE'; }
+      else if (b === 'buy') { cls = 'badge-tag-buy'; label = 'FOR BUY'; }
+      else if (b === 'sale') { cls = 'badge-tag-sale'; label = 'FOR SALE'; }
+      else if (b === 'hot') { cls = 'badge-tag-sale'; label = '🔥 HOT DEAL'; }
+      else if (b === 'verified') { cls = 'badge-tag-sale'; label = '✓ VERIFIED'; }
       return `<span class="card-badge-tag ${cls}">${label}</span>`;
     }).join('');
 
@@ -1745,10 +1842,22 @@ function renderCustomList(list) {
 // Reset filters
 window.resetAllFilters = function() {
   currentFilter = 'all';
+  currentPurpose = 'all';
+  currentBudget = 'all';
   currentSort = 'featured';
   document.querySelectorAll('.filter-btn, .filter-pill').forEach((b, i) => {
     b.classList.toggle('active', i === 0);
   });
+  const purposeSelect = document.getElementById('propertyPurposeSelect');
+  if (purposeSelect) purposeSelect.value = 'all';
+  const budgetSelect = document.getElementById('propertyBudgetSelect');
+  if (budgetSelect) budgetSelect.value = 'all';
+  const sortSelect = document.getElementById('propertySortSelect');
+  if (sortSelect) sortSelect.value = 'featured';
+  const catalogSearch = document.getElementById('catalogSearchInput');
+  if (catalogSearch) catalogSearch.value = '';
+  const clearBtn = document.getElementById('clearCatalogSearchBtn');
+  if (clearBtn) clearBtn.style.display = 'none';
   renderProperties();
 };
 
