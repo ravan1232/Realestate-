@@ -1353,10 +1353,11 @@ function setupEventListeners() {
   }
 
   // Sync Listing Type Tick Option to hidden input
-  document.querySelectorAll('input[name="propListingType"]').forEach(radio => {
-    radio.addEventListener('change', (e) => {
+  document.querySelectorAll('input[name="propListingType"]').forEach(cb => {
+    cb.addEventListener('change', () => {
+      const checkedBoxes = Array.from(document.querySelectorAll('input[name="propListingType"]:checked')).map(c => c.value);
       const hiddenLT = document.getElementById('propListingType');
-      if (hiddenLT && e.target.checked) hiddenLT.value = e.target.value;
+      if (hiddenLT) hiddenLT.value = checkedBoxes[0] || '';
     });
   });
 
@@ -1527,14 +1528,36 @@ function openAddPropertyModal() {
   const editId = document.getElementById('propertyEditId');
   if (editId) editId.value = '';
 
-  const saleRadio = document.querySelector('input[name="propListingType"][value="sale"]');
-  if (saleRadio) saleRadio.checked = true;
+  document.querySelectorAll('input[name="propListingType"]').forEach(cb => {
+    cb.checked = (cb.value === 'sale'); // Default For Sale, user can select any multiple
+  });
   const hiddenLT = document.getElementById('propListingType');
   if (hiddenLT) hiddenLT.value = 'sale';
 
   const title = document.getElementById('addPropertyModalTitle');
   if (title) title.innerHTML = '<i class="fa-solid fa-circle-plus"></i> Add New Property (Admin)';
   openModal(modal);
+}
+
+// Helper to match property against listing purpose (supports multiple types per property)
+function propertyMatchesPurpose(p, purpose) {
+  if (!purpose || purpose === 'all') return true;
+  const types = (p.listingTypes && Array.isArray(p.listingTypes))
+    ? p.listingTypes
+    : [p.listingType, ...(p.badges || [])].filter(Boolean);
+
+  if (purpose === 'sale' || purpose === 'buy') {
+    return types.includes('sale') || types.includes('buy') || p.listingType === 'sale' || p.listingType === 'buy';
+  }
+  if (purpose === 'rent') {
+    return types.includes('rent') || p.listingType === 'rent';
+  }
+  if (purpose === 'lease') {
+    if (types.includes('lease') || p.listingType === 'lease') return true;
+    const txt = (p.title + ' ' + (p.description || '') + ' ' + (p.priceFormatted || '')).toLowerCase();
+    return txt.includes('lease') || (p.category && (p.category.includes('commercial') || p.category.includes('warehouse') || p.category.includes('shed')));
+  }
+  return types.includes(purpose);
 }
 
 // Home Search Handler
@@ -1552,7 +1575,7 @@ function handleHomeSearch() {
   }
 
   let list = [...properties];
-  if (purpose !== 'all') list = list.filter(p => p.listingType === purpose);
+  if (purpose !== 'all') list = list.filter(p => propertyMatchesPurpose(p, purpose));
   if (type !== 'all') {
     if (type === 'builder') {
       list = list.filter(p => !!p.developer || (p.badges && p.badges.includes('builder-project')));
@@ -1600,21 +1623,11 @@ function filterCatalogBySearch(q) {
     }
   }
 
-  // Purpose Filter (For Rent, For Lease, For Sale, For Buy)
+  // Purpose Filter (For Rent, For Lease, For Sale, For Buy - supports multi-type)
   if (currentPurpose !== 'all') {
-    if (currentPurpose === 'sale' || currentPurpose === 'buy') {
-      list = list.filter(p => p.listingType === 'sale' || p.listingType === 'buy');
-    } else if (currentPurpose === 'rent') {
-      list = list.filter(p => p.listingType === 'rent');
-    } else if (currentPurpose === 'lease') {
-      list = list.filter(p => {
-        if (p.listingType === 'lease') return true;
-        const txt = (p.title + ' ' + (p.description || '') + ' ' + (p.priceFormatted || '')).toLowerCase();
-        return txt.includes('lease') || (p.category && (p.category.includes('commercial') || p.category.includes('warehouse') || p.category.includes('shed')));
-      });
-      if (list.length === 0) {
-        list = properties.filter(p => p.listingType === 'rent');
-      }
+    list = list.filter(p => propertyMatchesPurpose(p, currentPurpose));
+    if (currentPurpose === 'lease' && list.length === 0) {
+      list = properties.filter(p => propertyMatchesPurpose(p, 'rent'));
     }
   }
 
@@ -1666,9 +1679,7 @@ function checkUrlQueryParams() {
       currentPurpose = purpose;
       const purposeEl = document.getElementById('propertyPurposeSelect');
       if (purposeEl) purposeEl.value = purpose;
-      if (purpose === 'sale' || purpose === 'buy') list = list.filter(p => p.listingType === 'sale' || p.listingType === 'buy');
-      else if (purpose === 'rent') list = list.filter(p => p.listingType === 'rent');
-      else if (purpose === 'lease') list = list.filter(p => p.listingType === 'lease' || (p.category && (p.category.includes('commercial') || p.category.includes('warehouse') || p.category.includes('shed'))));
+      list = list.filter(p => propertyMatchesPurpose(p, purpose));
     }
     if (type && type !== 'all') {
       currentFilter = type;
@@ -1716,21 +1727,11 @@ function renderProperties() {
     }
   }
 
-  // Purpose Filter (For Rent, For Lease, For Sale, For Buy)
+  // Purpose Filter (For Rent, For Lease, For Sale, For Buy - supports multi-type)
   if (currentPurpose !== 'all') {
-    if (currentPurpose === 'sale' || currentPurpose === 'buy') {
-      list = list.filter(p => p.listingType === 'sale' || p.listingType === 'buy');
-    } else if (currentPurpose === 'rent') {
-      list = list.filter(p => p.listingType === 'rent');
-    } else if (currentPurpose === 'lease') {
-      list = list.filter(p => {
-        if (p.listingType === 'lease') return true;
-        const txt = (p.title + ' ' + (p.description || '') + ' ' + (p.priceFormatted || '')).toLowerCase();
-        return txt.includes('lease') || (p.category && (p.category.includes('commercial') || p.category.includes('warehouse') || p.category.includes('shed')));
-      });
-      if (list.length === 0) {
-        list = properties.filter(p => p.listingType === 'rent');
-      }
+    list = list.filter(p => propertyMatchesPurpose(p, currentPurpose));
+    if (currentPurpose === 'lease' && list.length === 0) {
+      list = properties.filter(p => propertyMatchesPurpose(p, 'rent'));
     }
   }
 
@@ -1980,9 +1981,16 @@ function handleAddPropertySubmit(e) {
   const title = document.getElementById('propTitle').value.trim();
   const category = document.getElementById('propCategory').value;
   
-  const checkedRadio = document.querySelector('input[name="propListingType"]:checked');
+  const checkedBoxes = Array.from(document.querySelectorAll('input[name="propListingType"]:checked'));
+  const checkedLTs = checkedBoxes.map(cb => cb.value);
+  if (checkedLTs.length === 0) {
+    showToast('Please tick at least one Listing Type (e.g. For Sale, For Rent)', 'error');
+    return;
+  }
+  const listingType = checkedLTs[0] || 'sale';
+  const listingTypes = [...checkedLTs];
   const hiddenLT = document.getElementById('propListingType');
-  const listingType = checkedRadio ? checkedRadio.value : (hiddenLT ? hiddenLT.value : 'sale');
+  if (hiddenLT) hiddenLT.value = listingType;
 
   const priceInput = document.getElementById('propPrice') ? document.getElementById('propPrice').value.trim() : '';
   const priceVal = priceInput ? parseFloat(priceInput) : 0;
@@ -1997,9 +2005,9 @@ function handleAddPropertySubmit(e) {
   let priceFormatted = '';
   if (!priceVal || isNaN(priceVal) || priceVal <= 0) {
     priceFormatted = 'Price on Request';
-  } else if (listingType === 'rent') {
+  } else if (listingTypes.includes('rent') && !listingTypes.includes('sale') && !listingTypes.includes('buy')) {
     priceFormatted = `₹${priceVal.toLocaleString('en-IN')} / mo`;
-  } else if (listingType === 'lease') {
+  } else if (listingTypes.includes('lease') && !listingTypes.includes('sale') && !listingTypes.includes('buy')) {
     priceFormatted = `₹${priceVal.toLocaleString('en-IN')} / lease`;
   } else {
     if (priceVal >= 10000000) {
@@ -2014,7 +2022,7 @@ function handleAddPropertySubmit(e) {
     checkedAmenities.push(cb.value);
   });
 
-  const badges = [listingType];
+  const badges = [...checkedLTs];
   const hotCb = document.getElementById('propBadgeHot');
   const verCb = document.getElementById('propBadgeVerified');
   if (hotCb && hotCb.checked) badges.push('hot');
@@ -2028,6 +2036,7 @@ function handleAddPropertySubmit(e) {
         title,
         category,
         listingType,
+        listingTypes,
         price: priceVal,
         priceFormatted,
         location,
@@ -2048,6 +2057,7 @@ function handleAddPropertySubmit(e) {
       title,
       category,
       listingType,
+      listingTypes,
       price: priceVal,
       priceFormatted,
       location,
@@ -2077,11 +2087,15 @@ window.openEditPropertyModal = function(id) {
   document.getElementById('propTitle').value = prop.title;
   document.getElementById('propCategory').value = prop.category;
 
-  const propLT = prop.listingType || 'sale';
-  const radio = document.querySelector(`input[name="propListingType"][value="${propLT}"]`);
-  if (radio) radio.checked = true;
+  const selectedTypes = (prop.listingTypes && Array.isArray(prop.listingTypes))
+    ? prop.listingTypes
+    : [prop.listingType, ...(prop.badges || [])].filter(Boolean);
+
+  document.querySelectorAll('input[name="propListingType"]').forEach(cb => {
+    cb.checked = selectedTypes.includes(cb.value);
+  });
   const hiddenLT = document.getElementById('propListingType');
-  if (hiddenLT) hiddenLT.value = propLT;
+  if (hiddenLT) hiddenLT.value = selectedTypes[0] || 'sale';
 
   document.getElementById('propPrice').value = (prop.price && prop.price > 0) ? prop.price : '';
   document.getElementById('propLocation').value = prop.location;
@@ -2135,9 +2149,13 @@ function renderAdminTable() {
       <td style="padding: 14px 16px; font-size:0.85rem; font-weight:600; color:var(--poster-espresso);">${CATEGORY_MAP[p.category] || p.category}</td>
       <td style="padding: 14px 16px; font-weight:700; color:var(--poster-espresso);">${p.priceFormatted}</td>
       <td style="padding: 14px 16px;">
-        <span style="background:${p.listingType === 'sale' ? 'var(--poster-espresso)' : 'var(--poster-blue)'}; color:#FFF; font-size:0.75rem; padding:4px 10px; border-radius:999px; font-weight:700;">
-          ${p.listingType === 'sale' ? 'SALE' : 'RENT'}
-        </span>
+        <div style="display:flex; gap:4px; flex-wrap:wrap;">
+          ${((p.listingTypes && p.listingTypes.length > 0) ? p.listingTypes : [p.listingType || 'sale']).map(lt => `
+            <span style="background:${(lt === 'sale' || lt === 'buy') ? 'var(--poster-espresso)' : (lt === 'lease' ? '#7A5C2E' : 'var(--poster-blue)')}; color:#FFF; font-size:0.72rem; padding:3px 8px; border-radius:999px; font-weight:700; text-transform:uppercase;">
+              ${lt}
+            </span>
+          `).join('')}
+        </div>
       </td>
       <td style="padding: 14px 16px;">
         <button onclick="openEditPropertyModal('${p.id}')" class="btn btn-outline-dark btn-sm" style="padding:4px 10px; margin-right:6px;"><i class="fa-solid fa-pen"></i></button>
@@ -2937,9 +2955,13 @@ window.renderVaultDashboard = function() {
         <td style="padding:10px 14px; font-size:0.8rem; text-transform:uppercase;">${CATEGORY_MAP[p.category] || p.category}</td>
         <td style="padding:10px 14px; font-weight:700; color:var(--poster-espresso);">${p.priceFormatted}</td>
         <td style="padding:10px 14px;">
-          <span style="font-size:0.72rem; padding:3px 8px; border-radius:999px; font-weight:700; background:${p.listingType === 'sale' ? 'var(--poster-espresso)' : 'var(--poster-blue)'}; color:#FFF;">
-            ${p.listingType === 'sale' ? 'SALE' : 'RENT'}
-          </span>
+          <div style="display:flex; gap:4px; flex-wrap:wrap;">
+            ${((p.listingTypes && p.listingTypes.length > 0) ? p.listingTypes : [p.listingType || 'sale']).map(lt => `
+              <span style="font-size:0.72rem; padding:3px 8px; border-radius:999px; font-weight:700; background:${(lt === 'sale' || lt === 'buy') ? 'var(--poster-espresso)' : (lt === 'lease' ? '#7A5C2E' : 'var(--poster-blue)')}; color:#FFF; text-transform:uppercase;">
+                ${lt}
+              </span>
+            `).join('')}
+          </div>
         </td>
       </tr>
     `).join('');
