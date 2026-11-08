@@ -1109,21 +1109,36 @@
             </div>
 
             <div class="form-group-poster">
-              <label for="propListingType">Listing Type *</label>
-              <select id="propListingType" required>
-                <option value="sale">For Sale (Buy)</option>
-                <option value="rent">For Rent / Lease</option>
-              </select>
+              <label>Listing Type *</label>
+              <input type="hidden" id="propListingType" value="sale">
+              <div class="listing-type-tick-group">
+                <label class="listing-type-tick-card">
+                  <input type="radio" name="propListingType" value="sale" checked>
+                  <span>For Sale</span>
+                </label>
+                <label class="listing-type-tick-card">
+                  <input type="radio" name="propListingType" value="buy">
+                  <span>For Buy</span>
+                </label>
+                <label class="listing-type-tick-card">
+                  <input type="radio" name="propListingType" value="rent">
+                  <span>For Rent</span>
+                </label>
+                <label class="listing-type-tick-card">
+                  <input type="radio" name="propListingType" value="lease">
+                  <span>For Lease</span>
+                </label>
+              </div>
             </div>
 
             <div class="form-group-poster">
-              <label for="propPrice">Price in INR (Numeric) *</label>
-              <input type="number" id="propPrice" placeholder="e.g. 4500000 or 25000 for rent" required>
+              <label for="propPrice">Price in INR (Numeric)</label>
+              <input type="number" id="propPrice" placeholder="e.g. 4500000 or 25000 (Optional)">
             </div>
 
             <div class="form-group-poster">
-              <label for="propArea">Area / Dimensions *</label>
-              <input type="text" id="propArea" placeholder="e.g. 1200 sq.ft (30x40)" required>
+              <label for="propArea">Area / Dimensions</label>
+              <input type="text" id="propArea" placeholder="e.g. 1200 sq.ft (30x40) (Optional)">
             </div>
 
             <div class="form-group-poster">

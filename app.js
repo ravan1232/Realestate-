@@ -1352,6 +1352,14 @@ function setupEventListeners() {
     addPropertyForm.addEventListener('submit', handleAddPropertySubmit);
   }
 
+  // Sync Listing Type Tick Option to hidden input
+  document.querySelectorAll('input[name="propListingType"]').forEach(radio => {
+    radio.addEventListener('change', (e) => {
+      const hiddenLT = document.getElementById('propListingType');
+      if (hiddenLT && e.target.checked) hiddenLT.value = e.target.value;
+    });
+  });
+
   // Preset Image Picker
   const presetOptions = document.querySelectorAll('.preset-img-option');
   presetOptions.forEach(opt => {
@@ -1518,6 +1526,12 @@ function openAddPropertyModal() {
   if (form) form.reset();
   const editId = document.getElementById('propertyEditId');
   if (editId) editId.value = '';
+
+  const saleRadio = document.querySelector('input[name="propListingType"][value="sale"]');
+  if (saleRadio) saleRadio.checked = true;
+  const hiddenLT = document.getElementById('propListingType');
+  if (hiddenLT) hiddenLT.value = 'sale';
+
   const title = document.getElementById('addPropertyModalTitle');
   if (title) title.innerHTML = '<i class="fa-solid fa-circle-plus"></i> Add New Property (Admin)';
   openModal(modal);
@@ -1965,18 +1979,28 @@ function handleAddPropertySubmit(e) {
   const editId = document.getElementById('propertyEditId').value;
   const title = document.getElementById('propTitle').value.trim();
   const category = document.getElementById('propCategory').value;
-  const listingType = document.getElementById('propListingType').value;
-  const priceVal = parseFloat(document.getElementById('propPrice').value);
+  
+  const checkedRadio = document.querySelector('input[name="propListingType"]:checked');
+  const hiddenLT = document.getElementById('propListingType');
+  const listingType = checkedRadio ? checkedRadio.value : (hiddenLT ? hiddenLT.value : 'sale');
+
+  const priceInput = document.getElementById('propPrice') ? document.getElementById('propPrice').value.trim() : '';
+  const priceVal = priceInput ? parseFloat(priceInput) : 0;
   const location = document.getElementById('propLocation').value.trim();
-  const area = document.getElementById('propArea').value.trim();
+  const areaInput = document.getElementById('propArea') ? document.getElementById('propArea').value.trim() : '';
+  const area = areaInput || 'On Request';
   const beds = parseInt(document.getElementById('propBeds').value) || 0;
   const baths = parseInt(document.getElementById('propBaths').value) || 0;
   const image = document.getElementById('propImageUrl').value.trim() || 'assets/images/hero_villa.jpg';
   const description = document.getElementById('propDescription').value.trim();
 
   let priceFormatted = '';
-  if (listingType === 'rent') {
+  if (!priceVal || isNaN(priceVal) || priceVal <= 0) {
+    priceFormatted = 'Price on Request';
+  } else if (listingType === 'rent') {
     priceFormatted = `₹${priceVal.toLocaleString('en-IN')} / mo`;
+  } else if (listingType === 'lease') {
+    priceFormatted = `₹${priceVal.toLocaleString('en-IN')} / lease`;
   } else {
     if (priceVal >= 10000000) {
       priceFormatted = `₹${(priceVal / 10000000).toFixed(2)} Crore`;
@@ -2052,10 +2076,16 @@ window.openEditPropertyModal = function(id) {
   document.getElementById('propertyEditId').value = prop.id;
   document.getElementById('propTitle').value = prop.title;
   document.getElementById('propCategory').value = prop.category;
-  document.getElementById('propListingType').value = prop.listingType;
-  document.getElementById('propPrice').value = prop.price;
+
+  const propLT = prop.listingType || 'sale';
+  const radio = document.querySelector(`input[name="propListingType"][value="${propLT}"]`);
+  if (radio) radio.checked = true;
+  const hiddenLT = document.getElementById('propListingType');
+  if (hiddenLT) hiddenLT.value = propLT;
+
+  document.getElementById('propPrice').value = (prop.price && prop.price > 0) ? prop.price : '';
   document.getElementById('propLocation').value = prop.location;
-  document.getElementById('propArea').value = prop.area;
+  document.getElementById('propArea').value = (prop.area && prop.area !== 'On Request') ? prop.area : '';
   document.getElementById('propBeds').value = prop.beds;
   document.getElementById('propBaths').value = prop.baths;
   document.getElementById('propImageUrl').value = prop.image;

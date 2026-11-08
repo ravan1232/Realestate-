@@ -1555,7 +1555,7 @@ img {
   color: var(--poster-espresso);
 }
 
-.form-group-poster input,
+.form-group-poster input:not([type="radio"]):not([type="checkbox"]),
 .form-group-poster select,
 .form-group-poster textarea {
   width: 100%;
@@ -1569,12 +1569,83 @@ img {
   font-weight: 500;
 }
 
-.form-group-poster input:focus,
+.form-group-poster input:not([type="radio"]):not([type="checkbox"]):focus,
 .form-group-poster select:focus,
 .form-group-poster textarea:focus {
   border-color: var(--poster-espresso);
   background: var(--poster-white);
   box-shadow: 0 0 0 2px rgba(36, 23, 18, 0.1);
+}
+
+/* Tick Mark Options for Listing Type */
+.listing-type-tick-group {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 8px;
+  margin-top: 4px;
+}
+
+.listing-type-tick-card {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 12px;
+  background: var(--poster-white, #FFFFFF);
+  border: 1.5px solid var(--poster-sand, #E2D9CC);
+  border-radius: var(--radius-md, 8px);
+  cursor: pointer;
+  font-size: 0.88rem;
+  font-weight: 600;
+  color: var(--poster-espresso, #241712);
+  user-select: none;
+  transition: all 0.2s ease;
+}
+
+.listing-type-tick-card:hover {
+  border-color: var(--poster-espresso, #241712);
+  background: #FAF7F2;
+}
+
+.listing-type-tick-card input[type="radio"],
+.listing-type-tick-card input[type="checkbox"] {
+  appearance: none;
+  -webkit-appearance: none;
+  width: 20px !important;
+  height: 20px !important;
+  min-width: 20px !important;
+  border: 2px solid #887366;
+  border-radius: 4px;
+  outline: none;
+  cursor: pointer;
+  display: inline-grid;
+  place-content: center;
+  background: #FFFFFF;
+  margin: 0 !important;
+  padding: 0 !important;
+  transition: all 0.15s ease;
+}
+
+.listing-type-tick-card input[type="radio"]:checked,
+.listing-type-tick-card input[type="checkbox"]:checked {
+  background: var(--poster-espresso, #241712);
+  border-color: var(--poster-espresso, #241712);
+}
+
+.listing-type-tick-card input[type="radio"]:checked::after,
+.listing-type-tick-card input[type="checkbox"]:checked::after {
+  content: "";
+  width: 5px;
+  height: 9px;
+  border: solid #FFFFFF;
+  border-width: 0 2.5px 2.5px 0;
+  transform: rotate(45deg);
+  margin-top: -2px;
+}
+
+.listing-type-tick-card:has(input:checked) {
+  border-color: var(--poster-espresso, #241712);
+  background: #F4EFE6;
+  box-shadow: 0 1px 3px rgba(36, 23, 18, 0.08);
 }
 
 /* Google Map Wrapper */
